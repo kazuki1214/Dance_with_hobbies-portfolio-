@@ -15,5 +15,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "homes#top"
+    resources :hobbies, except:[:index]
+    resources :end_users, except:[:new, :create, :destroy]
+    resources :post_histories, only:[:index, :show, :destroy]
+    resources :categories, only:[:index, :create, :destroy]
+    resources :inquiries, except:[:new, :edit, :create]
   end
 end

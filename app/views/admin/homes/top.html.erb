@@ -4,8 +4,29 @@
     <div class="btn btn-primary px-md-2 py-md-2 ml-md-auto">趣味作成</div>
   </div>
   <div class="hobbies-table">
-    <table class="table ">
-      
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>title</th>
+          <th>introduction</th>
+          <th>edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @hobbies.each do |t| %>
+        <tr>
+          <td><%= t.id %></td>
+          <td>
+            <%= link_to admin_hobby(t) do %>
+              <%= t.title %>
+            <% end %>
+          </td>
+          <td><%= t.introduction %></td>
+          <td><%= link_to "編集", edit_admin_hobby(t), class:"btn btn-success px-2 py-2" %></td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
