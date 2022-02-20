@@ -11,8 +11,9 @@ class Admin::HobbiesController < ApplicationController
 
   def create
     @hobby = Hobby.new(hobby_params)
-    if @hobby.save_categroy(category_names)
-      @hobby.save
+    @categories = params[:hobby][:category]
+    @hobby.save_categories(@categories)
+    if @hobby.save
       redirect_to admin_hobby(@hobby)
     else
       render :new
@@ -25,6 +26,7 @@ class Admin::HobbiesController < ApplicationController
 
   def update
     @hobby = Hobby.find(params[:id])
+    @hobby.hobby_categories.category_id = params[:hobby][:category]
     @hobby.update(hobby_params)
     redirect_to admin_hobby(@hobby)
   end

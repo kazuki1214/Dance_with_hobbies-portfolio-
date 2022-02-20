@@ -17,7 +17,9 @@
     <p class="col-md-3">category:</p>
     <div class="offset-md-1">
       <%= @categories.each do |c| %>
-        <%= f.hidden_field :category_name, c.name %>
+      <%= f.label c.name %>
+        <input>
+        <%= f.hidden_field :category_name, id: "category_hidden_field" %>
       <% end %>
     </div>
   </div>
