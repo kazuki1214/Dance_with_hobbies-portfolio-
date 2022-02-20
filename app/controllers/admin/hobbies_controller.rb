@@ -11,9 +11,12 @@ class Admin::HobbiesController < ApplicationController
 
   def create
     @hobby = Hobby.new(hobby_params)
-    categories = 
-    @hobby.save
-    redirect_to admin_hobby(@hobby)
+    if @hobby.save_categroy(category_names)
+      @hobby.save
+      redirect_to admin_hobby(@hobby)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -35,6 +38,10 @@ class Admin::HobbiesController < ApplicationController
 
   def hobby_params
     params.require(:hobby).permit(:title, :introduction, :hobby_image_id)
+  end
+
+  def category_names
+    params[:hobby][:category_name]
   end
 
 end

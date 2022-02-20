@@ -2,12 +2,10 @@
   <div class="row mb-4">
     <div class="col-3 admin-page-title"><h4>趣味作成</h4></div>
   </div>
-  <%= form_with model: @hobby, local: true do |f| %>
+  <%= form_with model: [:admin @hobby], local: true do |f| %>
   <div class="row">
-    <div class="kami">
-      <%= attachment_image_tag @hobby, :hobby_image, fallback: "no-image.png", id:"hobby_img_prev" %>
+      <%= attachment_image_tag @hobby, :hobby_image, size:"300x300" fallback: "no-image.png", id:"hobby_img_prev" %>
       <%= f.attachment_field :hobby_image %>
-    </div>
   </div>
   <div class="row">
      <p class="col-md-3">tittle:</p>
@@ -17,12 +15,28 @@
   </div>
   <div class="row mb-4">
     <p class="col-md-3">category:</p>
-    <p class="offset-md-1">categorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrry</p>
+    <div class="offset-md-1">
+      <%= @categories.each do |c| %>
+      <div class="chips">
+        
+        <%= f.hidden_field :category_name, c.name %>
+      </div>
+      <% end %>
+    </div>
   </div>
   <div class="row mb-3">
     <p class="col-md-3">introduction:</p>
     <%= f.text_area :introduction, class:"col-md-7 offset-md-1 d-flex flex-wrap" %>
   </div>
+  <div class="row">
+    <div class="col-md-3">
+      <%= link_to "一覧に戻る", admin_hobbies, class:"btn btn-danger px-2 py-2 w-100" %>
+    </div>
+    <div class="col-md-3 offset-md-4">
+      <%= f.submit "登録する", class:"btn btn-primary px-2 py-2 w-100" %>
+    </div>
+  </div>
+  <% end %>
 </div>
 
 <script>
