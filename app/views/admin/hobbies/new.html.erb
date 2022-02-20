@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-3 admin-page-title"><h4>趣味作成</h4></div>
+  </div>
+  <%= form_with model: @hobby, local: true do |f| %>
+  <div class="row">
+    <div class="kami">
+      <%= attachment_image_tag @hobby, :hobby_image, fallback: "no-image.png", id:"hobby_img_prev" %>
+      <%= f.attachment_field :hobby_image %>
+    </div>
+  </div>
+  <div class="row">
+     <p class="col-md-3">tittle:</p>
+    <div class="col-md-8 offset-md-1 hobby-title">
+      <%= f.text_field :title, class:"w-100" %>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <p class="col-md-3">category:</p>
+    <p class="offset-md-1">categorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrry</p>
+  </div>
+  <div class="row mb-3">
+    <p class="col-md-3">introduction:</p>
+    <%= f.text_area :introduction, class:"col-md-7 offset-md-1 d-flex flex-wrap" %>
+  </div>
+</div>
+
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#hobby_img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#hobby_hobby_image").change(function(){
+    readURL(this);
+  });
+});
+</script>

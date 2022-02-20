@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_125031) do
+ActiveRecord::Schema.define(version: 2022_02_20_064525) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -85,6 +85,13 @@ ActiveRecord::Schema.define(version: 2022_02_19_125031) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hobby_categories", force: :cascade do |t|
+    t.integer "hobby_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "inquiries", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -97,6 +104,13 @@ ActiveRecord::Schema.define(version: 2022_02_19_125031) do
   create_table "post_histories", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
