@@ -20,8 +20,12 @@
             <%= attachment_image_tag t, :user_image, size: "100x100", format: "jpg", fallback: "no-image.jpeg" %>
             <%= t.name %>
           </td>
-          <td><%= t.introduction %></td>
-          <td><%= link_to "趣味削除", admin_hobby, class:"btn btn-primary px-md-2 py-md-2", method: :delete %></td>
+          <td><%= t.email %></td>
+          <% if t.is_deleted == false %>
+            <td class="text-success">有効</td>
+          <% else %>
+            <td class="text-secondary">退会</td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
