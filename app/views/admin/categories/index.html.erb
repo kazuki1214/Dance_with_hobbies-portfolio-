@@ -1,2 +1,61 @@
-<h1>Admin::Categories#index</h1>
-<p>Find me in app/views/admin/categories/index.html.erb</p>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-3 admin-page-title"><h4>カテゴリー一覧</h4></div>
+  </div>
+
+  <div class="category_field">
+    <%= form_with model: [:admin @new_category], local: true do |f| %>
+      <div class="row">
+        <%= attachment_image_tag @new_category, :category_image, size:"300x300", fallback: "no-image.jpeg", id:"category_img_prev" %>
+        <%= f.attachment_field :category_image %>
+      </div>
+      <div class="row">
+        <p class="col-md-2">name:</p>
+        <%= f.text_field :name, class:"col-md-5 w-100" %>
+        <%= f.submit "カテゴリ作成", class:"col-md-2 w-100" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="categories-table">
+    <table class="table admin-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th></th>
+          <th>title</th>
+          <th>delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |t| %>
+        <tr>
+          <td><%= t.id %></td>
+          <td><%= attachment_image_tag @categories, :category_image, size:"100x100", format: "jpg" %></td>
+          <td>
+            <%= t.title %>
+          </td>
+          <td><%= link_to "削除", admin_category(t), class:"btn btn-danger px-2 py-2", method: :delete %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#category_img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#category_category_image").change(function(){
+    readURL(this);
+  });
+});
+</script>

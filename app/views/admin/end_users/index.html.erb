@@ -1,2 +1,30 @@
-<h1>Admin::EndUsers#index</h1>
-<p>Find me in app/views/admin/end_users/index.html.erb</p>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-3 admin-page-title"><h4>ユーザー一覧</h4></div>
+  </div>
+  <div class="hobbies-table">
+    <table class="table admin-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>name</th>
+          <th>e-mail</th>
+          <th>status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @hobbies.each do |t| %>
+        <tr>
+          <td><%= t.id %></td>
+          <td>
+            <%= attachment_image_tag t, :user_image, size: "100x100", format: "jpg", fallback: "no-image.jpeg" %>
+            <%= t.name %>
+          </td>
+          <td><%= t.introduction %></td>
+          <td><%= link_to "趣味削除", admin_hobby, class:"btn btn-primary px-md-2 py-md-2", method: :delete %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

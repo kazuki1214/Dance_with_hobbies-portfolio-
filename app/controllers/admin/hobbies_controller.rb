@@ -14,7 +14,11 @@ class Admin::HobbiesController < ApplicationController
     @categories = params[:hobby][:category]
     @hobby.save_categories(@categories)
     if @hobby.save
-      redirect_to admin_hobby(@hobby)
+      @categories.pluck(:id).each do |c|
+        category_list = @hobby.hobby_categories.new
+        category_list.category_id = Category.find(c)
+        category_list.save
+      end
     else
       render :new
     end
@@ -22,6 +26,7 @@ class Admin::HobbiesController < ApplicationController
 
   def edit
     @hobby = Hobby.find(params[:id])
+    @categories = Category.all
   end
 
   def update

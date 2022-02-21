@@ -4,13 +4,13 @@
     <div class="btn btn-primary px-md-2 py-md-2 ml-md-auto">趣味作成</div>
   </div>
   <div class="hobbies-table">
-    <table class="table admin-top-table">
+    <table class="table admin-table">
       <thead>
         <tr>
           <th>ID</th>
           <th>title</th>
           <th>introduction</th>
-          <th>edit</th>
+          <th>dalete</th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,7 @@
             <% end %>
           </td>
           <td><%= t.introduction %></td>
-          <td><%= link_to "編集", edit_admin_hobby(t), class:"btn btn-success px-2 py-2" %></td>
+          <td><%= link_to "趣味削除", admin_hobby, class:"btn btn-primary px-md-2 py-md-2", method: :delete %></td>
         </tr>
         <% end %>
       </tbody>
