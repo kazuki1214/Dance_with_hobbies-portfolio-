@@ -3,7 +3,9 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
+  attachment :user_image
+
   has_many :posts
   has_many :favorite_posts
   has_many :comments

@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row mb-4">
-    <div class="col-3 admin-page-title"><h4>趣味作成</h4></div>
+  <div class="row mb-4 admin-title">
+    <div class="admin-title_page-title"><h4>趣味作成</h4></div>
   </div>
   <%= form_with model: [:admin @hobby], local: true do |f| %>
   <div class="row">
@@ -31,7 +31,7 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <%= link_to "一覧に戻る", admin_hobbies, class:"btn btn-danger px-2 py-2 w-100" %>
+      <%= link_to "一覧に戻る", admin_hobbies_path, class:"btn btn-danger px-2 py-2 w-100" %>
     </div>
     <div class="col-md-3 offset-md-4">
       <%= f.submit "登録する", class:"btn btn-primary px-2 py-2 w-100" %>

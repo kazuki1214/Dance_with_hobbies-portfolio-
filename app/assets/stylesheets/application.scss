@@ -23,11 +23,24 @@
   box-sizing:border-box;
 }
 
-.admin-table thead{
-  background-color:whitesmoke;
-  border:1px solid black;
+.admin-title{
+
+    &_page-title{
+        border:1px solud black;
+        background-color:whitesmoke;
+        padding:5px;
+    }
 }
 
-.admin-top-table tr{
-  border-bottom:1px solid black;
+.admin-table{
+
+    &_index-thead{
+        background-color:whitesmoke;
+        border:1px solid black;
+    }
+
+    &_index-table tr{
+        border-bottom:1px solid black;
+    }
+
 }

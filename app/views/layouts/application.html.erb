@@ -34,10 +34,7 @@
               <%= link_to admin_inquiries do %> <div class="nav-items">お問い合せ一覧</div><% end %>
               <%= link_to destroy_admin_session do %> <div class="nav-items">ログアウト</div><% end %>
             <% elsif end_user_signed_in? %>
-              <%= link_to admin_end_users do %> <div class="nav-items">ユーザー一覧</div><% end %>
             <% else %>
-              <%= link_to admin_hobbies do %> <div class="nav-items">趣味一覧</div><% end %>
-              <%= link_to admin_categories do %> <div class="nav-items">カテゴリー一覧</div><% end %>
             <% end %>
           </nav>
         </div>

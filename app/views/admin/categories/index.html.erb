@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row mb-4">
-    <div class="col-3 admin-page-title"><h4>カテゴリー一覧</h4></div>
+  <div class="row mb-4 admin-title">
+    <div class="admin-title_page-title"><h4>カテゴリー一覧</h4></div>
   </div>
 
   <div class="category_field">
@@ -17,10 +17,10 @@
     <% end %>
   </div>
 
-  <div class="categories-table">
-    <table class="table admin-table">
-      <thead>
-        <tr>
+  <div class="admin-table">
+    <table class="table admin-table_index-table">
+      <thead class="admin-table_index-thead">
+        <tr class="admin-table_index-tr">
           <th>ID</th>
           <th></th>
           <th>title</th>
@@ -29,13 +29,13 @@
       </thead>
       <tbody>
         <% @categories.each do |t| %>
-        <tr>
+        <tr class="admin-table_index-tr">
           <td><%= t.id %></td>
           <td><%= attachment_image_tag @categories, :category_image, size:"100x100", format: "jpg" %></td>
           <td>
             <%= t.title %>
           </td>
-          <td><%= link_to "削除", admin_category(t), class:"btn btn-danger px-2 py-2", method: :delete %></td>
+          <td><%= link_to "削除", admin_category_path(t), class:"btn btn-danger px-2 py-2", method: :delete %></td>
         </tr>
         <% end %>
       </tbody>

@@ -1,2 +1,49 @@
-<h1>Admin::EndUsers#show</h1>
-<p>Find me in app/views/admin/end_users/show.html.erb</p>
+<div class="container">
+  <div class="row mb-4 admin-title">
+    <div class="admin-title_page-title"><h4><%= @user.name %>の会員画面</h4></div>
+  </div>
+  <div class="admin-table">
+    <table class="table admin-table_index-table">
+      <tr class="admin-table_index-tr">
+        <th>id:</th>
+        <td><%= @user.id %></td>
+      </tr>
+      <tr class="admin-table_index-tr">
+        <th>name:</th>
+        <td>
+          <%= attachment_image_tag @user, :user_image, size: "100x100", format: "jpg", fallback: "no-image.jpeg" %>
+          <%= @user.name %>
+        </td>
+      </tr>
+      <tr class="admin-table_index-tr">
+        <th>comment:</th>
+        <td><%= @user.user_comment %></td>
+      </tr>
+      <tr class="admin-table_index-tr">
+        <th>e-mail:</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+       <td colspan="2">
+        <%= link_to admin_end_user_post_histories_path do %>
+        投稿一覧へ
+        <% end %>
+       <td>
+      </tr>
+      <tr class="admin-table_index-tr">
+        <th>status:</th>
+        <% if @user.is_deleted == false %>
+          <td class="text-success">有効</td>
+        <% else %>
+          <td class="text-secondary">退会</td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <section class="row">
+    <div class="mx-auto">
+      <%= link_to "編集する", edit_admin_end_user_path(@user), class:"btn btn-success px-2 py-2" %>
+    </div>
+  </section>
+</div>

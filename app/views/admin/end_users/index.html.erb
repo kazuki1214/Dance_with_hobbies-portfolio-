@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row mb-4">
-    <div class="col-3 admin-page-title"><h4>ユーザー一覧</h4></div>
+  <div class="row mb-4 admin-title">
+    <div class="admin-title_page-title"><h4>ユーザー一覧</h4></div>
   </div>
-  <div class="hobbies-table">
-    <table class="table admin-table">
-      <thead>
-        <tr>
+  <div class="admin-table">
+    <table class="table admin-table_index-table">
+      <thead class="admin-table_index-thead">
+        <tr class="admin-table_index-tr">
           <th>ID</th>
           <th>name</th>
           <th>e-mail</th>
@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <% @hobbies.each do |t| %>
-        <tr>
+        <tr class="admin-table_index-tr">
           <td><%= t.id %></td>
           <td>
             <%= attachment_image_tag t, :user_image, size: "100x100", format: "jpg", fallback: "no-image.jpeg" %>
