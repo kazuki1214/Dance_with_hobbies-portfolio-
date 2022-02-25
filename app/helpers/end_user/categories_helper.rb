@@ -1,0 +1,2 @@
+module EndUser::CategoriesHelper
+end
