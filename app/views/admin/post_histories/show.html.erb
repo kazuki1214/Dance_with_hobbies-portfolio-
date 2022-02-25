@@ -1,2 +1,72 @@
-<h1>Admin::PostHistories#show</h1>
-<p>Find me in app/views/admin/post_histories/show.html.erb</p>
+<section class="container">
+  <div class="row border-bottom-1 border-dark mb-3">
+    <div class="col-md-1">
+      <%= link_to "戻る", 'javascript:history.back()' %>
+    </div>
+    <div class="col-md-6 offset-md-1">
+      <p>user:</p><%= attachment_image_tag @post.end_user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @post.end_user.name %>
+    </div>
+  </div>
+  <div class="row">
+    <%= link_to "投稿履歴一覧に戻る", admin_end_user_post_histories_path(post_histroies.end_user.id, post_histories) %>
+    <%= link_to "投稿を削除する", admin_end_user_post_history_path(@post), class: "btn btn-danger px-2 py-2 ml-auto", method: :destroy %>
+  </div>
+
+   <div class="mx-auto post">
+    <div class="row border-bottom-1 border-dark mb-2">
+      <%= attachment_image_tag @post.end_user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @post.end_user.name %>
+      <div class="col-3 ml-auto">
+        <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+        <%= @post.hobby.name %>
+      </div>
+    </div>
+    <h4 class="post_title"><%= @post.title %></h4>
+    <%= attachment_image_tag @post, :post_image, class: "post_image" %>
+    <div class="row">
+      <%= @post.tags do |t| %>
+        <p class="post_tag">#<%= t.name %></p>
+      <% end %>
+    </div>
+    <div class="post_body">
+      <p>　<%= @post.body %></p>
+    </div>
+  </div>
+
+  <div class="post_connection">
+    <div class="post_sub">
+      <p>コメント<%= @post.comments.count %>件</p>
+      <p>いいね❤<%= @post.favorite_posts.count %></p>
+    </div>
+    <% @comments_first.each do |c| %>
+    <div class="post_comment">
+      <div class="row mb-3">
+        <%= attachment_image_tag c, :user_image, size: "100x100", format: "jpg" %><%= c.name %>
+        <div class="col-3 ml-auto">
+          <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+        </div>
+      </div>
+      <div class="row">
+        <%= c.comment %>
+      </div>
+    </div>
+    <% end %>
+    <% if @comment_offset.any? %>
+    <details>
+      <sumary>全てのコメントを表示</sumary>
+      <% @comments_first.each do |c| %>
+      <div class="post_comment">
+        <div class="row mb-3">
+          <%= attachment_image_tag c, :user_image, size: "100x100", format: "jpg" %><%= c.name %>
+          <div class="col-3 ml-auto">
+            <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+          </div>
+        </div>
+        <div class="row">
+          <%= c.comment %>
+        </div>
+      </div>
+    </details>
+    <% end %>
+  </div>
+
+</section>

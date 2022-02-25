@@ -1,8 +1,5 @@
 <section class="container">
-  <div class="row border-bottom-1 border-dark mb-3">
-    <div class="col-md-1">
-      <%= link_to "戻る", 'javascript:history.back()' %>
-    </div>
+  <div class="row border-bottom-1 border-dark">
     <div class="col-md-6 offset-md-1">
       <p>user:</p><%= attachment_image_tag @user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @user.name %>
     </div>
@@ -10,10 +7,14 @@
       <div class="search"></div>
     </div>
   </div>
+  <div class="row mb-3">
+    <%= link_to "戻る", 'javascript:history.back()' %>
+  </div>
   <% @user.posts.each do |post| %>
+  <%= link_to admin_end_user_post_history_path(post) do %>
   <div class="mx-auto post">
     <div class="row border-bottom-1 border-dark mb-2">
-      <%= attachment_image_tag post, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @user.name %>
+      <%= attachment_image_tag @user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @user.name %>
       <div class="col-3 ml-auto">
         <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
         <%= post.hobby.name %>
@@ -27,9 +28,10 @@
       <% end %>
     </div>
   </div>
+  <% end %>
   <div class="post_sub">
     <p class="post_comment">コメント<%= post.comments.count %>件</p>
-    <p class="post_favorite">いいね♡<%= post.favorite_posts.count %></p>
+    <p class="post_favorite">いいね❤︎<%= post.favorite_posts.count %></p>
   </div>
   <% end %>
 </section>

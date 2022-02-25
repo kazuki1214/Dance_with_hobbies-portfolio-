@@ -8,15 +8,21 @@
   z-index:2;
   border:1px solid black;
   max-width:500px;
-
-  &_sub{
+  
+  &_connection{
     position:absolute;
     bottom:-50px;
     left:50px;
     z-index:1;
+  }
+  
+  
+
+  &_sub{
     border:1px solid black;
     max-width:500px;
     display:flex;
     justify-content:space-around;
   }
+  
 }
