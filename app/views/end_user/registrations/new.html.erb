@@ -1,29 +1,53 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "end_users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section class="sign-up container d-flex justify-content-center p-4">
+  <div class="mb-3">LOGO</div>
+  <div class="row text-center mb-3">
+    <h2>新しくユーザーを登録して<br>
+    自分の趣味を発信しよう</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "end_users/shared/error_messages", resource: resource %>
+
+    <div class="row">
+      <%= f.label :name, "名前:", class: "col-md-3 offset-lg-1" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-7 offset-md-1" %>
+    </div>
+
+    <div class="row">
+      <%= f.label :email, "メールアドレス:", class: "col-md-3 offset-lg-1" %>
+      <%= f.email_field :name, autocomplete: "email", class: "col-7 offset-md-1" %>
+    </div>
+
+    <div class="row">
+      <%= f.label :password, "パスワード:", class: "col-md-3 offset-lg-1" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "col-7 offset-md-1" %>
+    </div>
+
+    <div class="row">
+      <%= f.label :password_confirmation, "パスワード確認:", class: "col-md-3 offset-lg-1" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-7 offset-md-1" %>
+    </div>
+
+    <div class="row justify-content-center p-5 border-bottom">
+      <%= f.submit "登録", class: "btn btn-primary p-2" %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-5">
+      <p>ユーザーを作成済みの方はこちらから<br>
+      ログインして下さい</p>
+    </div>
+    <div class="col-2">
+      <h1>➡</h1>
+    </div>
+    <div class="col-5">
+      <%= link_to "ログイン画面へ", new_end_user_session_path, class: "btn btn-success p-2" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "end_users/shared/links" %>
+</section>

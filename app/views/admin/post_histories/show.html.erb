@@ -17,7 +17,7 @@
       <%= attachment_image_tag @post.end_user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @post.end_user.name %>
       <div class="col-3 ml-auto">
         <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
-        <%= @post.hobby.name %>
+        <%= @post.hobby.title %>
       </div>
     </div>
     <h4 class="post_title"><%= @post.title %></h4>
