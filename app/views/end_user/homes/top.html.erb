@@ -1,6 +1,9 @@
 <section class="container home">
-  <div class="home_introduction">
+
+  <div class="home_title">
     <h1 class="mb-5"><strong>welcome to the stage!</strong></h1>
+  </div>
+  <div class="home_introduction">
     <div class="home_logo mb-5">LOGO</div>
     <p>Dance-with-hobbiesは新しい趣味の発掘、同じ趣味を持つ人と趣味の共有ができるサイトです。<br>
     ユーザー登録しなくても趣味やその趣味の投稿を読むことができます。<br>
@@ -15,14 +18,14 @@
 
   <div class="home_hobbies mb-3">
     <%= link_to hobbies_path do %>
-    <div class="home_link-hobbies"><img src="imges/no-image.jpeg" art=" "><h5>趣味一覧を見てみる</h5></div>
+    <div class="home_link-hobbies"><h5><img src="imges/no-image.jpeg" art=" ">趣味一覧を見てみる</h5></div>
     <% end %>
     <div class="home_hobby-search"></div>
   </div>
 
   <%= link_to categories_path do %>
   <div class="home_categories">
-    <img src="imges/no-image.jpeg" art=" "><h5>カテゴリーから探す</h5>
+    <h5><img src="imges/no-image.jpeg" art=" ">カテゴリーから探す</h5>
   </div>
   <% end %>
 

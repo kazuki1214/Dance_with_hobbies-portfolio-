@@ -4,6 +4,7 @@
 .home{
   display:flex;
   justify-content:center;
+  flex-direction:column;
 
   &_introduction{
     display:flex;
@@ -22,12 +23,12 @@
     padding:8px;
   }
 
-  &_sign_in{
+  &_sign-in{
     padding:8px;
     margin-left:100px;
   }
 
-  &_hobbies{
+  &_link-hobbies{
     padding:16px;
     border:1px solid black;
   }
@@ -38,7 +39,7 @@
   }
 
   &_ranking{
-    width:70%;
+    width:90%;
     padding:16px;
   }
 
