@@ -1,32 +1,46 @@
 // Place all the styles related to the end_user/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.info{
+  display:none;
+}
+
 .home{
   display:flex;
   justify-content:center;
   flex-direction:column;
 
-  &_introduction{
-    display:flex;
+  &_title{
     text-align:center;
   }
 
-  .home{
-    @extend .home;
+  &_introduction{
+    text-align:center;
+    margin-bottom:50px;
+  }
 
-    &_set-up{
-      @extend .home;
-    }
+  &_set-up{
+    display:flex;
+    justify-content:center;
   }
 
   &_sign-up{
     padding:8px;
+    width:200px;
   }
 
-  &_sign-in{
-    padding:8px;
-    margin-left:100px;
+  &_sign-up{
+
+    @extend &_sign-up;
+
+    &_sign-in{
+     @extend &_sign-up
+    margin-left:120px;
+    }
   }
+
+
 
   &_link-hobbies{
     padding:16px;
