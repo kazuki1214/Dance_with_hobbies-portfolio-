@@ -12,4 +12,9 @@ class EndUser < ApplicationRecord
   has_many :post_histories
   has_many :followers
   has_many :favorite_hobbies
+
+  def find_by?(user)
+    Follower.where(end_user: end_user.id).exists?
+  end
+
 end

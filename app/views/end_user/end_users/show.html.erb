@@ -1,2 +1,43 @@
-<h1>EndUser::EndUsers#new</h1>
-<p>Find me in app/views/end_user/end_users/new.html.erb</p>
+<section class="container user">
+    <div class="user_info">
+        <%= link_to "戻る", 'javascript:history.back()', class: "user_back" %>
+        <% if current_end_user == @user %>
+            <%= link_to "編集", information_path(@user), class: "user_edit" %>
+        <% elsif  @user.followers.find_by?(current_user) %>
+            <%= link_to "フォロー中", end_user_follower_path(@user), class: "user_follow btn btn-dark", method: :delete %>
+        <% else %>
+            <%= link_to "フォローする", end_user_follower_index_path(@user), class: "user_follow btn btn-light", method: :post %>
+        <% end %>
+    </div>
+    <div class="user_title">
+        <%= attachment_image_tag @user, :user_image, size:"200x200", %>
+        <%= @user.name , class: "user_name" %>
+    </div>
+    <div class="user_row">
+        <%= @user.user_comment, class: "user_comment" %>
+    </div>
+    <div class="user_row">
+        <p>メールアドレス:</p>
+        <%= @user.email %>
+    </div>
+    <div class="user_row">
+        <p>お気に入りの趣味:</p>
+        <div class="user_favorite-hobbies">
+            <%= @user.favorite_hobbies.each do |hobby| %>
+                <%= hobby.title %>
+            <% end %>
+        </div>
+    </div>
+
+    <%= link_to end_user_follower_index_path do %>
+        <div class="user_row">
+            <p>フォローユーザー一覧</p>
+        </div>
+    <% end %>
+
+    <div class="user_connection">
+        <%= link_to "投稿履歴", end_user_post_histories_path(@user), class: "user_posts" %>
+        <%= link_to "退会する", withdraw_end_user_path(@user), class: "user_withdraw" %>
+    </div>
+
+</section>

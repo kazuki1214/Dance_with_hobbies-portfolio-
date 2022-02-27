@@ -2,14 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.info{
-  display:none;
-}
-
 .home{
   display:flex;
   justify-content:center;
   flex-direction:column;
+
+  .home{
+    @extend .home;
+
+    &_top{
+      @extend .home;
+    }
+
+  }
 
   &_title{
     text-align:center;
@@ -35,7 +40,7 @@
     @extend &_sign-up;
 
     &_sign-in{
-     @extend &_sign-up
+     @extend &_sign-up;
     margin-left:120px;
     }
   }

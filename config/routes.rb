@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     get "end_users/:id/user_page" => "end_users#show", as: "user_page"
     get "end_user/:id/information" => "end_users#edit", as: "information"
     resources :end_user, only:[:update] do
+      member do
+        patch :withdraw
+      end
       resources :favorite_hobbies, only:[:index, :create, :destroy]
       resources :post_histories, only:[:index, :show, :destroy]
       resources :follower, only:[:index, :create, :destroy]
