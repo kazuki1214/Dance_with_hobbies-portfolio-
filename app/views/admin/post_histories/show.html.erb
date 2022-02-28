@@ -4,7 +4,7 @@
       <%= link_to "戻る", 'javascript:history.back()' %>
     </div>
     <div class="col-md-6 offset-md-1">
-      <p>user:</p><%= attachment_image_tag @post.end_user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @post.end_user.name %>
+      <p>user:</p><%= attachment_image_tag @post.end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @post.end_user.name %>
     </div>
   </div>
   <div class="row">
@@ -14,7 +14,7 @@
 
    <div class="mx-auto post">
     <div class="row border-bottom-1 border-dark mb-2">
-      <%= attachment_image_tag @post.end_user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @post.end_user.name %>
+      <%= attachment_image_tag @post.end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @post.end_user.name %>
       <div class="col-3 ml-auto">
         <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
         <%= @post.hobby.title %>
@@ -56,7 +56,7 @@
       <% @comments_first.each do |c| %>
       <div class="post_comment">
         <div class="row mb-3">
-          <%= attachment_image_tag c, :user_image, size: "100x100", format: "jpg" %><%= c.name %>
+          <%= attachment_image_tag c, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= c.name %>
           <div class="col-3 ml-auto">
             <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
           </div>

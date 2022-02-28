@@ -5,7 +5,7 @@
 
   <%= form_with model:[:admin @user], local: true do |f| %>
     <div class="row mb-4">
-      <%= attachment_image_tag @user, :user_image, size:"300x300", fallback: "no-image.jpeg", id:"user_img_prev" %>
+      <%= attachment_image_tag @user, :user_image, size:"300x300", fallback: "no_image.jpg", id:"user_img_prev" %>
       <%= f.attachment_field :user_image %>
     </div>
     <div class="row mb-4">

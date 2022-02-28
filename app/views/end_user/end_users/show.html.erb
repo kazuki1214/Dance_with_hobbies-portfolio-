@@ -34,10 +34,17 @@
             <p>フォローユーザー一覧</p>
         </div>
     <% end %>
+    
+    <%= link_to end_user_post_histories_path(@user) do %>
+        <div class="user_row">
+            <p>投稿履歴</p>
+        </div>
+    <% end %>
+    
+    <!--通知一覧へリンク-->
+        <div class="user_row">
+            <p>通知一覧</p>
+        </div>
 
-    <div class="user_connection">
-        <%= link_to "投稿履歴", end_user_post_histories_path(@user), class: "user_posts" %>
-        <%= link_to "退会する", withdraw_end_user_path(@user), class: "user_withdraw" %>
-    </div>
 
 </section>

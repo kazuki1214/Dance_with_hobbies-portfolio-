@@ -21,6 +21,8 @@
     padding:10px;
     width:80%;
     border-bottom:1px solid black;
+    display:flex;
+    align-items:center;
   }
 
   %_row{
@@ -28,7 +30,6 @@
 
     &_title{
       @extend %_row;
-      display:flex;
       justify-content:center;
     }
   }

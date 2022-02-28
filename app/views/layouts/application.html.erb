@@ -28,7 +28,7 @@
     <main class="container">
       <% unless %w[new_end_user_session new_end_user_registration new_admin_session root].any? { |name| current_page?(send("#{name}_path")) } %>
       <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-3 col-xl-2">
+        <div class="col-12 col-md-3 col-xl-2 sidebar">
           <div class="search"></div>
           <nav class="collapse" id="navbarNavDropdown">
             <% if admin_signed_in? %>

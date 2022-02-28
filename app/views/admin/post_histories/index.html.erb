@@ -14,7 +14,7 @@
   <%= link_to admin_end_user_post_history_path(post) do %>
   <div class="mx-auto post">
     <div class="row border-bottom-1 border-dark mb-2">
-      <%= attachment_image_tag @user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @user.name %>
+      <%= attachment_image_tag @user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @user.name %>
       <div class="col-3 ml-auto">
         <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
         <%= post.hobby.title %>
