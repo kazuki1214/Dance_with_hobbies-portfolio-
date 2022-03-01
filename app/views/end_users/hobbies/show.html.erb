@@ -1,2 +1,50 @@
-<h1>EndUser::Hobbies#show</h1>
-<p>Find me in app/views/end_user/hobbies/show.html.erb</p>
+<div class="hobby">
+  <div class="hobby_title">
+    <%= link_to "戻る", 'javascript:history.back()' %>
+    <%= attachment_image_tag @hobby, :hobby_iamge, class: "hobby_image", fallback: "no_image.jpg" %>
+    <h1><%= @hobby.title %></h1>
+  </div>
+  <div class="hobby_introduction">
+    <%= @hobby.introduction %>
+  </div>
+
+  <div class="hobby_link-posts">
+     <%= link_to hobby_posts_path(@hobby) do %>
+    <button class="hobby_button">
+      多くのユーザーの投稿を見てみよう！
+    </button>
+    <% end %>
+  </div>
+
+  <div class="hobby_posts">
+    <% @posts.each do |post| %>
+      <%= link_to hobby_post_path(post) do %>
+        <div class="hobby_post">
+
+          <div class="hobby_post-top">
+          <%= attachment_image_tag post.end_user.name, :user_image, size: "100x100", fallback: "no_image.jpg" %>
+          <%=  post.end_user.name %>
+            <div class="hobby_post-created">
+              <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+              <%= post.hobby.title %>
+            </div>
+          </div>
+
+          <h4 class="hobby_post-title"><%= t.title %></h4>
+          <%= attachment_image_tag post, :post_image_id, class: "hobby_post-image" %>
+          <div class="hobby_post-list">
+            <%= post.tags do |t| %>
+              <p class="hobby_post-tags">#<%= t.name %></p>
+            <% end %>
+          </div>
+
+        </div>
+      <% end %>
+      <div class="hobby_post-sub">
+        <p class="hobby_post-comment">コメント<%= post.comments.count %>件</p>
+        <p class="hobby_post-favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+

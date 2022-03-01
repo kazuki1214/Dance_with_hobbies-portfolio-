@@ -13,12 +13,13 @@ Rails.application.routes.draw do
       resources :follower, only:[:index, :create, :destroy]
     end
 
-    resources :hobbies, only:[:index, :show]
     resources :categories, only:[:index]
-    resources :posts, except:[:edit, :update] do
-      resources :comments, only:[:index, :create, :destroy]
-      resource :favorite_posts, only:[:create, :destroy]
-    end
+    resources :hobbies, only:[:index, :show] do
+      resources :posts, except:[:edit, :update] do
+        resources :comments, only:[:index, :create, :destroy]
+        resource :favorite_posts, only:[:create, :destroy]
+      end
+   end
 
 
   end

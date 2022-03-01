@@ -4,7 +4,7 @@
       <p>user:</p><%= attachment_image_tag @user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @user.name %>
     </div>
     <div class="col-md-3 offset-md-1">
-      <div class="search"></div>
+      <div class="admin-search"></div>
     </div>
   </div>
   <div class="row mb-3">
@@ -12,7 +12,7 @@
   </div>
   <% @user.posts.each do |post| %>
   <%= link_to admin_end_user_post_history_path(post) do %>
-  <div class="mx-auto post">
+  <div class="mx-auto admin-post">
     <div class="row border-bottom-1 border-dark mb-2">
       <%= attachment_image_tag @user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @user.name %>
       <div class="col-3 ml-auto">
@@ -20,18 +20,18 @@
         <%= post.hobby.title %>
       </div>
     </div>
-    <h4 class="post_title"><%= t.title %></h4>
-    <%= attachment_image_tag post, :post_image_id, class: "post_image" %>
+    <h4 class="admin-post_title"><%= t.title %></h4>
+    <%= attachment_image_tag post, :post_image_id, class: "admin-post_image" %>
     <div class="row">
       <%= post.tags do |t| %>
-        <p class="post_tag">#<%= t.name %></p>
+        <p class="admin-post_tag">#<%= t.name %></p>
       <% end %>
     </div>
   </div>
   <% end %>
-  <div class="post_sub">
-    <p class="post_comment">コメント<%= post.comments.count %>件</p>
-    <p class="post_favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+  <div class="admin-post_sub">
+    <p class="admin-post_comment">コメント<%= post.comments.count %>件</p>
+    <p class="admin-post_favorite">いいね❤︎<%= post.favorite_posts.count %></p>
   </div>
   <% end %>
 </section>

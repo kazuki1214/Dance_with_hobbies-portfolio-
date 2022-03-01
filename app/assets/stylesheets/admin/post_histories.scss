@@ -2,27 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.post{
+.admin-post{
   padding:20px 20px 0 20px;
   position:relative;
   z-index:2;
   border:1px solid black;
   max-width:500px;
-  
-  &_connection{
+
+  &_sub{
     position:absolute;
     bottom:-50px;
     left:50px;
     z-index:1;
-  }
-  
-  
-
-  &_sub{
     border:1px solid black;
+    height:300px;
     max-width:500px;
     display:flex;
     justify-content:space-around;
+    align-items:flex-end;
   }
-  
 }

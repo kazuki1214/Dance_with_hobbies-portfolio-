@@ -5,7 +5,7 @@
   display:flex;
   justify-content:center;
   flex-direction:column;
-  
+
   &_title{
     width:90%;
     border-bottom:1px solid black;
@@ -13,17 +13,71 @@
     display:flex;
     justify-content:center;
   }
-  
+
   &_contents{
     width:80%;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
   }
+
+  &_one{
+    width:300px;
+    height:500px;
+    border:1px solid black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  &_one-image{
+    width:80%;
+    height:40%;
+  }
 }
 
 .hobby{
-  border:1px solid black;
   display:flex;
-  align-items:;
+  justify-content:center;
+  flex-direction:column;
+
+  &_title{
+    width:90%;
+    border-bottom:1px solid black;
+    padding:10px;
+    display:flex;
+    justify-content:center;
+  }
+
+  &_introduction{
+    width:80%;
+    margin:20px;
+    overflow:break-word;
+  }
+  
+  &_posts{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+  }
+  
+  &_post{
+    padding:20px 20px 0 20px;
+    position:relative;
+    z-index:2;
+    border:1px solid black;
+    max-width:500px;
+  }
+  
+  &_post-sub{
+    position:absolute;
+    bottom:-50px;
+    left:50px;
+    z-index:1;
+    border:1px solid black;
+    height:300px;
+    max-width:500px;
+    display:flex;
+    justify-content:space-around;
+  }
 }
