@@ -1,0 +1,19 @@
+<div class="hobbies container">
+
+  <div class="hobbies_title">
+    <h2>趣味一覧</h2>
+    <div class="hobbies_search"></div>
+  </div>
+
+  <div class="hobbies_contents">
+    <% @hobbies.each do |hobby| %>
+    <%= link_to hobby_path(hobby) do %>
+      <div class="hobby">
+        <%= attachment_image_tag hobby, :hobby_iamge, class: "hobby_image", fallback: "no_image.jpg" %>
+        <%= hobby.title, class: "hobby_name" %>
+        <%= hobby.introduction, class: "hobby_introduction" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

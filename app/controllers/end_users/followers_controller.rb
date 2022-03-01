@@ -1,4 +1,4 @@
-class EndUser::FollowersController < ApplicationController
+class EndUsers::FollowersController < ApplicationController
 
   def index
     @followers = current_end_user.followers.all

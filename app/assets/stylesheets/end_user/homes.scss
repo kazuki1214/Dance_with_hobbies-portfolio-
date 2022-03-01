@@ -35,14 +35,10 @@
     width:200px;
   }
 
-  &_sign-up{
-
-    @extend &_sign-up;
-
-    &_sign-in{
-     @extend &_sign-up;
+  &_sign-in{
+    padding:8px;
+    width:200px;
     margin-left:120px;
-    }
   }
 
 

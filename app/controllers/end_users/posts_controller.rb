@@ -1,4 +1,4 @@
-class EndUser::PostsController < ApplicationController
+class EndUsers::PostsController < ApplicationController
   def index
   end
 
@@ -15,5 +15,5 @@ class EndUser::PostsController < ApplicationController
   end
   
   def destroy
-  
+  end
 end
