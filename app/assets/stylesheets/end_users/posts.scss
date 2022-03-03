@@ -1,12 +1,13 @@
-// Place all the styles related to the end_user/hobbies controller here.
+// Place all the styles related to the end_users/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.hobbies{
+.posts{
   display:flex;
   justify-content:center;
   flex-direction:column;
 
-  &_title{
+  &_top{
+    padding:20px;
     width:90%;
     border-bottom:1px solid black;
     padding:10px;
@@ -14,61 +15,52 @@
     justify-content:center;
   }
 
-  &_contents{
-    width:80%;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
 
-  &_one{
-    width:300px;
-    height:500px;
-    border:1px solid black;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  &_one-image{
-    width:80%;
-    height:40%;
-  }
-}
-
-.hobby{
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
-
-  &_title{
-    width:90%;
-    border-bottom:1px solid black;
-    padding:10px;
-    display:flex;
-    justify-content:center;
-  }
-
-  &_introduction{
-    width:80%;
-    margin:20px;
-    overflow:break-word;
-  }
-  
-  &_posts{
+  &_index{
     display:flex;
     justify-content:center;
     margin-top:30px;
   }
-  
+
   &_post{
+    display:flex;
+    justify-content:center;
     padding:20px 20px 0 20px;
     position:relative;
     z-index:2;
     border:1px solid black;
     max-width:500px;
   }
-  
+
+  &_post-user{
+    width:90%;
+    border-bottom:1px solid black;
+    display:flex;
+  }
+
+  &_post-created{
+    margin-left:auto;
+    display:flex;
+    flex-wrap:wrap;
+    width:40%;
+  }
+
+  &_post-title{
+    width:80%;
+    overflow-wrap:break-word;
+  }
+
+  &_post-image{
+    width:300px;
+    height:250px;
+  }
+
+  &_post-list{
+    width:80%;
+    display:flex;
+    flex-wrap:wrap;
+  }
+
   &_post-sub{
     position:absolute;
     bottom:-50px;

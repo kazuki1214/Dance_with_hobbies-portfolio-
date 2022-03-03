@@ -12,7 +12,6 @@ class Admin::HobbiesController < ApplicationController
   def create
     @hobby = Hobby.new(hobby_params)
     @categories = params[:hobby][:category]
-    @hobby.save_categories(@categories)
     if @hobby.save
       @categories.pluck(:id).each do |c|
         category_list = @hobby.hobby_categories.new

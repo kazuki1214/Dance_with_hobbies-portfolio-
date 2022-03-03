@@ -1,6 +1,8 @@
 class Hobby < ApplicationRecord
   has_many :hobby_categories, dependent: :destroy
   has_many :categories, through: :hobby_categories
+  has_many :posts, dependent: :destr
+  
 
   attachment :hobby_image
 

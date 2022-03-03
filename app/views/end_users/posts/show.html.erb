@@ -1,2 +1,48 @@
-<h1>EndUser::Posts#show</h1>
-<p>Find me in app/views/end_user/posts/show.html.erb</p>
+<div class="post">
+  
+  <div class="posts_back"><%= link_to hobby_posts_path(@post.hobby_id) %><span>⇦</span>投稿一覧に戻る</div><% end %>
+  
+  <div class="post_top">
+    <div class="post_hobby"><%= attachment_image_tag @hobby, :hobby_image, size: "200x200", fallback: "no_image.jpg" %>
+      <h1><%= @hobby.title %></h1>
+      <% if end_user_signed_in? %>
+        <%= link_to "新規投稿", new_hobby_posy_path(@hobby), class: "btn btn-light" %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="post_main">
+    <div class="post_user">
+      <%= attachment_image_tag @post.end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
+      <%=  @post.end_user.name %>
+      <div class="post_created">
+        <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+        <%= @post.hobby.title %>
+      </div>
+    </div>
+
+    <h4 class="post_title"><%= t.title %></h4>
+    <%= attachment_image_tag @post, :post_image_id, class: "post_image" %>
+    <div class="post_list">
+      <%= @post.tags do |t| %>
+        <p class="post_tags">#<%= t.name %></p>
+      <% end %>
+    </div>
+    <div class="post_body"><%= @post.body %></div>
+  </div>
+  <div class="post_sub">
+    <div class="post_content">
+      <p class="posts_post-comment">コメント<%= post.comments.count %>件</p>
+      <p class="posts_post-favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+    </div>
+    <% @comments.each do |c| %>
+      <div class="post_comment">
+        <div class="post_comment-user">
+          <%= c.end_user
+        </div>
+        <%= c.comment %>
+      </div>
+    <% end %>
+  </div>
+  
+</div>

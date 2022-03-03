@@ -1,8 +1,10 @@
 <div class="hobby">
-  <div class="hobby_title">
-    <%= link_to "戻る", 'javascript:history.back()' %>
-    <%= attachment_image_tag @hobby, :hobby_iamge, class: "hobby_image", fallback: "no_image.jpg" %>
-    <h1><%= @hobby.title %></h1>
+  <div class="hobby_top">
+    <%= link_to "戻る", 'javascript:history.back()', class: "hobby_back" %>
+    <div class="hobby_title">
+      <%= attachment_image_tag @hobby, :hobby_image, size: "200x200", fallback: "no_image.jpg" %>
+      <h1><%= @hobby.title %></h1>
+    </div>
   </div>
   <div class="hobby_introduction">
     <%= @hobby.introduction %>
@@ -21,8 +23,8 @@
       <%= link_to hobby_post_path(post) do %>
         <div class="hobby_post">
 
-          <div class="hobby_post-top">
-          <%= attachment_image_tag post.end_user.name, :user_image, size: "100x100", fallback: "no_image.jpg" %>
+          <div class="hobby_post-user">
+          <%= attachment_image_tag post.end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
           <%=  post.end_user.name %>
             <div class="hobby_post-created">
               <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
