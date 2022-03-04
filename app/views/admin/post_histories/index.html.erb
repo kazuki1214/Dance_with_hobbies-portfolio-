@@ -1,7 +1,7 @@
 <section class="container">
   <div class="row border-bottom-1 border-dark">
     <div class="col-md-6 offset-md-1">
-      <p>user:</p><%= attachment_image_tag @user, :user_image, size: "100x100", fallback: "no-image.jpeg" %><%= @user.name %>
+      <p>user:</p><%= attachment_image_tag @user, :user_image, size: "300x300", fallback: "no-image.jpeg" %><%= @user.name %>
     </div>
     <div class="col-md-3 offset-md-1">
       <div class="admin-search"></div>
@@ -14,13 +14,13 @@
   <%= link_to admin_end_user_post_history_path(post) do %>
   <div class="mx-auto admin-post">
     <div class="row border-bottom-1 border-dark mb-2">
-      <%= attachment_image_tag @user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @user.name %>
+      <%= attachment_image_tag @user, :user_image, size: "200x200", fallback: "no_image.jpg" %><%= @user.name %>
       <div class="col-3 ml-auto">
         <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
         <%= post.hobby.title %>
       </div>
     </div>
-    <h4 class="admin-post_title"><%= t.title %></h4>
+    <h4 class="admin-post_title"><%= post.title %></h4>
     <%= attachment_image_tag post, :post_image_id, class: "admin-post_image" %>
     <div class="row">
       <%= post.tags do |t| %>

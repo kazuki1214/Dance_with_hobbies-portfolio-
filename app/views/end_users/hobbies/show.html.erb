@@ -24,8 +24,10 @@
         <div class="hobby_post">
 
           <div class="hobby_post-user">
-          <%= attachment_image_tag post.end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
-          <%=  post.end_user.name %>
+          <%= link_to user_page_path(post.end_user.id) do %>
+            <%= attachment_image_tag post.end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
+            <%=  post.end_user.name %>
+          <% end %>
             <div class="hobby_post-created">
               <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
               <%= post.hobby.title %>

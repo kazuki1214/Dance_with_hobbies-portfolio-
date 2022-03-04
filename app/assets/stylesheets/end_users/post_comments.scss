@@ -1,0 +1,86 @@
+// Place all the styles related to the end_users/post_comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.comments{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  
+   &_back{
+    width:90%;
+    text-align:left;
+  }
+  
+  &_post{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    padding:20px 20px 0 20px;
+    position:relative;
+    z-index:2;
+    border:1px solid black;
+    max-width:500px;
+  }
+  
+  &_post-user{
+    width:90%;
+    border-bottom:1px solid black;
+    display:flex;
+  }
+  
+  &_created{
+    margin-left:auto;
+  }
+  
+  &_post-title{
+    width:80%;
+    overflow-wrap:break-word;
+  }
+  
+  &_post-list{
+    width:80%;
+    display:flex;
+    flex-wrap:wrap;
+  }
+  
+  &_sub{
+    position:absolute;
+    bottom:-50px;
+    left:50px;
+    z-index:1;
+  }
+  
+  &_content{
+    max-width:500px;
+    height:300px;
+    border:1px solid black;
+    display:flex;
+    justify-content:space-around;
+  }
+  
+   &_comment{
+    max-width:500px;
+    border:1px solid black;
+    padding:10px;
+  }
+
+  &_comment-user{
+    width:90%;
+    display:inline-block;
+  }
+
+  &_comment-created{
+    margin-left:auto;
+  }
+
+  &_comment-main{
+    width:70%;
+    overflow-wrap:break-word;
+    display:flex;
+  }
+  
+  &_destroy{
+    width:30%;
+  }
+  
+}

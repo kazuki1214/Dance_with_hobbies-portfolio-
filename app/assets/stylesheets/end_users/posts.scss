@@ -73,3 +73,163 @@
     justify-content:space-around;
   }
 }
+
+
+.post{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+
+  &_back{
+    width:90%;
+    text-align:left;
+  }
+
+  &_back-span{
+    font-size:30px;
+    color:black;
+  }
+
+  &_back-span:active{
+    color:red;
+  }
+
+  &_top{
+    padding:20px;
+    width:90%;
+    border-bottom:1px solid black;
+    padding:10px;
+    display:flex;
+    justify-content:center;
+  }
+
+
+  &_main{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    padding:20px 20px 0 20px;
+    position:relative;
+    z-index:2;
+    border:1px solid black;
+    max-width:500px;
+  }
+
+  &_user{
+    width:90%;
+    border-bottom:1px solid black;
+    display:flex;
+  }
+
+  &_created{
+    margin-left:auto;
+  }
+
+  &_title{
+    width:80%;
+    overflow-wrap:break-word;
+  }
+
+  &_image{
+    width:60%;
+    height:300px;
+  }
+
+
+  &_list{
+    width:80%;
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  &_body{
+    width:90%;
+    overflow-wrap:break-word;
+  }
+
+  &_sub{
+    position:absolute;
+    bottom:-50px;
+    left:50px;
+    z-index:1;
+  }
+
+  &_content{
+    max-width:500px;
+    height:300px;
+    border:1px solid black;
+    display:flex;
+    justify-content:space-around;
+  }
+
+  &_comment{
+    max-width:500px;
+    border:1px solid black;
+  }
+
+  &_comment-user{
+    width:90%;
+    display:inline-block;
+  }
+
+  &_comment-created{
+    margin-left:auto;
+  }
+
+  &_comment-main{
+    width:70%;
+    overflow-wrap:break-word;
+    display:flex;
+    justify-content:center;
+  }
+
+  &_all-comment{
+    width:50%;
+    padding-top:10px;
+    padding-bottom:10px;
+    border:1px solid black;
+    text-align:center;
+    border-radius:3px;
+  }
+
+  &_delete{
+    width:90%;
+    text-align:light;
+  }
+
+}
+
+
+.new-post{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+
+  &_top{
+    padding:10px;
+    width:90%;
+    border-bottom:1px solid black;
+    display:flex;
+    justify-content:center;
+  }
+
+  &_main{
+    width:70%;
+    padding:20px;
+    border:1px solid black;
+  }
+
+  &_field{
+    width:80%;
+  }
+  
+  &_tag-field{
+    width:60%;
+  }
+
+  &_image{
+    width:60%;
+    height:300px;
+  }
+
+}

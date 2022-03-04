@@ -1,2 +1,32 @@
-<h1>EndUser::Posts#new</h1>
-<p>Find me in app/views/end_user/posts/new.html.erb</p>
+<div class="new-post">
+
+  <%= render 'hobbies/hobby', hobby: @hobby %>
+
+  <h2>新規登録</h2>
+
+  <%= form_with (model: [@hobby, @new_post], url: confirm_hobby_post_path, local: true) do |f| %>
+  <div class="new-post_main">
+    <div class="new-post_title-field">
+      <%= f.label :title, "題名:" %>
+      <%= f.text_field :title, class: "new-post_field", placeholder:"タイトルを入力" %>
+    </div>
+    <div class="new-post_image-field">
+      <%= f.attachment_field :post_iamge %>
+      <%= attachment_image_tag @new_post, :post_image, class: "new-post_image", format: "jpg" %>
+    </div>
+    <div class="new-post_tags">
+      <%= f.label :tags, "タグ:（,で区切ると複数タグを登録でき、重複するタグは一つにまとまります）"　%>
+      <div class="chips"><input></div>
+      <%= f.hidden_field :tags, class: "new-post_tag-field", id: "post-tag-field" %>
+    </div>
+    <div class="new-post_body">
+      <%= f.label :body, "内容:" %>
+      <%= f.text_area :body, class: "new-post_field", placeholder:"投稿内容を入力" %>
+    </div>
+  </div>
+  <div class="new-post_send">
+    <%= link_to "投稿をキャンセル", hobby_posts_path(@hobby.id), class: "new-post_cancel" %>
+    <%= f.submit "投稿を確認する", class: "ml-md-5 new-post_submit" %>
+  </div>
+  <% end %>
+</div>

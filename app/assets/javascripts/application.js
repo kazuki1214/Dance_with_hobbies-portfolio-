@@ -18,8 +18,38 @@
 //= require turbolinks
 //= require_tree .
 
+
+
 $(".chips").chips({
     data: getChipsData($("#category_hidden_field").val()),
+  });
+
+  // chipsの初期データを取得するメソッド
+  function getChipsData(values) {
+    return !values
+      ? []
+      : values.split(",").map(function (value) {
+        return { tag: value };
+        });
+  }
+
+  // 作成時にchipsの値をフォームに格納
+  $("#idea-btn").on("click", function () {
+    const tags = M.Chips.getInstance($(".chips")).chipsData.map(function (
+      value
+    ) {
+      return value["tag"];
+    });
+    $("#category_hidden_field").val(tags);
+  });
+
+
+
+//投稿作成時のタグの表示UI
+$(".chips").chips({
+    placeholder: "タグを入力（Enterで入力で確定）",
+    secondaryPlaceholder: ",で区切るとタグを追加",
+    data: getChipsData($("#post-tag-field").val()),
   });
 
   // chipsの初期データを取得するメソッド
@@ -38,5 +68,5 @@ $(".chips").chips({
     ) {
       return value["tag"];
     });
-    $("#category_hidden_field").val(tags);
+    $("#").val(tags);
   });

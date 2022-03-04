@@ -1,36 +1,36 @@
 class EndUsers::PostsController < ApplicationController
 
   def index
-    @hobby = Hobby.find(params[:id])
+    @hobby = Hobby.find(params[:hobby_id])
     @posts = @hobby.posts.all
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments.order('created_at: desc').limit(3)
+    @post = Post.find(params[:hobby_id])
+    @comments = @post.post_comments.order('created_at: desc').limit(3)
   end
 
   def new
-    @hobby = Hobby.find(params[:id])
-    @post = @hobby.posts.new
+    @hobby = Hobby.find(params[:hobby_id])
+    @new_post = @hobby.posts.new
   end
 
   def confirm
-    @hobby = Hobby.find(params[:id])
+    @hobby = Hobby.find(params[:hobby_id])
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     @post.hobby_id = @hobby.id
-    if tags = params[:post][:tags].split(',')
+    if tags = params[:post][:tags].split(',').uniq
       @post.save_tags(tags)
     end
   end
 
   def create
-    @hobby = Hobby.find(params[:id])
+    @hobby = Hobby.find(params[:hobby_id])
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     @post.hobby_id = @hobby.id
-    tags = params[:post][:tags].split(',')
+    tags = params[:post][:tags].split(',').uniq
     if @post.save
       @post.save_tags(tags)
       redirect_to hobby_post_path(@hobby.id,@post.id)

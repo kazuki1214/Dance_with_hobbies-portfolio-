@@ -1,17 +1,7 @@
 <div class="posts">
   <div class="posts_back"><%= link_to "戻る", 'javascript:history.back()' %></div>
 
-  <div class="posts_top">
-    <div class="posts-title"><%= attachment_image_tag @hobby, :hobby_image, size: "200x200", fallback: "no_image.jpg" %>
-    <h1><%= @hobby.title %></h1>
-    <% if end_user_signed_in? %>
-      <%= link_to "新規投稿", new_hobby_posy_path(@hobby), class: "btn btn-light" %>
-    <% end %>
-    </div>
-
-    <div class="posts_search">
-    </div>
-  </div>
+  <%= render 'hobbies/hobby', hobby: @hobby %>
 
   <div class="posts_page">
 
@@ -23,15 +13,17 @@
         <div class="posts_post">
 
           <div class="posts_post-user">
-          <%= attachment_image_tag post.end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
-          <%=  post.end_user.name %>
-            <div class="posts_post-created">
-              <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
-              <%= post.hobby.title %>
-            </div>
+          <%= link_to user_page_path(post.end_user.id) do %>
+            <%= attachment_image_tag post.end_user, :user_image, size: "200x200", fallback: "no_image.jpg" %>
+            <%=  post.end_user.name %>
+          <% end %>
+          <div class="posts_post-created">
+            <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+            <%= post.hobby.title %>
+          </div>
           </div>
 
-          <h4 class="posts_post-title"><%= t.title %></h4>
+          <h4 class="posts_post-title"><%= post.title %></h4>
           <%= attachment_image_tag post, :post_image_id, class: "posts_post-image" %>
           <div class="posts_post-list">
             <%= post.tags do |t| %>

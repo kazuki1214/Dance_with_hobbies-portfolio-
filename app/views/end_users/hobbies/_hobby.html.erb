@@ -1,0 +1,14 @@
+<div class="hobby-top">
+  <div class="hobby-title"><%= attachment_image_tag hobby, :hobby_image, size: "300x300", fallback: "no_image.jpg" %>
+    <h1><%= hobby.title %></h1>
+    <% if %w[hobby_posts hobby].any? { |name| current_page?(send("#{name}_path")) } %>
+      <% if end_user_signed_in? %>
+        <%= link_to "新規投稿", new_hobby_posy_path(hobby.id), class: "btn btn-light ml-auto" %>
+      <% end %>
+    <% end %>
+  </div>
+  <% if current_page(hobby_posts_path) %>
+    <div class="post-search">
+    </div>
+  <% end %>
+</div>

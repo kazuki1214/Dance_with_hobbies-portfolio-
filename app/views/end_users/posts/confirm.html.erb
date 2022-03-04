@@ -1,0 +1,38 @@
+<!--confirm画面-->
+<div class="post">
+  <%= render 'hobbies/hobby', hobby: @hobby %>
+  <h2>投稿確認</h2>
+  <%= form_with (model: [@hobby, @new_post], local: true) do |f| %>
+    <div class="post_main">
+      <div class="post_user">
+          <%= attachment_image_tag @post.end_user, :user_image, size: "200x200", fallback: "no_image.jpg" %>
+          <%=  @post.end_user.name %>
+        <div class="post_created">
+          <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+          <%= @post.hobby.title %>
+        </div>
+      </div>
+
+      <h4 class="post_title">
+        <%= @post.title %>
+        <%= f.hidden_field :title, value: @post.title %>
+      </h4>
+      <%= attachment_image_tag @post, :post_image, class: "post_image" %>
+      <%= f.hidden_field :post_iamge, value: @post.post_image %>
+      <div class="post_list">
+        <%= @post.tags do |t| %>
+          <p class="post_tags">#<%= t.name %></p>
+          <%= f.hidden_field :tags, value: t %>
+        <% end %>
+      </div>
+      <div class="post_body">
+        <%= @post.body %>
+        <%= f.hidden_field :body, value: @post.body %>
+      </div>
+    </div>
+    <div class="new-post_send">
+      <%= link_to "投稿をキャンセル", hobby_posts_path(@hobby.id), class: "new-post_cancel" %>
+      <%= f.submit "投稿をする", class: "ml-md-5 new-post_submit" %>
+    </div>
+  <% end %>
+</div>

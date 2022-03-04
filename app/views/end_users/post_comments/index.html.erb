@@ -1,0 +1,61 @@
+<div class="comments">
+
+  <div class="comments_back"><%= link_to "戻る", 'javascript:history.back()' %></div>
+
+  <%= render 'hobbies/hobby', hobby: @hobby %>
+
+  <div class="comments_post">
+    <div class="comments_post-user">
+      <%= attachment_image_tag @post.end_user, :user_image, size: "200x200", fallback: "no_image.jpg" %>
+      <%=  @post.end_user.name %>
+      <div class="comments_created">
+        <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+        <%= @post.hobby.title %>
+      </div>
+    </div>
+
+    <h4 class="comments_post-title"><%= @post.title %></h4>
+    <div class="comments_post-list">
+      <%= @post.tags do |t| %>
+        <p class="posts_post-tags">#<%= t.name %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="comments_sub">
+    <div class="comments_content">
+      <p class="comments_count">コメント<%= post.comments.count %>件</p>
+      <p class="comments_post-favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+    </div>
+
+    <%= if end_user_signed_in? %>
+      <%= form_with( model: [@hobby, @post, @new_post], local: true )do |f| %>
+        <div class="comments_form">
+          <%= f.label :comment, "コメントを追加" %>
+          <%= f.text_field :comment, class: "comments_text-field" %>
+          <%= f.submit "コメントする" %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% @comments.each do |c| %>
+      <div class="comments_comment">
+        <div class="comments_comment-user">
+          <%= link_to user_page_path(c.end_user.id) do %>
+            <%= attachment_image_tag c.end_user, :user_image, size: "150x150", fallback: "no_image.jpg", format: "jpg" %>
+            <%= c.end_user.name %>
+          <% end %>
+          <div class="comments_comment-created">
+            <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+          </div>
+        </div>
+        <div class="comments_comment-main">
+          <%= c.comment %>
+          <%= link_to "削除する", hobby_post_post_comment_path(c.id), class: "comments_destroy", method: :delete %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+</div>
