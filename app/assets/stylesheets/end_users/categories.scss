@@ -1,3 +1,45 @@
 // Place all the styles related to the end_users/categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.category{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+
+  &_title{
+    padding:20px;
+    width:90%;
+    border-bottom:1px solid black;
+    margin:30px;
+    display:flex;
+    justify-content:space-around;
+  }
+
+  &_contents{
+    padding:20px;
+    width:90%;
+    border-bottom:1px solid black;
+  }
+
+  &_main{
+    border:1px solid black;
+    padding:20px;
+    margin-bottom:100px;
+    display:flex;
+  }
+
+  &_name{
+    margin-left:10px;
+  }
+
+  &_hobby{
+    border:1px solid black;
+    padding:20px;
+    display:flex;
+  }
+
+  &_hobby-name{
+    margin-left:10px;
+  }
+
+}

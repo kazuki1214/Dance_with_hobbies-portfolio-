@@ -1,5 +1,5 @@
 <div class="hobby-top">
-  <div class="hobby-title"><%= attachment_image_tag hobby, :hobby_image, size: "300x300", fallback: "no_image.jpg" %>
+  <div class="hobby-title"><%= attachment_image_tag hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %>
     <h1><%= hobby.title %></h1>
     <% if %w[hobby_posts hobby].any? { |name| current_page?(send("#{name}_path")) } %>
       <% if end_user_signed_in? %>
