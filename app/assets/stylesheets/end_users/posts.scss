@@ -22,14 +22,14 @@
     margin-top:30px;
   }
 
-  &_post{
+  &_main{
     display:flex;
     justify-content:center;
     padding:20px 20px 0 20px;
     position:relative;
     z-index:2;
     border:1px solid black;
-    max-width:500px;
+    width:80%;
   }
 
   &_post-user{
@@ -68,9 +68,10 @@
     z-index:1;
     border:1px solid black;
     height:80px;
-    max-width:500px;
+    width:80%;
     display:flex;
     justify-content:space-around;
+    align-items:flex-end;
   }
 }
 
@@ -102,7 +103,7 @@
     position:relative;
     z-index:2;
     border:1px solid black;
-    width:70%;
+    width:80%;
   }
 
   &_user{
@@ -145,15 +146,16 @@
   }
 
   &_content{
-    max-width:500px;
+    width:80%;
     height:80px;
     border:1px solid black;
     display:flex;
     justify-content:space-around;
+    align-items:flex-end;
   }
 
   &_comment{
-    max-width:500px;
+    width:80%;
     border:1px solid black;
   }
 

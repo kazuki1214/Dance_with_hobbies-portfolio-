@@ -1,0 +1,9 @@
+<div class="user-top">
+  <div class="user-title"><%= attachment_image_tag end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
+    <h1><%= end_user.title %></h1>
+  </div>
+  <% if current_page(end_user_post_histories_path) %>
+    <div class="post-search">
+    </div>
+  <% end %>
+</div>

@@ -10,8 +10,8 @@
   max-width:500px;
 
   &_sub{
-    position:absolute;
-    bottom:-50px;
+    position:relative;
+    bottom:50px;
     left:50px;
     z-index:1;
     border:1px solid black;

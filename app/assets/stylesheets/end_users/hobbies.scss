@@ -73,11 +73,11 @@
     position:relative;
     z-index:2;
     border:1px solid black;
-    max-width:500px;
+    width:80%;
   }
 
   &_post-user{
-    width:90;
+    width:90%;
     border-bottom:1px solid black;
     display:flex;
   }
@@ -115,5 +115,6 @@
     max-width:500px;
     display:flex;
     justify-content:space-around;
+    align-items:flex-end;
   }
 }

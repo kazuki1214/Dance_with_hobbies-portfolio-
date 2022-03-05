@@ -6,7 +6,6 @@ class Admin::HobbiesController < ApplicationController
 
   def new
     @hobby = Hobby.new
-    @categories = Category.all
   end
 
   def create

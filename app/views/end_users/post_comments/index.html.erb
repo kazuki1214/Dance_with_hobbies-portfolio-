@@ -16,7 +16,7 @@
 
     <h4 class="comments_post-title"><%= @post.title %></h4>
     <div class="comments_post-list">
-      <%= @post.tags do |t| %>
+      <% @post.tags.each do |t| %>
         <p class="posts_post-tags">#<%= t.name %></p>
       <% end %>
     </div>

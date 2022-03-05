@@ -11,6 +11,7 @@ class Admin::PostHistoriesController < ApplicationController
   end
 
   def destroy
-    @post = Posthistrory.find(params[:id]).destroy
+    @post = PostHistrory.find(params[:id]).destroy
+    redirect_to admin_end_user_post_histories_path(@post.end_user.id)
   end
 end

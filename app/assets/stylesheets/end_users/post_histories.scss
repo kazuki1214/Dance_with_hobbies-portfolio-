@@ -1,3 +1,191 @@
 // Place all the styles related to the end_users/post_histories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-posts{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+
+  &_top{
+    padding:20px;
+    width:90%;
+    border-bottom:1px solid black;
+    padding:10px;
+    display:flex;
+    justify-content:center;
+  }
+
+
+  &_index{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+  }
+
+  &_main{
+    display:flex;
+    justify-content:center;
+    padding:20px 20px 0 20px;
+    position:relative;
+    z-index:2;
+    border:1px solid black;
+    width:80%;
+  }
+
+  &_post-user{
+    width:90%;
+    border-bottom:1px solid black;
+    display:flex;
+  }
+
+  &_post-created{
+    margin-left:auto;
+    display:flex;
+    flex-wrap:wrap;
+    width:40%;
+  }
+
+  &_post-title{
+    width:80%;
+    overflow-wrap:break-word;
+  }
+
+  &_post-image{
+    width:550px;
+    height:350px;
+  }
+
+  &_post-list{
+    width:80%;
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  &_post-sub{
+    position:relative;
+    bottom:50px;
+    left:50px;
+    z-index:1;
+    border:1px solid black;
+    height:80px;
+    width:80%;
+    display:flex;
+    justify-content:space-around;
+    align-items:flex-end;
+  }
+}
+
+.user-post{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+
+  &_back{
+    width:90%;
+    text-align:left;
+  }
+
+  &_back-span{
+    font-size:30px;
+    color:black;
+  }
+
+  &_back-span:active{
+    color:red;
+  }
+
+  &_main{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    padding:20px 20px 0 20px;
+    position:relative;
+    z-index:2;
+    border:1px solid black;
+    width:80%;
+  }
+
+  &_user{
+    width:90%;
+    border-bottom:1px solid black;
+    display:flex;
+  }
+
+  &_created{
+    margin-left:auto;
+  }
+
+  &_title{
+    width:80%;
+    overflow-wrap:break-word;
+  }
+
+  &_image{
+    width:60%;
+    height:300px;
+  }
+
+
+  &_list{
+    width:80%;
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  &_body{
+    width:90%;
+    overflow-wrap:break-word;
+  }
+
+  &_sub{
+    position:relative;
+    bottom:50px;
+    left:50px;
+    z-index:1;
+  }
+
+  &_content{
+    width:80%;
+    height:80px;
+    border:1px solid black;
+    display:flex;
+    justify-content:space-around;
+    align-items:flex-end;
+  }
+
+  &_comment{
+    width:80%;
+    border:1px solid black;
+  }
+
+  &_comment-user{
+    width:90%;
+    display:inline-block;
+  }
+
+  &_comment-created{
+    margin-left:auto;
+  }
+
+  &_comment-main{
+    width:70%;
+    overflow-wrap:break-word;
+    display:flex;
+    justify-content:center;
+  }
+
+  &_all-comment{
+    width:50%;
+    padding-top:10px;
+    padding-bottom:10px;
+    border:1px solid black;
+    text-align:center;
+    border-radius:3px;
+  }
+
+  &_delete{
+    width:90%;
+    text-align:light;
+  }
+}

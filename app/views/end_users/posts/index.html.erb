@@ -10,7 +10,7 @@
   <div class="posts_index">
     <% @posts.each do |post| %>
       <%= link_to hobby_post_path(post.hobby_id, post.id) do %>
-        <div class="posts_post">
+        <div class="posts_main">
 
           <div class="posts_post-user">
           <%= link_to user_page_path(post.end_user.id) do %>
@@ -26,7 +26,7 @@
           <h4 class="posts_post-title"><%= post.title %></h4>
           <%= attachment_image_tag post, :post_image_id, class: "posts_post-image" %>
           <div class="posts_post-list">
-            <%= post.tags do |t| %>
+            <% post.tags.each do |t| %>
               <p class="posts_post-tags">#<%= t.name %></p>
             <% end %>
           </div>

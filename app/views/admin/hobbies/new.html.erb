@@ -16,13 +16,7 @@
   <div class="row mb-4">
     <p class="col-md-3">category:</p>
     <div class="offset-md-1">
-      <%= @categories.each do |c| %>
-      <div class="chips">
-        <%= f.label c.name %>
-        <input>
-        <%= f.hidden_field :category, value: c.id, id: "category_hidden_field" %>
-      </div>
-      <% end %>
+      <%= f.collection_check_boxes :category, Category.all, :id, :name %>
     </div>
   </div>
   <div class="row mb-3">
