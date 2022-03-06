@@ -24,4 +24,9 @@ class Post < ApplicationRecord
 
   end
 
+  def save_histories(post)
+    current_end_user.post_histories.new(post_id: post.id)
+    current_end_user.post_histories.save
+  end
+
 end

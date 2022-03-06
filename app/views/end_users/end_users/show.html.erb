@@ -3,10 +3,10 @@
         <%= link_to "戻る", 'javascript:history.back()', class: "user_back" %>
         <% if current_end_user == @user %>
             <%= link_to "編集", information_path(@user), class: "user_edit" %>
-        <% elsif  @user.followers.find_by?(current_user) %>
-            <%= link_to "フォロー中", end_user_follower_path(@user), class: "user_follow btn btn-dark", method: :delete %>
+        <% elsif  @user.following?(current_user) %>
+            <%= render "followers/unfollow",  user: @user %>
         <% else %>
-            <%= link_to "フォローする", end_user_follower_index_path(@user), class: "user_follow btn btn-light", method: :post %>
+            <%= render "followers/follow",  user: @user %>
         <% end %>
     </div>
     <div class="user_title">
@@ -34,13 +34,13 @@
             <p>フォローユーザー一覧</p>
         </div>
     <% end %>
-    
+
     <%= link_to end_user_post_histories_path(@user) do %>
         <div class="user_row">
             <p>投稿履歴</p>
         </div>
     <% end %>
-    
+
     <!--通知一覧へリンク-->
         <div class="user_row">
             <p>通知一覧</p>

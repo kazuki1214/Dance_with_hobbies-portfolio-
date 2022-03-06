@@ -27,8 +27,14 @@
   </div>
   <div class="post_sub">
     <div class="post_content">
-      <p class="post_post-comment">コメント<%= post.comments.count %>件</p>
-      <p class="post_post-favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+      <h6 class="post_post-comment">コメント<%= post.comments.count %>件</h6>
+      <div class="post_post-favorite" id="post-favorite-button-#{@post.id}">
+        <% if favorite_posts?(end_user) %>
+          <%= render "favorite_post/unpost-favorite", post: @post %>
+        <% elsif %>
+          <%= render "favorite_post/post-favorite", post: @post 
+        <% end %>
+      </div>
     </div>
     <% @comments.each do |c| %>
       <div class="post_comment">

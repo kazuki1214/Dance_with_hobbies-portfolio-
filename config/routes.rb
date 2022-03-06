@@ -8,13 +8,13 @@ Rails.application.routes.draw do
       member do
         patch :withdraw
       end
-      resources :favorite_hobbies, only:[:index, :create, :destroy]
       resources :post_histories, only:[:index, :show, :destroy]
       resources :follower, only:[:index, :create, :destroy]
     end
 
     resources :categories, only:[:index]
     resources :hobbies, only:[:index, :show] do
+      resources :favorite_hobbies, only:[:create, :destroy]
       resources :posts, except:[:edit, :update] do
           member do
             post :confirm

@@ -33,6 +33,7 @@ class EndUsers::PostsController < ApplicationController
     tags = params[:post][:tags].split(',').uniq
     if @post.save
       @post.save_tags(tags)
+      @post.save_histories(@post)
       redirect_to hobby_post_path(@hobby.id,@post.id)
     end
   end
