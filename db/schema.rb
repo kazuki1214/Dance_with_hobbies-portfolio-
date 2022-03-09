@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_07_130430) do
+ActiveRecord::Schema.define(version: 2022_03_08_154821) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -104,11 +104,11 @@ ActiveRecord::Schema.define(version: 2022_03_07_130430) do
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
     t.integer "post_id"
-    t.integer "postcomment_id"
     t.integer "action", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "post_comment_id"
   end
 
   create_table "post_comments", force: :cascade do |t|

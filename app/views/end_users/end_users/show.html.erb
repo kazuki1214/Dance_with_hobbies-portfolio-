@@ -10,7 +10,7 @@
         <% end %>
     </div>
     <div class="user_title">
-        <%= attachment_image_tag @user, :user_image, size:"200x200", %>
+        <%= attachment_image_tag @user, :user_image, size:"200x200", fallback:"no_image.jpg"%>
         <%= @user.name , class: "user_name" %>
     </div>
     <div class="user_row">
@@ -42,9 +42,12 @@
     <% end %>
 
     <!--通知一覧へリンク-->
-        <div class="user_row">
-            <p>通知一覧</p>
-        </div>
-
+    <% if @user == current_end_user %>
+        <%= link_to end_user_notifications_path(current_end_user.id) %>
+            <div class="user_row">
+                <p>通知一覧</p>
+            </div>
+        <% end %>
+    <% end %>
 
 </section>

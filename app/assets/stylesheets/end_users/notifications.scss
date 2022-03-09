@@ -1,0 +1,29 @@
+// Place all the styles related to the end_users/notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.notifications{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  &_user-title{
+    padding:10px;
+    width:80%;
+    border-bottom:1px solid black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  &_body{
+    border-bottom:1px solid black;
+    padding:10px;
+    margin:10px;
+  }
+  &_text{
+    margin-bottom:5px;
+  }
+  &_time{
+    align-items:left;
+  }
+}

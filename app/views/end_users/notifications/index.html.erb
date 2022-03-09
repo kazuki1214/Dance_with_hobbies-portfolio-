@@ -1,0 +1,13 @@
+<div class="notifications">
+    <div class="notifications_user-title">
+        <%= attachment_image_tag current_end_user, :user_image, size:"200x200", fallback: "no_image.jpg"%>
+        <%= current_end_user.name , class: "user_name" %>
+    </div>
+    <% @notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
+
+    <% if @notifications.exists? %>
+        <% @notifications.each do |notification| %>
+            <%= render "notifications/notifications" notifications: notification %>
+        <% end %>
+    <% end %>
+</div>

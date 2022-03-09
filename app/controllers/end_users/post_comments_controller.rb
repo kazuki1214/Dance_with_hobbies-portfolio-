@@ -8,9 +8,11 @@ class EndUsers::PostCommentsController < ApplicationController
   end
 
   def create
-    @new_post = Post.find(params[:post_id]).new(comment_params)
-    @new_post.end_user = current_end_user
-    @new_post.save
+    @post = Post.find(params[:post_id])
+    @post_comment = current_end_user.post_comments.new(post_comment_params)
+    @post_comment.post_id = @post.id
+    @post_comment.save
+    @post_comment.create_notification_comment!(current_end_user, @post_comment.post_comment.id)
     redirect_to hobby_post_post_comments_path(params[:post_id])
   end
 
@@ -21,7 +23,7 @@ class EndUsers::PostCommentsController < ApplicationController
 
   private
 
-  def comment_params
+  def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
 

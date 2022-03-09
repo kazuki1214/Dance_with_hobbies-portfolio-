@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   scope module: :end_users do
     root "homes#top"
     get "end_users/:id/user_page" => "end_users#show", as: "user_page"
@@ -9,7 +10,8 @@ Rails.application.routes.draw do
         patch :withdraw
       end
       resources :post_histories, only:[:index, :show, :destroy]
-      resources :follower, only:[:index, :create, :destroy]
+      resources :followers, only:[:index, :create, :destroy]
+      resources :notifications, only:[:index]
     end
 
     resources :categories, only:[:index]

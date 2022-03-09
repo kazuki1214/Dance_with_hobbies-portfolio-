@@ -1,0 +1,29 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div class="notifications_body">
+  <div class="notifications_text"
+  <%= link_to user_page_path(visitor) do %>
+    <%= attachment_image_tag visitor, :user_image, size:"150x150", fallback:"no_image.jpg"%><strong><%= visitor.name %></strong>
+  <% end %>
+  さんが
+  <% case notification.action %>
+    <% when "like" %>
+      <%= link_to "あなたの投稿" hobby_post_path(notification.post) %>にいいねしました
+    <% when "comment" %>
+      <% if notification.post.end_user_id == visited.id %>
+        <%= link_to "あなたの投稿" hobby_post_path(notification.post) %>
+      <% else %>
+        <%= link_to hobby_post_path(notification.post) do %>
+          <%= attachment_image_tag visitor, :user_image, size:"150x150", fallback:"no_image.jpg"%><strong><%= visitor.name %></strong>さんの投稿
+        <% end %>
+        にコメントしました
+        <div class="notifications_comment">
+          <%= notification.post_comment.comment %>
+        </div>
+      <% end %>
+  <% end %>
+  <div class="notifications_time">
+    <%= time_ago_in_words(notification.created_at).upcase %>
+  </div>
+</div>
