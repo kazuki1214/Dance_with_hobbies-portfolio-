@@ -34,8 +34,9 @@
 
   <div class="post_connection">
     <div class="post_sub">
-      <p>コメント<%= @post.comments.count %>件</p>
-      <p>いいね❤<%= @post.favorite_posts.count %></p>
+      <h6><i class="fa-regular fa-eye"><%= post.impressionist_count %></i></h6>
+      <h6 class="admin-post_post-comment">コメント<%= post.comments.count %>件</h6>
+      <h6 class="admin-post_post-favorite">いいね♡<%= post.favorite_posts.count %></h6>
     </div>
     <% @comments_first.each do |c| %>
     <div class="post_comment">

@@ -21,7 +21,7 @@
       <%= f.hidden_field :post_iamge, value: @post.post_image %>
       <div class="post_list">
         <%= @post.tags do |t| %>
-          <p class="post_tags">#<%= t.name %></p>
+          <i class="fa-duotone fa-tag"><%= t.name %></i>
           <%= f.hidden_field :tags, value: t %>
         <% end %>
       </div>

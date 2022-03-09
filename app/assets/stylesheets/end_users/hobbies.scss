@@ -34,6 +34,12 @@
     width:80%;
     height:40%;
   }
+
+  &_paginate{
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+  }
 }
 
 .hobby{

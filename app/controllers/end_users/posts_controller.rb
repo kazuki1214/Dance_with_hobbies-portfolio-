@@ -1,4 +1,5 @@
 class EndUsers::PostsController < ApplicationController
+  impressionist :actions => [:show]
 
   def index
     @hobby = Hobby.find(params[:hobby_id])
@@ -8,6 +9,9 @@ class EndUsers::PostsController < ApplicationController
   def show
     @post = Post.find(params[:hobby_id])
     @comments = @post.post_comments.order('created_at: desc').limit(3)
+    if @post.end_user_id != current_end_user
+      impressionist(@post, nil, unique[:session_hash.to_s])
+    end
   end
 
   def new

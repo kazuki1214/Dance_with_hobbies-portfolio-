@@ -22,14 +22,21 @@
         <%= attachment_image_tag post, :post_image_id, class: "posts_post-image" %>
         <div class="user-posts_post-list">
           <% post.tags.each do |t| %>
-            <p class="user-posts_post-tags">#<%= t.name %></p>
+            <i class="fa-duotone fa-tag"><%= t.name %></i>
           <% end %>
         </div>
       </div>
     <% end %>
     <div class="user-posts_sub">
-      <p class="user-posts_comment">コメント<%= post.comments.count %>件</p>
-      <p class="user-posts_favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+      <h6><i class="fa-regular fa-eye"><%= post.impressionist_count %></i></h6>
+        <h6 class="user-posts_post-comment">コメント<%= post.comments.count %>件</h6>
+        <div class="user-posts_post-favorite">
+          <% if favorite_posts?(end_user) %>
+            <h6>いいね🤍<%= post.favorite_posts.count %></h6>
+          <% elsif %>
+            <h6>いいね♡<%= post.favorite_posts.count %></h6>
+          <% end %>
+        </div>
     </div>
 
   <% end %>

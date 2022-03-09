@@ -1,5 +1,5 @@
 class EndUsers::CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.page(params[:page]).per(3)
   end
 end

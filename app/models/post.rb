@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  is_impressionable
+
   belongs_to :hobby
   belongs_to :end_user_id
   has_many :post_histories, dependent: :destroy

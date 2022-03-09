@@ -1,4 +1,6 @@
 class EndUsers::PostHistoriesController < ApplicationController
+  impressionist :actions => [:show]
+
   def index
     @end_user = EndUser.find(params[:end_user_id])
     @posts = @end_user.post_histories.all
@@ -7,6 +9,9 @@ class EndUsers::PostHistoriesController < ApplicationController
   def show
     @end_user = EndUser.find(params[:end_user_id])
     @post = @end_user.posthistories.find(params[:id])
+    if @post.end_user != current_end_user
+      impressionist(@post, nil, unique: [:session_hash.to_s])
+    end
   end
 
   def destroy

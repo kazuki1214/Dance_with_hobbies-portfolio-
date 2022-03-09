@@ -38,15 +38,22 @@
           <%= attachment_image_tag post, :post_image_id, class: "hobby_post-image" %>
           <div class="hobby_post-list">
             <%= post.tags do |t| %>
-              <p class="hobby_post-tags">#<%= t.name %></p>
+              <i class="fa-duotone fa-tag"><%= t.name %></i>
             <% end %>
           </div>
 
         </div>
       <% end %>
       <div class="hobby_post-sub">
-        <p class="hobby_post-comment">コメント<%= post.comments.count %>件</p>
-        <p class="hobby_post-favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+        <h6><i class="fa-regular fa-eye"><%= @post.impressionist_count %></i></h6>
+        <h6 class="hobby_post-comment">コメント<%= post.comments.count %>件</h6>
+        <div class="hobby_post-favorite">
+          <% if favorite_posts?(end_user) %>
+            <%= render "favorite_post/unpost-favorite", post: @post %>
+          <% elsif %>
+            <%= render "favorite_post/post-favorite", post: @post %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

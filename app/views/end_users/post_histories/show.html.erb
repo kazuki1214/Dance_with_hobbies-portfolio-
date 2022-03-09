@@ -20,15 +20,22 @@
     <%= attachment_image_tag @post, :post_image, class: "user-post_image" %>
     <div class="user-post_list">
       <% @post.tags.each do |t| %>
-        <p class="user-post_tags">#<%= t.name %></p>
+        <i class="fa-duotone fa-tag"><%= t.name %></i>
       <% end %>
     </div>
     <div class="user-post_body"><%= @post.body %></div>
   </div>
   <div class="user-post_sub">
     <div class="user-post_content">
-      <p class="user-post_post-comment">コメント<%= post.comments.count %>件</p>
-      <p class="user-post_post-favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+      <h6><i class="fa-regular fa-eye"><%= @post.impressionist_count(:filter => :session_hash) %></i></h6>
+      <h6 class="user-postt_post-comment">コメント<%= @post.comments.count %>件</h6>
+      <div class="user-post_post-favorite" id="post-favorite-button-#{@post.id}">
+        <% if favorite_posts?(end_user) %>
+          <%= render "favorite_post/unpost-favorite", post: @post %>
+        <% elsif %>
+          <%= render "favorite_post/post-favorite", post: @post
+        <% end %>
+      </div>
     </div>
     <% @post.post_comments.each do |c| %>
       <div class="user-post_comment">

@@ -34,8 +34,15 @@
         </div>
       <% end %>
       <div class="posts_post-sub">
-        <p class="posts_post-comment">コメント<%= post.comments.count %>件</p>
-        <p class="posts_post-favorite">いいね❤︎<%= post.favorite_posts.count %></p>
+        <h6><i class="fa-regular fa-eye"><%= post.impressionist_count %></i></h6>
+        <h6 class="post_post-comment">コメント<%= post.comments.count %>件</h6>
+        <div class="post_post-favorite" id="post-favorite-button-#{@post.id}">
+          <% if favorite_posts?(end_user) %>
+            <h6>いいね🤍<%= post.favorite_posts.count %></h6>
+          <% elsif %>
+            <h6>いいね♡<%= post.favorite_posts.count %></h6>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

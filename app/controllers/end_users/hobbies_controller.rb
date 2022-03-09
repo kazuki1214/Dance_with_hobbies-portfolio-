@@ -1,7 +1,7 @@
 class EndUsers::HobbiesController < ApplicationController
-  
+
   def index
-    @hobbies = Hobby.all
+    @hobbies = Hobby.page(params[:page]).per(9)
   end
 
   def show
