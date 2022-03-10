@@ -1,26 +1,26 @@
 <section class="sign-in container d-flex justify-content-center flex-column p-4">
-  <%= link_to root_path do %>
-    <div class="mb-3">LOGO</div>
-  <% end %>
-  <div class="row text-center mb-3">
-    <h2>新しくユーザーを登録して<br>
+  <div class="m-5 text-center">
+    <%= link_to root_path do %>LOGO<% end %>
+  </div>
+  <div class="row text-center mb-3 mx-auto">
+    <h2>ログインして<br>
     自分の趣味を発信しよう</h2>
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row">
-      <%= f.label :email, "メールアドレス:", class: "col-md-3 offset-lg-1" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-7 offset-md-1" %>
+    <div class="row mb-3">
+      <%= f.label :email, "メールアドレス:", class: "col-md-3 offset-lg-1 text-right" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-7 offset-1" %>
     </div>
 
-    <div class="row">
-      <%= f.label :password, "パスワード:", class: "col-md-3 offset-lg-1" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "col-7 offset-md-1" %>
+    <div class="row mb-3">
+      <%= f.label :password, "パスワード:", class: "col-md-3 offset-lg-1 text-right" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "col-7 offset-1" %>
     </div>
 
     <% if devise_mapping.rememberable? %>
       <div class="row">
-        <div class="col-3 offet-lg-3 offset-md-2">
+        <div class="offset-md-5 offset-1">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me, "パスワードをお忘れですか？" %>
         </div>
@@ -28,20 +28,20 @@
     <% end %>
 
     <div class="row justify-content-center p-5 border-bottom">
-      <%= f.submit "ログイン", class: "btn btn-success p-2" %>
+      <%= f.submit "ログイン", class: "btn btn-success p-2 col-3" %>
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-5">
+  <div class="row justify-content-center m-3">
+    <div class="text-center">
       <p>ユーザー作成がまだの方はこちらから<br>
       登録して下さい</p>
     </div>
-    <div class="col-2">
+    <div class="mx-md-5 mx-2">
       <h1>➡</h1>
     </div>
-    <div class="col-5">
-      <%= link_to "登録画面へ", new_end_user_registration_path, class: "btn btn-primary p-2" %>
+    <div>
+      <%= link_to "登録画面へ", new_end_user_registration_path, class: "btn btn-primary p-2 w-100" %>
     </div>
   </div>
 

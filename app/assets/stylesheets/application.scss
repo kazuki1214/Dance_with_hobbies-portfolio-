@@ -37,6 +37,7 @@ body{
 }
 
 .admin-table{
+    width:100%;
 
     &_index-thead{
         background-color:whitesmoke;
@@ -46,7 +47,6 @@ body{
     &_index-table tr{
         border-bottom:1px solid black;
     }
-
 }
 
 .hobby-top{
@@ -70,29 +70,6 @@ body{
     border-bottom:1px solid black;
 }
 
-.nav-items{
-    width:100%;
-    text-align:right;
-    padding:20px 10px;
-    transition:all 0.5s 0s ease;
-}
-.nav-items:hover{
-    width:120%;
-    text-align:right;
-}
-.nav-icon{
-    display:inline-block;
-    margin-left:auto;
-    background-color:red;
-    color:white;
-}
-
-.pagination{
-  margin: auto;
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
-}
 .pagination span{
   text-align: center;
   border: solid 1px #344963;
@@ -110,4 +87,99 @@ body{
   transition: .3s;
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.main {
+  display: flex;
+  min-height: 789px;
+}
+
+.sub {
+    height: 50%;
+    width: 20%;
+}
+
+.subnav {
+  height: 100%;
+  width: 18%;
+  position: fixed;
+  box-shadow: 2px 2px 4px;
+  background-color: rgb(250, 69, 69);
+  border: 1px solid rgba(255, 217, 0, 0.884);
+}
+
+.nav-items {
+  text-decoration:none;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  text-align: right;
+  padding: 20px 10px;
+  transition: all 0.5s 0s ease;
+  border-right: 1px solid rgba(255, 217, 0, 0.884);
+  border-bottom: 1px solid rgba(255, 217, 0, 0.884);
+  box-shadow: 2px 2px 4px;
+  background-color: rgb(250, 69, 69);
+  margin-bottom: 3px;
+}
+
+.nav-items:hover {
+  width: 120%;
+}
+
+.nav-items:active {
+  background-color: rgb(238, 116, 95);
+}
+
+.nav-icon {
+  padding: 2px;
+  display: inline-block;
+  margin-left: auto;
+  background-color: rgb(83, 144, 235);
+  color: white;
+  border-radius: 50%;
+}
+
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    display: block;
+  }
+
+  .sub{
+    width:100%;
+  }
+
+  .subnav {
+    position:static;
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-list {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .nav-items {
+    width: auto;
+    padding: 5px;
+  }
+
+  .nav-items:hover {
+    width: auto;
+    background-color: rgb(238, 116, 95);
+  }
+
+
+  .logo{
+    height:auto;
+  }
 }

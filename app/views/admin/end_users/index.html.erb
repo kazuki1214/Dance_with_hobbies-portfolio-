@@ -1,3 +1,6 @@
+<%= render "layouts/header" %>
+<div class="d-flex">
+  <%= render "layouts/sidebar" %>
 <div class="container">
   <div class="row mb-4 admin-title">
     <div class="admin-title_page-title"><h4>ユーザー一覧</h4></div>
@@ -34,4 +37,5 @@
   <div class="row justify-content-around w-100">
     <%= paginate @hobbies %>
   </div>
+</div>
 </div>

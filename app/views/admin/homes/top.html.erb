@@ -1,7 +1,9 @@
-<div class="container">
+<div class="main">
+  <%= render "layouts/navbar" %>
+<section class="container p-5">
   <div class="row mb-4 admin-title">
     <div class="admin-title_page-title"><h4>趣味一覧</h4></div>
-    <div class="btn btn-primary px-md-2 py-md-2 ml-md-auto">趣味作成</div>
+    <div class="btn btn-primary px-md-2 py-md-2 ml-auto">趣味作成</div>
   </div>
   <div class="admin-table">
     <table class="table admin-table_index-table">
@@ -32,4 +34,5 @@
   <div class="row justify-content-around w-100">
     <%= paginate @hobbies %>
   </div>
+</section>
 </div>

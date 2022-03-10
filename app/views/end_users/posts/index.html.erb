@@ -34,7 +34,7 @@
         </div>
       <% end %>
       <div class="posts_post-sub">
-        <h6><i class="fa-regular fa-eye"><%= post.impressionist_count %></i></h6>
+        <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
         <h6 class="post_post-comment">コメント<%= post.comments.count %>件</h6>
         <div class="post_post-favorite" id="post-favorite-button-#{@post.id}">
           <% if favorite_posts?(end_user) %>

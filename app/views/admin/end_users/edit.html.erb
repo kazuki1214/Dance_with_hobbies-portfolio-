@@ -1,3 +1,6 @@
+<%= render "layouts/header" %>
+<div class="d-flex">
+  <%= render "layouts/sidebar" %>
 <section class="container">
   <div class="row">
     <%= link_to "戻る", 'javascript:history.back()' %>
@@ -30,6 +33,7 @@
     </div>
   <% end %>
 </section>
+</div>
 
 <script>
 $(document).on("turbolinks:load", function(){
