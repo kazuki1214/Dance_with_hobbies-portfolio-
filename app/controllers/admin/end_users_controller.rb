@@ -1,6 +1,6 @@
 class Admin::EndUsersController < ApplicationController
   def index
-    @users = EndUser.all
+    @users = EndUser.page(params[:page])
   end
 
   def show

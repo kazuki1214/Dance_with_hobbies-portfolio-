@@ -1,38 +1,38 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-<section class="container p-5">
-  <div class="row mb-4 admin-title">
-    <div class="admin-title_page-title"><h4>趣味一覧</h4></div>
-    <div class="btn btn-primary px-md-2 py-md-2 ml-auto">趣味作成</div>
-  </div>
-  <div class="admin-table">
-    <table class="table admin-table_index-table">
-      <thead class="admin-table_index-thead">
-        <tr class="admin-table_index-tr">
-          <th>ID</th>
-          <th>title</th>
-          <th>introduction</th>
-          <th>dalete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @hobbies.each do |t| %>
-        <tr class="admin-table_index-tr">
-          <td><%= t.id %></td>
-          <td>
-            <%= link_to admin_hobby_path(t) do %>
-              <%= t.title %>
-            <% end %>
-          </td>
-          <td><%= t.introduction %></td>
-          <td><%= link_to "趣味削除", admin_hobby_path(t), class:"btn btn-primary px-md-2 py-md-2", method: :delete %></td>
-        </tr class="admin-table_index-tr">
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="row justify-content-around w-100">
-    <%= paginate @hobbies %>
-  </div>
-</section>
+  <section class="container p-5">
+    <div class="row mb-4 admin-title">
+      <div class="admin-title_page-title"><h4>趣味一覧</h4></div>
+      <div class="btn btn-primary px-md-2 py-md-2 ml-auto">趣味作成</div>
+    </div>
+    <div class="admin-table">
+      <table class="table admin-table_index-table">
+        <thead class="admin-table_index-thead">
+          <tr class="admin-table_index-tr">
+            <th>ID</th>
+            <th>title</th>
+            <th>introduction</th>
+            <th>dalete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @hobbies.each do |t| %>
+          <tr class="admin-table_index-tr">
+            <td><%= t.id %></td>
+            <td>
+              <%= link_to admin_hobby_path(t) do %>
+                <%= t.title %>
+              <% end %>
+            </td>
+            <td><%= t.introduction %></td>
+            <td><%= link_to "趣味削除", admin_hobby_path(t), class:"btn btn-primary px-md-2 py-md-2", method: :delete %></td>
+          </tr class="admin-table_index-tr">
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row justify-content-around w-100">
+      <%= paginate @hobbies %>
+    </div>
+  </section>
 </div>

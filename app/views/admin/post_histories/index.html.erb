@@ -1,40 +1,43 @@
-<div class="container">
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <section class="container p-5">
 
-  <div class="row border-bottom-1 border-dark">
-    <div class="col-md-6 offset-md-1">
-      <p>user:</p><%= attachment_image_tag @user, :user_image, size: "300x300", fallback: "no-image.jpeg" %><%= @user.name %>
-    </div>
-    <div class="col-md-3 offset-md-1">
-      <div class="admin-search"></div>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <%= link_to "戻る", 'javascript:history.back()' %>
-  </div>
-  <% @user.posts.each do |post| %>
-  <%= link_to admin_end_user_post_history_path(post) do %>
-  <div class="mx-auto admin-post">
-    <div class="row border-bottom-1 border-dark mb-2">
-      <%= attachment_image_tag @user, :user_image, size: "200x200", fallback: "no_image.jpg" %><%= @user.name %>
-      <div class="col-3 ml-auto">
-        <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
-        <%= post.hobby.title %>
+    <div class="row border-bottom-1 border-dark">
+      <div class="col-md-6 offset-md-1">
+        <p>user:</p><%= attachment_image_tag @user, :user_image, size: "300x300", fallback: "no-image.jpeg" %><%= @user.name %>
+      </div>
+      <div class="col-md-3 offset-md-1">
+        <div class="admin-search"></div>
       </div>
     </div>
-    <h4 class="admin-post_title"><%= post.title %></h4>
-    <%= attachment_image_tag post, :post_image_id, class: "admin-post_image" %>
-    <div class="row">
-      <% post.tags.each do |t| %>
-        <p class="admin-post_tag">#<%= t.name %></p>
-      <% end %>
+
+    <div class="row mb-3">
+      <%= link_to "戻る", 'javascript:history.back()' %>
     </div>
-  </div>
-  <% end %>
-  <div class="admin-post_sub">
-    <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
-    <h6 class="admin-post_post-comment">コメント<%= post.comments.count %>件</h6>
-    <h6 class="admin-post_post-favorite">いいね♡<%= post.favorite_posts.count %></h6>
-  </div>
-  <% end %>
+    <% @user.posts.each do |post| %>
+    <%= link_to admin_end_user_post_history_path(post) do %>
+    <div class="mx-auto admin-post">
+      <div class="row border-bottom-1 border-dark mb-2">
+        <%= attachment_image_tag @user, :user_image, size: "200x200", fallback: "no_image.jpg" %><%= @user.name %>
+        <div class="col-3 ml-auto">
+          <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+          <%= post.hobby.title %>
+        </div>
+      </div>
+      <h4 class="admin-post_title"><%= post.title %></h4>
+      <%= attachment_image_tag post, :post_image_id, class: "admin-post_image" %>
+      <div class="row">
+        <% post.tags.each do |t| %>
+          <p class="admin-post_tag">#<%= t.name %></p>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    <div class="admin-post_sub">
+      <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
+      <h6 class="admin-post_post-comment">コメント<%= post.comments.count %>件</h6>
+      <h6 class="admin-post_post-favorite">いいね♡<%= post.favorite_posts.count %></h6>
+    </div>
+    <% end %>
+  </section>
 </div>

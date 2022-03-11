@@ -6,15 +6,31 @@
   display:flex;
   justify-content:center;
   flex-direction:column;
-  padding:50px;
+  background-color:floralwhite;
 
-  .home{
-    @extend .home;
+  &_top{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    padding:50px;
+    background-color:rgba(0,0,0,0.45);
+    color:white;
+  }
 
-    &_top{
-      @extend .home;
-    }
+  &_bottom{
+    padding:35px;
+    margin:0 20px;
+    border:1px solid black;
+    background-color:white;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+  }
 
+  &_image{
+    background-image:url(home.jpg);
+    background-size:cover;
+    background-position:top;
   }
 
   &_title{
@@ -47,16 +63,21 @@
   &_link-hobbies{
     padding:16px;
     border:1px solid black;
+    background-color:white;
+    box-shadow: 2px 2px 4px;
   }
 
   &_categories{
     padding:16px;
     border:1px solid black;
+    background-color:white;
+    box-shadow: 2px 2px 4px;
   }
 
   &_ranking{
     width:90%;
     padding:16px;
+    background-color:whitesmoke;
   }
 
   &_ranking-title{
@@ -81,7 +102,3 @@
 
 }
 
-.footer{
-  display: flex;
-  justify-content: space-around;
-}

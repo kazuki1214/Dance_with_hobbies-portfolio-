@@ -6,10 +6,10 @@
     <div class="nav-list">
       <% if admin_signed_in? %>
         <%= link_to admin_end_users_path do %> <div class="nav-items">ユーザー一覧</div><% end %>
-        <%= link_to admin_hobbies_path do %> <div class="nav-items">趣味一覧</div><% end %>
+        <%= link_to admin_root_path do %> <div class="nav-items">趣味一覧</div><% end %>
         <%= link_to admin_categories_path do %> <div class="nav-items">カテゴリー一覧</div><% end %>
         <%= link_to admin_inquiries_path do %> <div class="nav-items">お問い合せ一覧</div><% end %>
-        <%= link_to destroy_admin_session_path, method: :destroy do %> <div class="nav-items">ログアウト</div><% end %>
+        <%= link_to destroy_admin_session_path, method: :delete do %> <div class="nav-items">ログアウト</div><% end %>
       <% elsif end_user_signed_in? %>
         <%= link_to user_page_path do %>
           <div class="nav-items">

@@ -1,20 +1,20 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-<section class="container">
+<section class="container p-5">
   <div class="row mb-4 admin-title">
     <div class="admin-title_page-title"><h4>カテゴリー一覧</h4></div>
   </div>
 
   <div class="category_field">
-    <%= form_with model: [:admin @new_category], local: true do |f| %>
-      <div class="row">
-        <%= attachment_image_tag @new_category, :category_image, size:"300x300", fallback: "no-image.jpeg", id:"category_img_prev" %>
-        <%= f.attachment_field :category_image %>
+    <%= form_with model: [:admin,  @new_category], local: true do |f| %>
+      <div class="row pl-5 align-items-end mb-3">
+        <%= attachment_image_tag @new_category, :category_image, size:"100x100", fallback: "no_image.jpg", id:"category_img_prev" %>
+        <%= f.attachment_field :category_image, class:"h-100" %>
       </div>
-      <div class="row">
-        <p class="col-md-2">name:</p>
+      <div class="row p-3">
+        <p class="col-1">name:</p>
         <%= f.text_field :name, class:"col-md-5 w-100" %>
-        <%= f.submit "カテゴリ作成", class:"col-md-2 w-100" %>
+        <%= f.submit "カテゴリ作成", class:"col-md-2 w-100 ml-2" %>
       </div>
     <% end %>
   </div>
