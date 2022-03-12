@@ -1,7 +1,7 @@
 <div class="sub">
   <div class="subnav">
     <%= link_to root_path do %>
-      <div class="logo">logo</div>
+      <div class="logo"><%= image_tag 'logo.png', size:"120x120" %></div>
     <% end %>
     <div class="nav-list">
       <% if admin_signed_in? %>

@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
-  has_many :post_tags, dependent: :destroy
-  has_many :hobbies, through: :post_tags
+  has_many :hobby_categories, dependent: :destroy
+  has_many :hobbies, through: :hobby_categories
 
   attachment :category_image
 

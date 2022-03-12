@@ -31,12 +31,12 @@ class Admin::HobbiesController < ApplicationController
     @hobby = Hobby.find(params[:id])
     @hobby.hobby_categories.category_id = params[:hobby][:category]
     @hobby.update(hobby_params)
-    redirect_to admin_hobby(@hobby)
+    redirect_to admin_hobby_path(@hobby)
   end
 
   def destroy
     Hobby.find(params[:id]).destroy
-    redirect_to admin_root
+    redirect_to admin_root_path
   end
 
   private

@@ -3,7 +3,11 @@
   <section class="container p-5">
     <div class="row mb-4 admin-title">
       <div class="admin-title_page-title"><h4>趣味一覧</h4></div>
-      <div class="btn btn-primary px-md-2 py-md-2 ml-auto">趣味作成</div>
+      <div class="ml-auto"></div>
+        <%= link_to new_admin_hobby_path do %>
+          <div class="btn btn-primary p-md-2">趣味作成</div>
+        <% end %>
+      </div>
     </div>
     <div class="admin-table">
       <table class="table admin-table_index-table">

@@ -23,21 +23,19 @@
     <table class="table admin-table_index-table">
       <thead class="admin-table_index-thead">
         <tr class="admin-table_index-tr">
-          <th>ID</th>
-          <th></th>
-          <th>title</th>
-          <th>delete</th>
+          <th width="10%">ID</th>
+          <th width="20%">image</th>
+          <th width="60%">title</th>
+          <th width="20%">delete</th>
         </tr>
       </thead>
       <tbody>
-        <% @categories.each do |t| %>
+        <% @categories.each do |category| %>
         <tr class="admin-table_index-tr">
-          <td><%= t.id %></td>
-          <td><%= attachment_image_tag @categories, :category_image, size:"100x100", format: "jpg" %></td>
-          <td>
-            <%= t.title %>
-          </td>
-          <td><%= link_to "削除", admin_category_path(t), class:"btn btn-danger px-2 py-2", method: :delete %></td>
+          <td align="center"><%= category.id %></td>
+          <td><%= attachment_image_tag category, :category_image, size:"50x50", format: "jpg" %></td>
+          <td><%= category.name %></td>
+          <td><%= link_to "削除", admin_category_path(category), class:"btn btn-danger px-2 py-2", method: :delete %></td>
         </tr>
         <% end %>
       </tbody>

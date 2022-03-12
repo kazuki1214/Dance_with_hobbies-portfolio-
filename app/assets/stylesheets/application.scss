@@ -108,7 +108,7 @@ body{
   width: 18%;
   position: fixed;
   box-shadow: 2px 2px 4px;
-  background-color: rgb(250, 69, 69);
+  background-color: #93a3ce;
   border: 1px solid rgba(255, 217, 0, 0.884);
 }
 
@@ -120,7 +120,7 @@ body{
   width: 100%;
   text-align: right;
   padding: 20px 10px;
-  transition: all 0.5s 0s ease;
+  transition:width 0.3s 0s ease;
   border-right: 1px solid rgba(255, 217, 0, 0.884);
   border-bottom: 1px solid rgba(255, 217, 0, 0.884);
   box-shadow: 2px 2px 4px;
