@@ -1,5 +1,7 @@
 <div class="container p-5 mt-5">
-  <h1 class="mb-5 row mb-5 justify-content-center"><div>LOGO</div>の管理者サイト</h1>
+  <div class="mb-5 mb-5 text-center"><%= image_tag "logo.png" %>
+    <h1>管理者サイト</h1>
+  </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field row justify-content-center mb-3">

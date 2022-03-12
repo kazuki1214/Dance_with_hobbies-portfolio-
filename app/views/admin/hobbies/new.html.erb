@@ -5,29 +5,31 @@
       <div class="admin-title_page-title"><h4>趣味作成</h4></div>
     </div>
     <%= form_with model: [:admin,  @hobby], local: true do |f| %>
-    <div class="row">
-        <%= attachment_image_tag @hobby, :hobby_image, size:"300x300", fallback: "no_image.jpg", id:"hobby_img_prev" %>
+    <div class="row mb-4 align-items-end">
+        <%= attachment_image_tag @hobby, :hobby_image, size:"250x250", fallback: "no_image.jpg", id:"hobby_img_prev" %>
         <%= f.attachment_field :hobby_image %>
-    </div>
-    <div class="row">
-       <p class="col-md-3">tittle:</p>
-      <div class="col-md-8 offset-md-1 hobby-title">
-        <%= f.text_field :title, class:"w-100" %>
-      </div>
     </div>
     <div class="row mb-4">
       <p class="col-md-3">category:</p>
       <div class="offset-md-1">
-        <%= f.collection_check_boxes :category, Category.all, :id, :name %>
+        <%= f.collection_check_boxes(:categories, Category.all, :id, :name) do |c| %>
+          <div class="mb-2">
+            <%= c.label {c.check_box + c.text} %>
+          </div>
+        <% end %>
       </div>
+    </div>
+    <div class="row mb-4">
+       <p class="col-md-3">tittle:</p>
+        <%= f.text_field :title, class:"col-md-7 offset-md-1 w-100" %>
     </div>
     <div class="row mb-3">
       <p class="col-md-3">introduction:</p>
-      <%= f.text_area :introduction, class:"col-md-7 offset-md-1 d-flex flex-wrap" %>
+      <%= f.text_area :introduction, class:"col-md-7 offset-md-1 overflow-auto" %>
     </div>
     <div class="row">
       <div class="col-md-3">
-        <%= link_to "一覧に戻る", admin_hobbies_path, class:"btn btn-danger px-2 py-2 w-100" %>
+        <%= link_to "一覧に戻る", admin_root_path, class:"btn btn-danger px-2 py-2 w-100 mb-3" %>
       </div>
       <div class="col-md-3 offset-md-4">
         <%= f.submit "登録する", class:"btn btn-primary px-2 py-2 w-100" %>

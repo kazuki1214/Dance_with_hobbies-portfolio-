@@ -7,10 +7,10 @@
       </div>
       <div class="home_introduction">
         <div class="home_logo mb-5"><%= image_tag 'logo.png' %></div>
-        <p>Dance-with-hobbiesは新しい趣味の発掘、同じ趣味を持つ人と趣味の共有ができるサイトです。<br>
+        <h5>Dance-with-hobbiesは新しい趣味の発掘、同じ趣味を持つ人と趣味の共有ができるサイトです。<br>
         ユーザー登録しなくても趣味やその趣味の投稿を読むことができます。<br>
         ユーザー登録をすれば、自分の趣味を発信して新しい仲間を見つけることができます。</br>
-        さあ、新しい世界が君を待っている！</p>
+        さあ、新しい世界が君を待っている！</h5>
       </div>
 
       <div class="home_set-up mb-4">
@@ -23,14 +23,14 @@
   <div class="home_bottom">
     <div class="home_hobbies mb-3">
       <%= link_to hobbies_path do %>
-      <div class="home_link-hobbies"><div class="home_link-act-blue"><h5><%= image_tag 'no_image.jpg', size:"100x100" %>趣味一覧を見てみる</h5></div></div>
+      <div class="home_link-hobbies"><div class="home_link-act-blue"><h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>趣味一覧を見てみる</h5></div></div>
       <% end %>
       <div class="home_hobby-search"></div>
     </div>
 
     <%= link_to categories_path do %>
     <div class="home_categories mb-3">
-      <div class="home_link-act-blue"><h5><%= image_tag 'no_image.jpg', size:"100x100" %>カテゴリーから探す</h5></div>
+      <div class="home_link-act-blue"><h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>カテゴリーから探す</h5></div>
     </div>
     <% end %>
 
