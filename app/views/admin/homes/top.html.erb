@@ -28,7 +28,7 @@
                 <%= t.title %>
               <% end %>
             </td>
-            <td class="overflow-hidden"><%= t.introduction %></td>
+            <td class="text-break"><%= t.introduction %></td>
             <td><%= link_to "趣味削除", admin_hobby_path(t), class:"btn btn-primary px-md-2 py-md-2", method: :delete %></td>
           </tr class="admin-table_index-tr">
           <% end %>

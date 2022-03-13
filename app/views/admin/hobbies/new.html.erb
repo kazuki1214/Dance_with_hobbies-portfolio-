@@ -6,13 +6,13 @@
     </div>
     <%= form_with model: [:admin,  @hobby], local: true do |f| %>
     <div class="row mb-4 align-items-end">
-        <%= attachment_image_tag @hobby, :hobby_image, size:"250x250", fallback: "no_image.jpg", id:"hobby_img_prev" %>
+        <%= attachment_image_tag @hobby, :hobby_image, size:"180x180", fallback: "no_image.jpg", id:"hobby_img_prev" %>
         <%= f.attachment_field :hobby_image %>
     </div>
     <div class="row mb-4">
       <p class="col-md-3">category:</p>
       <div class="offset-md-1">
-        <%= f.collection_check_boxes(:categories, Category.all, :id, :name) do |c| %>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, {include_hidden: false}, html_options: {}) do |c| %>
           <div class="mb-2">
             <%= c.label {c.check_box + c.text} %>
           </div>
