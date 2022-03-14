@@ -5,9 +5,10 @@
   display:flex;
   justify-content:center;
   flex-direction:column;
+  padding:23px;
 
   &_title{
-    width:90%;
+    width:100%;
     border-bottom:1px solid black;
     padding:10px;
     display:flex;
@@ -16,23 +17,30 @@
 
   &_contents{
     width:80%;
+    margin:auto;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
   }
 
   &_one{
-    width:300px;
-    height:500px;
+    width:170px;
+    height:200px;
     border:1px solid black;
     display:flex;
     align-items:center;
     justify-content:center;
+    flex-direction:column;
+    margin:15px;
   }
 
   &_one-image{
     width:80%;
     height:40%;
+  }
+
+  &_one-introduction{
+    overflow: hidden;
   }
 
   &_paginate{
@@ -42,14 +50,15 @@
   }
 }
 
-.hobby{
+.hobby-one{
   display:flex;
   justify-content:center;
   flex-direction:column;
+  padding:23px;
 
   &_top{
     padding:20px;
-    width:90%;
+    width:100%;
     border-bottom:1px solid black;
     padding:10px;
     display:flex;
@@ -70,6 +79,7 @@
     display:flex;
     justify-content:center;
     margin-top:30px;
+    text-decoration:none;
   }
 
   &_post{

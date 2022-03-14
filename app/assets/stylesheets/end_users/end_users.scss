@@ -6,46 +6,47 @@
   display:flex;
   flex-direction:column;
   justify-content:center;
+  padding:23px;
 
   &_info{
-    padding:20px;
+    padding:10px;
     display:flex;
     justify-content:space-between;
   }
 
-  &_follow{
-    border-radius:5px;
-  }
-
-  &_row{
-    padding:10px;
-    width:80%;
+  %_row{
+    padding:25px;
+    width:90%;
     border-bottom:1px solid black;
     display:flex;
     align-items:center;
   }
 
-  %_row{
+  &_row{
     @extend %_row;
 
-    &_title{
+    &--center{
       @extend %_row;
       justify-content:center;
     }
   }
 
 
+  &_title{
+    padding:25px;
+    width:90%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
 
-  %_name{
+
+
+  &_name{
     overflow-wrap:word-break;
   }
 
-  %_name{
-    @extend %_name;
-
-    &_comment{
-      @extend %_name;
-    }
+  &_comment{
+    overflow-wrap:word-break;
   }
-
 }

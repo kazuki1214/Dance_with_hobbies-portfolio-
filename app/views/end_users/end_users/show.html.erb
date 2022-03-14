@@ -1,53 +1,57 @@
-<section class="container user">
-    <div class="user_info">
-        <%= link_to "戻る", 'javascript:history.back()', class: "user_back" %>
-        <% if current_end_user == @user %>
-            <%= link_to "編集", information_path(@user), class: "user_edit" %>
-        <% elsif  @user.following?(current_user) %>
-            <%= render "followers/unfollow",  user: @user %>
-        <% else %>
-            <%= render "followers/follow",  user: @user %>
-        <% end %>
-    </div>
-    <div class="user_title">
-        <%= attachment_image_tag @user, :user_image, size:"200x200", fallback:"no_image.jpg"%>
-        <%= @user.name , class: "user_name" %>
-    </div>
-    <div class="user_row">
-        <%= @user.user_comment, class: "user_comment" %>
-    </div>
-    <div class="user_row">
-        <p>メールアドレス:</p>
-        <%= @user.email %>
-    </div>
-    <div class="user_row">
-        <p>お気に入りの趣味:</p>
-        <div class="user_favorite-hobbies">
-            <%= @user.favorite_hobbies.each do |hobby| %>
-                <%= hobby.title %>
+<div class="main">
+    <%= render "layouts/navbar" %>
+    <section class="container user">
+        <div class="user_info">
+            <h4><%= link_to "戻る", 'javascript:history.back()', class: "user_back" %></h4>
+            <% if current_end_user == @user %>
+                <h4><%= link_to "編集", information_path(@user), class: "user_edit" %></h4>
+            <% elsif  @user.following?(current_user) %>
+                <%= render "followers/unfollow",  user: @user %>
+            <% else %>
+                <%= render "followers/follow",  user: @user %>
             <% end %>
         </div>
-    </div>
-
-    <%= link_to end_user_follower_index_path do %>
-        <div class="user_row">
-            <p>フォローユーザー一覧</p>
+        <div class="user_title">
+            <%= attachment_image_tag @user, :user_image, size:"100x100", fallback:"no_image.jpg"%>
+            <h4><%= @user.name %></h4>
         </div>
-    <% end %>
-
-    <%= link_to end_user_post_histories_path(@user) do %>
         <div class="user_row">
-            <p>投稿履歴</p>
+            <div class="user_comment">
+                <%= @user.user_comment %>
+            </div>
         </div>
-    <% end %>
+        <div class="user_row">
+            <p>メールアドレス:</p>
+            <%= @user.email %>
+        </div>
+        <div class="user_row">
+            <p>お気に入りの趣味:</p>
+            <div class="user_favorite-hobbies">
+                <% @user.favorite_hobbies.each do |hobby| %>
+                    <%= hobby.title %>
+                <% end %>
+            </div>
+        </div>
 
-    <!--通知一覧へリンク-->
-    <% if @user == current_end_user %>
-        <%= link_to end_user_notifications_path(current_end_user.id) %>
-            <div class="user_row">
-                <p>通知一覧</p>
+        <%= link_to end_user_followers_path(@user) do %>
+            <div class="user_row--center">
+                <h5>フォローユーザー一覧</h5>
             </div>
         <% end %>
-    <% end %>
 
-</section>
+        <%= link_to end_user_post_histories_path(@user) do %>
+            <div class="user_row--center">
+                <h5>投稿履歴</h5>
+            </div>
+        <% end %>
+
+        <!--通知一覧へリンク-->
+        <% if @user == current_end_user %>
+            <%= link_to end_user_notifications_path(current_end_user.id) do %>
+                <div class="user_row--center">
+                    <h5>通知一覧</h5>
+                </div>
+            <% end %>
+        <% end %>
+    </section>
+</div>

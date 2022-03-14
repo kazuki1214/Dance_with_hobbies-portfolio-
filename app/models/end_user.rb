@@ -10,7 +10,7 @@ class EndUser < ApplicationRecord
   has_many :favorite_posts
   has_many :post_comments
   has_many :post_histories
-  has_many :favorite_hobbies, through: :hobbies
+  has_many :favorite_hobbies
 
   # フォロー機能
   has_many :followers, dependent: :destroy #自分が持つフォローユーザー
@@ -46,8 +46,4 @@ class EndUser < ApplicationRecord
     Follower.find(follower_id).destroy
   end
 
-  #通知機能メソッド
-  def unchecked_notifications
-    current_end_user.passive_notifications.where(checked: false)
-  end
 end

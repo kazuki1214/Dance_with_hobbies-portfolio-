@@ -1,66 +1,66 @@
-<div class="post">
-
-  <%= link_to hobby_posts_path(@post.hobby.id) %><div class="post_back"><span class="post_back-span">⇦</span>投稿一覧に戻る</div><% end %>
-
-  <%= render 'hobbies/hobby', hobby: @hobby %>
-
-  <div class="post_main">
-    <div class="post_user">
-      <%= link_to user_page_path(@post.end_user.id) do %>
-        <%= attachment_image_tag @post.end_user, :user_image, size: "80x80", fallback: "no_image.jpg" %>
-        <%=  @post.end_user.name %>
-      <% end %>
-      <div class="post_created">
-        <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
-        <%= @post.hobby.title %>
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <section class="post">
+    <%= link_to hobby_posts_path(@post.hobby.id) %><div class="post_back"><span class="post_back-span">⇦</span>投稿一覧に戻る</div><% end %>
+    <%= render 'hobbies/hobby', hobby: @hobby %>
+    <div class="post_main">
+      <div class="post_user">
+        <%= link_to user_page_path(@post.end_user.id) do %>
+          <%= attachment_image_tag @post.end_user, :user_image, size: "80x80", fallback: "no_image.jpg" %>
+          <%=  @post.end_user.name %>
+        <% end %>
+        <div class="post_created">
+          <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+          <%= @post.hobby.title %>
+        </div>
       </div>
-    </div>
 
-    <h4 class="post_title"><%= @post.title %></h4>
-    <%= attachment_image_tag @post, :post_image, class: "post_image" %>
-    <div class="post_list">
-      <% @post.tags.each do |t| %>
-        <i class="fa-duotone fa-tag"><%= t.name %></i>
-      <% end %>
-    </div>
-    <div class="post_body"><%= @post.body %></div>
-  </div>
-  <div class="post_sub">
-    <div class="post_content">
-      <h6><i class="fa-regular fa-eye"><%= @post.impressionist_count(:filter => :session_hash) %></i></h6>
-      <h6 class="post_post-comment">コメント<%= post.comments.count %>件</h6>
-      <div class="post_post-favorite" id="post-favorite-button-#{@post.id}">
-        <% if favorite_posts?(end_user) %>
-          <%= render "favorite_post/unpost-favorite", post: @post %>
-        <% elsif %>
-          <%= render "favorite_post/post-favorite", post: @post
+      <h4 class="post_title"><%= @post.title %></h4>
+      <%= attachment_image_tag @post, :post_image, class: "post_image" %>
+      <div class="post_list">
+        <% @post.tags.each do |t| %>
+          <i class="fa-duotone fa-tag"><%= t.name %></i>
         <% end %>
       </div>
+      <div class="post_body"><%= @post.body %></div>
     </div>
-    <% @comments.each do |c| %>
-      <div class="post_comment">
-        <div class="post_comment-user">
-          <%= link_to user_page_path(c.end_user.id) do %>
-            <%= attachment_image_tag c.end_user, :user_image, size: "50x50", fallback: "no_image.jpg", format: "jpg" %>
-            <%= c.end_user.name %>
+    <div class="post_sub">
+      <div class="post_content">
+        <h6><i class="fa-regular fa-eye"><%= @post.impressionist_count(:filter => :session_hash) %></i></h6>
+        <h6 class="post_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %>件</h6>
+        <div class="post_post-favorite" id="post-favorite-button-#{@post.id}">
+          <% if favorite_posts?(end_user) %>
+            <%= render "favorite_post/unpost-favorite", post: @post %>
+          <% elsif %>
+            <%= render "favorite_post/post-favorite", post: @post
           <% end %>
-          <div class="post_comment-created">
-            <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
-          </div>
-        </div>
-        <div class="post_comment-main">
-          <%= c.comment %>
         </div>
       </div>
-    <% end %>
-    <%= link_to hobby_post_post_comments_path(@post.hobby.id, @post.id) do %>
-    <div class="post_all-comment">
-      <p>コメント一覧へ</p>
+      <% @comments.each do |c| %>
+        <div class="post_comment">
+          <div class="post_comment-user">
+            <%= link_to user_page_path(c.end_user.id) do %>
+              <%= attachment_image_tag c.end_user, :user_image, size: "50x50", fallback: "no_image.jpg", format: "jpg" %>
+              <%= c.end_user.name %>
+            <% end %>
+            <div class="post_comment-created">
+              <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+            </div>
+          </div>
+          <div class="post_comment-main">
+            <%= c.comment %>
+          </div>
+        </div>
+      <% end %>
+      <%= link_to hobby_post_post_comments_path(@post.hobby.id, @post.id) do %>
+      <div class="post_all-comment">
+        <p>コメント一覧へ</p>
+      </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
 
-  <% if @post.end_user == current_end_user %>
-    <%= link_to "投稿を削除する", hobby_post_path(@post.hobby.id, @post.id), class: "post_delete","data-confirm" => "投稿を削除しますか？", method: :delete %>
-  <% end %>
+    <% if @post.end_user == current_end_user %>
+      <%= link_to "投稿を削除する", hobby_post_path(@post.hobby.id, @post.id), class: "post_delete","data-confirm" => "投稿を削除しますか？", method: :delete %>
+    <% end %>
+  </section>
 </div>

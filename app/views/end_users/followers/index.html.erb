@@ -1,25 +1,28 @@
-<div class="follow">
-  <div class="follow_back"><%= link_to "戻る", 'javascript:history.back()' %></div>
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <section class="follow">
+    <div class="follow_back"><%= link_to "戻る", 'javascript:history.back()' %></div>
 
-  <div class="follow_top">
-    <%= attachment_image_tag @user, :user_image, size:"200x200", %>
-    <%= @user.name , class: "user_name" %>
-  </div>
-
-  <% @followers.each do |follower| %>
-  <div class="follow_user">
-    <%= link_to user_page_path(follower) do %>
-      <%= attachment_image_tag follower, :user_image, size:"200x200", %>
-      <%= follower.name , class: "follow_name" %>
-    <% end %>
-    <div class="follow_buttom">
-      <% if  @user.following?(current_user) %>
-        <%= render "followers/unfollow",  user: @user %>
-      <% else %>
-        <%= render "followers/follow",  user: @user %>
-      <% end %>
+    <div class="follow_top">
+      <%= attachment_image_tag @user, :user_image, size:"200x200", %>
+      <%= @user.name , class: "user_name" %>
     </div>
-  </div>
-  <% end %>
 
+    <% @followers.each do |follower| %>
+    <div class="follow_user">
+      <%= link_to user_page_path(follower) do %>
+        <%= attachment_image_tag follower, :user_image, size:"200x200", %>
+        <%= follower.name , class: "follow_name" %>
+      <% end %>
+      <div class="follow_buttom">
+        <% if  @user.following?(current_user) %>
+          <%= render "followers/unfollow",  user: @user %>
+        <% else %>
+          <%= render "followers/follow",  user: @user %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
+  </section>
 </div>

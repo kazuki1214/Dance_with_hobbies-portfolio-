@@ -1,43 +1,41 @@
-<div class="user-posts">
-
-  <%= link_to "戻る", 'javascript:history.back()' %>
-  <%= render "post_histories/user-top", end_user: @end_user %>
-
-
-  <% @end_user.posts.each do |post| %>
-
-    <%= link_to end_user_post_history_path(post.end_user, post) do %>
-      <div class="user-posts_main">
-          <div class="user-posts_post-user">
-          <%= link_to user_page_path(post.end_user.id) do %>
-            <%= attachment_image_tag post.end_user, :user_image, size: "80x80", fallback: "no_image.jpg" %>
-            <%=  post.end_user.name %>
-          <% end %>
-          <div class="user-posts_post-created">
-            <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
-            <%= post.hobby.title %>
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <section class="user-posts">
+    <%= link_to "戻る", 'javascript:history.back()' %>
+    <%= render "post_histories/user-top", end_user: @end_user %>
+    <% @end_user.posts.each do |post| %>
+      <%= link_to end_user_post_history_path(post.end_user, post) do %>
+        <div class="user-posts_main">
+            <div class="user-posts_post-user">
+            <%= link_to user_page_path(post.end_user.id) do %>
+              <%= attachment_image_tag post.end_user, :user_image, size: "80x80", fallback: "no_image.jpg" %>
+              <%=  post.end_user.name %>
+            <% end %>
+            <div class="user-posts_post-created">
+              <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+              <%= post.hobby.title %>
+            </div>
+          </div>
+          <h4 class="user-posts_post-title"><%= post.title %></h4>
+          <%= attachment_image_tag post, :post_image_id, class: "posts_post-image" %>
+          <div class="user-posts_post-list">
+            <% post.tags.each do |t| %>
+              <i class="fa-duotone fa-tag"><%= t.name %></i>
+            <% end %>
           </div>
         </div>
-        <h4 class="user-posts_post-title"><%= post.title %></h4>
-        <%= attachment_image_tag post, :post_image_id, class: "posts_post-image" %>
-        <div class="user-posts_post-list">
-          <% post.tags.each do |t| %>
-            <i class="fa-duotone fa-tag"><%= t.name %></i>
-          <% end %>
-        </div>
+      <% end %>
+      <div class="user-posts_sub">
+        <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
+          <h6 class="user-posts_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %>件</h6>
+          <div class="user-posts_post-favorite">
+            <% if favorite_posts?(end_user) %>
+              <h6>いいね🤍<%= post.favorite_posts.count %></h6>
+            <% elsif %>
+              <h6>いいね♡<%= post.favorite_posts.count %></h6>
+            <% end %>
+          </div>
       </div>
     <% end %>
-    <div class="user-posts_sub">
-      <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
-        <h6 class="user-posts_post-comment">コメント<%= post.comments.count %>件</h6>
-        <div class="user-posts_post-favorite">
-          <% if favorite_posts?(end_user) %>
-            <h6>いいね🤍<%= post.favorite_posts.count %></h6>
-          <% elsif %>
-            <h6>いいね♡<%= post.favorite_posts.count %></h6>
-          <% end %>
-        </div>
-    </div>
-
-  <% end %>
+  </section>
 </div>

@@ -1,61 +1,63 @@
-<div class="hobby">
-  <div class="hobby_top">
-    <%= link_to "戻る", 'javascript:history.back()', class: "hobby_back" %>
-    <div class="hobby_title">
-      <%= attachment_image_tag @hobby, :hobby_image, size: "200x200", fallback: "no_image.jpg" %>
-      <h1><%= @hobby.title %></h1>
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <section class="hobby-one container">
+    <div class="hobby-one_top">
+     <h4><%= link_to "戻る", 'javascript:history.back()', class: "hobby-one_back" %></h4>
+      <div class="hobby-one_title">
+        <%= attachment_image_tag @hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %>
+        <h3><%= @hobby.title %></h3>
+      </div>
     </div>
-  </div>
-  <div class="hobby_introduction">
-    <%= @hobby.introduction %>
-  </div>
+    <div class="hobby-one_introduction">
+      <%= @hobby.introduction %>
+    </div>
 
-  <div class="hobby_link-posts">
-     <%= link_to hobby_posts_path(@hobby) do %>
-    <button class="hobby_button">
-      多くのユーザーの投稿を見てみよう！
-    </button>
-    <% end %>
-  </div>
+    <div class="hobby-one_link-posts">
+       <%= link_to hobby_posts_path(@hobby) do %>
+      <button class="hobby-one_button">
+        多くのユーザーの投稿を見てみよう！
+      </button>
+      <% end %>
+    </div>
 
-  <div class="hobby_posts">
-    <% @posts.each do |post| %>
-      <%= link_to hobby_post_path(post) do %>
-        <div class="hobby_post">
+    <div class="hobby-one_posts">
+      <% @posts.each do |post| %>
+        <%= link_to hobby_post_path(post) do %>
+          <div class="hobby-one_post">
 
-          <div class="hobby_post-user">
-          <%= link_to user_page_path(post.end_user.id) do %>
-            <%= attachment_image_tag post.end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
-            <%=  post.end_user.name %>
-          <% end %>
-            <div class="hobby_post-created">
-              <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
-              <%= post.hobby.title %>
+            <div class="hobby-one_post-user">
+            <%= link_to user_page_path(post.end_user.id) do %>
+              <%= attachment_image_tag post.end_user, :user_image, size: "70x70", fallback: "no_image.jpg" %>
+              <%=  post.end_user.name %>
+            <% end %>
+              <div class="hobby-one_post-created">
+                <%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
+                <%= post.hobby.title %>
+              </div>
             </div>
-          </div>
 
-          <h4 class="hobby_post-title"><%= t.title %></h4>
-          <%= attachment_image_tag post, :post_image_id, class: "hobby_post-image" %>
-          <div class="hobby_post-list">
-            <%= post.tags do |t| %>
-              <i class="fa-duotone fa-tag"><%= t.name %></i>
+            <h4 class="hobby-one_post-title"><%= t.title %></h4>
+            <%= attachment_image_tag post, :post_image_id, class: "hobby-one_post-image" %>
+            <div class="hobby-one_post-list">
+              <%= post.tags do |tag| %>
+                <i class="fa-duotone fa-tag"><%= tag.name %></i>
+              <% end %>
+            </div>
+
+          </div>
+        <% end %>
+        <div class="hobby-one_post-sub">
+          <h6><i class="fa-regular fa-eye"><%= @post.impressionist_count %></i></h6>
+          <h6 class="hobby-one_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %>件</h6>
+          <div class="hobby-one_post-favorite">
+            <% if favorite_posts?(end_user) %>
+              <%= render "favorite_post/unpost-favorite", post: @post %>
+            <% elsif %>
+              <%= render "favorite_post/post-favorite", post: @post %>
             <% end %>
           </div>
-
         </div>
       <% end %>
-      <div class="hobby_post-sub">
-        <h6><i class="fa-regular fa-eye"><%= @post.impressionist_count %></i></h6>
-        <h6 class="hobby_post-comment">コメント<%= post.comments.count %>件</h6>
-        <div class="hobby_post-favorite">
-          <% if favorite_posts?(end_user) %>
-            <%= render "favorite_post/unpost-favorite", post: @post %>
-          <% elsif %>
-            <%= render "favorite_post/post-favorite", post: @post %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+    </div>
+  </section>
 </div>
-

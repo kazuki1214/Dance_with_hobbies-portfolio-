@@ -1,26 +1,29 @@
-<div class="category category">
-  <div class="category-title">
-    <h1><%= hobby.title %></h1>
-    <div class="category-search"></div>
-  </div>
-
-  <% @categories.each do |category| %>
-    <div class="category_contents">
-      <div class="category_main">
-        <%= attachment_image_tag category, :category_image, size: "65x65" %>
-        <h3 class="category_name"><%= category.name %></h3>
-      </div>
-      <% category.hobbies.each do |hobby| %>
-        <%= link_to hobby_path(hobby) do %>
-          <div class="category_hobby">
-            <%= attachment_image_tag hobby, :hobby_iamge, size: "50x50", fallback: "no_image.jpg" %>
-            <%= hobby.title, class: "category_hobby-name" %>
-          </div>
-        <% end %>
-      <% end %>
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <div class="category category">
+    <div class="category-title">
+      <h1><%= hobby.title %></h1>
+      <div class="category-search"></div>
     </div>
-  <% end %>
-  <div class="category_paginate">
-    <%= paginate @categories
+
+    <% @categories.each do |category| %>
+      <div class="category_contents">
+        <div class="category_main">
+          <%= attachment_image_tag category, :category_image, size: "65x65" %>
+          <h3 class="category_name"><%= category.name %></h3>
+        </div>
+        <% category.hobbies.each do |hobby| %>
+          <%= link_to hobby_path(hobby) do %>
+            <div class="category_hobby">
+              <%= attachment_image_tag hobby, :hobby_iamge, size: "50x50", fallback: "no_image.jpg" %>
+              <%= hobby.title, class: "category_hobby-name" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="category_paginate">
+      <%= paginate @categories %>
+    </div>
   </div>
 </div>
