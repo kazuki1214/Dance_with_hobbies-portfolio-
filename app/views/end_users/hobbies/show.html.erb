@@ -1,23 +1,19 @@
 <div class="main">
   <%= render "layouts/navbar" %>
   <section class="hobby-one container">
+    <div class="hobby-one_info">
+      <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
+    </div>
     <div class="hobby-one_top">
-     <h4><%= link_to "戻る", 'javascript:history.back()', class: "hobby-one_back" %></h4>
-      <div class="hobby-one_title">
-        <%= attachment_image_tag @hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %>
-        <h3><%= @hobby.title %></h3>
-      </div>
+      <%= attachment_image_tag @hobby, :hobby_image, size: "120x120", fallback: "no_image.jpg", class: "hobby-one_image" %>
+      <h3><%= @hobby.title %></h3>
     </div>
     <div class="hobby-one_introduction">
       <%= @hobby.introduction %>
     </div>
 
     <div class="hobby-one_link-posts">
-       <%= link_to hobby_posts_path(@hobby) do %>
-      <button class="hobby-one_button">
-        多くのユーザーの投稿を見てみよう！
-      </button>
-      <% end %>
+      <%= link_to "多くのユーザーの投稿を見てみよう！", hobby_posts_path(@hobby), class: "hobby-one_button btn btn-dark" %>
     </div>
 
     <div class="hobby-one_posts">

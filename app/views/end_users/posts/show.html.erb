@@ -1,59 +1,61 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-  <section class="post">
-    <%= link_to hobby_posts_path(@post.hobby.id) %><div class="post_back"><span class="post_back-span">⇦</span>投稿一覧に戻る</div><% end %>
-    <%= render 'hobbies/hobby', hobby: @hobby %>
-    <div class="post_main">
-      <div class="post_user">
+  <section class="post-one container">
+    <div class="post-one_info">
+      <h4><%= link_to hobby_posts_path(@post.hobby.id) %><div class="post-one_back"><span class="post-one_back-span">⇦</span>投稿一覧に戻る</div><% end %></h4>
+    </div>
+    <%= render "end_users/hobbies/hobby-top", hobby: @hobby %>
+    <div class="post-one_main">
+      <div class="post-one_user">
         <%= link_to user_page_path(@post.end_user.id) do %>
           <%= attachment_image_tag @post.end_user, :user_image, size: "80x80", fallback: "no_image.jpg" %>
           <%=  @post.end_user.name %>
         <% end %>
-        <div class="post_created">
-          <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+        <div class="post-one_created">
+          <%= @post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
           <%= @post.hobby.title %>
         </div>
       </div>
 
-      <h4 class="post_title"><%= @post.title %></h4>
-      <%= attachment_image_tag @post, :post_image, class: "post_image" %>
+      <h4 class="post-one_title"><%= @post.title %></h4>
+      <%= attachment_image_tag @post, :post_image, class: "post-one_image" %>
       <div class="post_list">
         <% @post.tags.each do |t| %>
           <i class="fa-duotone fa-tag"><%= t.name %></i>
         <% end %>
       </div>
-      <div class="post_body"><%= @post.body %></div>
+      <div class="post-one_body"><%= @post.body %></div>
     </div>
-    <div class="post_sub">
-      <div class="post_content">
+    <div class="post-one_sub">
+      <div class="post-one_content">
         <h6><i class="fa-regular fa-eye"><%= @post.impressionist_count(:filter => :session_hash) %></i></h6>
-        <h6 class="post_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %>件</h6>
-        <div class="post_post-favorite" id="post-favorite-button-#{@post.id}">
+        <h6 class="post-one_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %>件</h6>
+        <div class="post-one_post-favorite" id="post-favorite-button-#{@post.id}">
           <% if favorite_posts?(end_user) %>
             <%= render "favorite_post/unpost-favorite", post: @post %>
           <% elsif %>
-            <%= render "favorite_post/post-favorite", post: @post
+            <%= render "favorite_post/post-favorite", post: @post %>
           <% end %>
         </div>
       </div>
       <% @comments.each do |c| %>
-        <div class="post_comment">
-          <div class="post_comment-user">
+        <div class="post-one_comment">
+          <div class="post-one_comment-user">
             <%= link_to user_page_path(c.end_user.id) do %>
               <%= attachment_image_tag c.end_user, :user_image, size: "50x50", fallback: "no_image.jpg", format: "jpg" %>
               <%= c.end_user.name %>
             <% end %>
-            <div class="post_comment-created">
+            <div class="post-one_comment-created">
               <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
             </div>
           </div>
-          <div class="post_comment-main">
+          <div class="post-one_comment-main">
             <%= c.comment %>
           </div>
         </div>
       <% end %>
       <%= link_to hobby_post_post_comments_path(@post.hobby.id, @post.id) do %>
-      <div class="post_all-comment">
+      <div class="post-one_all-comment">
         <p>コメント一覧へ</p>
       </div>
       <% end %>

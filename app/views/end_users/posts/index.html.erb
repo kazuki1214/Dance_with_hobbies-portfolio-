@@ -1,12 +1,14 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-  <section class="posts">
-    <div class="posts_back"><%= link_to "戻る", 'javascript:history.back()' %></div>
+  <section class="posts container">
+    <div class="posts_info">
+      <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
+    </div>
 
-    <%= render 'hobbies/hobby', hobby: @hobby %>
+    <%= render 'end_users/hobbies/hobby-top', hobby: @hobby %>
 
     <div class="posts_page">
-
+      <%= paginate @posts %>
     </div>
 
     <div class="posts_index">
@@ -20,7 +22,7 @@
               <%=  post.end_user.name %>
             <% end %>
             <div class="posts_post-created">
-              <%= post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+              <%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
               <%= post.hobby.title %>
             </div>
             </div>

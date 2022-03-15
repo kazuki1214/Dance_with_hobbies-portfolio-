@@ -1,11 +1,12 @@
 class Post < ApplicationRecord
   is_impressionable
 
+  # 中間テーブルを先に入力
   belongs_to :hobby
-  belongs_to :end_user_id
+  belongs_to :end_user
   has_many :post_histories, dependent: :destroy
-  has_many :tags, through: :post_tags
   has_many :post_tags
+  has_many :tags, through: :post_tags
   has_many :post_comments, dependent: :destroy
 
   #通知機能

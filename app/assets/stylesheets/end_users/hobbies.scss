@@ -24,19 +24,23 @@
   }
 
   &_one{
+    padding:2%;
+  }
+
+  &_one-link{
     width:170px;
     height:200px;
-    border:1px solid black;
+    border:2px solid black;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
-    margin:15px;
+    padding:5px;
   }
 
   &_one-image{
     width:80%;
-    height:40%;
+    height:50%;
   }
 
   &_one-introduction{
@@ -56,24 +60,41 @@
   flex-direction:column;
   padding:23px;
 
-  &_top{
-    padding:20px;
-    width:100%;
-    border-bottom:1px solid black;
+   &_info{
     padding:10px;
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
   }
 
-  &_back{
-    margin-right:auto;
+  &_top{
+    padding-bottom:20px;
+    width:100%;
+    border-bottom:1px solid black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  &_image{
+    margin-right:10px;
   }
 
   &_introduction{
-    width:80%;
+    width:100%;
     margin:20px;
     overflow-wrap:break-word;
+    text-align:center;
   }
+
+  &_link-posts{
+    text-align:center;
+  }
+
+  &_button{
+    width:70%;
+    margin-bottom:20px;
+  }
+
 
   &_posts{
     display:flex;

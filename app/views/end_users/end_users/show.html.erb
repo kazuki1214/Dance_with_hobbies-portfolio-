@@ -2,7 +2,7 @@
     <%= render "layouts/navbar" %>
     <section class="container user">
         <div class="user_info">
-            <h4><%= link_to "戻る", 'javascript:history.back()', class: "user_back" %></h4>
+            <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
             <% if current_end_user == @user %>
                 <h4><%= link_to "編集", information_path(@user), class: "user_edit" %></h4>
             <% elsif  @user.following?(current_user) %>

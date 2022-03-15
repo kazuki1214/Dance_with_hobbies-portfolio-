@@ -18,7 +18,7 @@
       <div class="row border-bottom-1 border-dark mb-2">
         <%= attachment_image_tag @post.end_user, :user_image, size: "300x300", fallback: "no_image.jpg" %><%= @post.end_user.name %>
         <div class="col-3 ml-auto">
-          <%= @post.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+          <%= @post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
           <%= @post.hobby.title %>
         </div>
       </div>

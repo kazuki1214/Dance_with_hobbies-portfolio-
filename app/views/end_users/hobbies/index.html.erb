@@ -8,8 +8,8 @@
 
     <div class="hobbies_contents">
       <% @hobbies.each do |hobby| %>
-        <%= link_to hobby_path(hobby) do %>
-          <div class="hobbies_one">
+        <div class="hobbies_one">
+          <%= link_to hobby_path(hobby), class: "hobbies_one-link" do %>
             <%= attachment_image_tag hobby, :hobby_image, class: "hobbies_one-image", fallback: "no_image.jpg" %>
             <div class="hobbies_one-name">
               <%= hobby.title %>
@@ -17,8 +17,8 @@
             <div class="hobbies_one-introduction">
               <%= hobby.introduction %>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
 

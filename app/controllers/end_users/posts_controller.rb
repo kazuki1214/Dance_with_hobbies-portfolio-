@@ -3,7 +3,7 @@ class EndUsers::PostsController < ApplicationController
 
   def index
     @hobby = Hobby.find(params[:hobby_id])
-    @posts = @hobby.posts.all
+    @posts = @hobby.posts.page(params[:page]).order(created_at: :desc)
   end
 
   def show
@@ -22,17 +22,15 @@ class EndUsers::PostsController < ApplicationController
   def confirm
     @hobby = Hobby.find(params[:hobby_id])
     @post = Post.new(post_params)
-    @post.end_user_id = current_end_user.id
+    @post.end_user = current_end_user
     @post.hobby_id = @hobby.id
-    if tags = params[:post][:tags].split(',').uniq
-      @post.save_tags(tags)
-    end
+    @tags = params[:post][:tags].split(',').uniq
   end
 
   def create
     @hobby = Hobby.find(params[:hobby_id])
     @post = Post.new(post_params)
-    @post.end_user_id = current_end_user.id
+    @post.end_user = current_end_user
     @post.hobby_id = @hobby.id
     tags = params[:post][:tags].split(',').uniq
     if @post.save
