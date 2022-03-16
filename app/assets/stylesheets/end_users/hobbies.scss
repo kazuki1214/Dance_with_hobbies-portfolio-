@@ -60,12 +60,6 @@
   flex-direction:column;
   padding:23px;
 
-   &_info{
-    padding:10px;
-    display:flex;
-    justify-content:space-between;
-  }
-
   &_top{
     padding-bottom:20px;
     width:100%;
@@ -75,9 +69,6 @@
     align-items:center;
   }
 
-  &_image{
-    margin-right:10px;
-  }
 
   &_introduction{
     width:100%;
@@ -95,45 +86,49 @@
     margin-bottom:20px;
   }
 
-
+// 投稿全体設定
   &_posts{
     display:flex;
     justify-content:center;
     margin-top:30px;
-    text-decoration:none;
   }
 
+  // 投稿単体設定
   &_post{
-    display:flex;
-    justify-content:center;
+    width:70%;
+  }
+  
+  &_post-main{
     padding:20px 20px 0 20px;
     position:relative;
     z-index:2;
     border:1px solid black;
-    width:80%;
+    background-color:white;
   }
 
   &_post-user{
-    width:90%;
     border-bottom:1px solid black;
     display:flex;
+    align-items:center;
   }
 
   &_post-created{
     margin-left:auto;
-    display:flex;
-    flex-wrap:wrap;
-    width:40%;
+  }
+
+  &_post-created-time{
+    margin-bottom:5px;
   }
 
   &_post-title{
-    width:80%;
+    width:98%;
+    padding:10px;
+    margin:0;
     overflow-wrap:break-word;
   }
 
   &_post-image{
-    width:300px;
-    height:250px;
+    text-align:center;
   }
 
   &_post-list{
@@ -144,14 +139,14 @@
 
   &_post-sub{
     position:relative;
-    bottom:-50px;
+    bottom:20px;
     left:50px;
     z-index:1;
     border:1px solid black;
-    height:300px;
-    max-width:500px;
+    height:55px;
     display:flex;
     justify-content:space-around;
     align-items:flex-end;
+    background-color:white;
   }
 }

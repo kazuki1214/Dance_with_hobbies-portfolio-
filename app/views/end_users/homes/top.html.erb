@@ -51,7 +51,7 @@
             <%= attachment_image_tag post, :post_iamge, class: "home_post-image", format: "jpg" %>
             <%= post.title %>
             <div class="home_post-sub">
-              <%= post.created_at %>
+              <%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
               <%= post.hobby.title %>
             </div>
           </div>

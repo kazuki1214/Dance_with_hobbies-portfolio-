@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .posts{
   display:flex;
-  justify-content:center;
   flex-direction:column;
   padding:23px;
 
@@ -78,10 +77,12 @@
 
 
 .post-one{
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
+  width:100%;
   padding:23px;
+
+  &_bottom{
+    padding:10px;
+  }
 
   &_back{
     width:90%;
@@ -98,46 +99,60 @@
   }
 
   &_main{
-    margin-top:30px;
-    display:flex;
-    justify-content:center;
+    width:70%;
     padding:20px 20px 0 20px;
+    border:1px solid black;
+    margin:10px auto 35px;
     position:relative;
     z-index:2;
-    border:1px solid black;
-    width:80%;
+  }
+
+  &_confirm{
+    text-align:center;
   }
 
   &_user{
-    width:90%;
     border-bottom:1px solid black;
     display:flex;
+    align-items:center;
   }
 
   &_created{
     margin-left:auto;
   }
 
+  &_created-time{
+    margin-bottom:5px;
+  }
+
   &_title{
-    width:80%;
+    width:98%;
+    padding:10px;
+    margin:0;
     overflow-wrap:break-word;
   }
 
   &_image{
-    width:60%;
-    height:300px;
+    text-align:center;
   }
 
-
-  &_list{
-    width:80%;
+  &_tag-list{
+    width:90%;
     display:flex;
     flex-wrap:wrap;
   }
 
+  &_tag{
+    margin-right:10px;
+  }
+
   &_body{
-    width:90%;
+    width:98%;
     overflow-wrap:break-word;
+  }
+
+  &_send{
+    text-align:center;
   }
 
   &_sub{
@@ -195,36 +210,95 @@
 
 
 .new-post{
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
+  width:100%;
   padding:23px;
 
-  &_top{
+  &_bottom{
     padding:10px;
-    width:90%;
-    border-bottom:1px solid black;
-    display:flex;
-    justify-content:center;
+    text-align:center;
   }
 
   &_main{
     width:70%;
     padding:20px;
     border:1px solid black;
+    margin:10px auto 35px;
   }
 
-  &_field{
-    width:80%;
+  &_title{
+    margin-bottom:15px;
   }
 
-  &_tag-field{
-    width:60%;
+  &_title-field{
+    width:90%;
+    height:35px;
   }
 
   &_image{
-    width:60%;
-    height:300px;
+    margin-bottom:15px;
+  }
+
+  &_tag-field{
+    width:90%;
+  }
+
+  &_body-field{
+    width:90%;
+    height:100px;
+  }
+
+  &_label{
+    margin:10px;
+  }
+
+  &_submit{
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color:white;
+    color:black;
+    border-radius:5px;
+    margin-left:150px;
+    padding:3px 10px;
+    font-size:20px;
+  }
+
+  &_submit:hover{
+    background-color:#007bff;
+    color:white;
+    transition: 0.3s;
+    transform: scale(1.05);
+  }
+
+  &_submit:active{
+    transform: scale(1.05);
+  }
+
+  &_cancel{
+    text-decoration:none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color:white;
+    color:black;
+    border-radius:5px;
+    transition: 0.3s;
+    padding:3px 10px;
+    font-size:20px;
+  }
+
+  &_cancel:hover{
+    background-color:#ff293a;
+    color:white;
+    transition: 0.3s;
+    transform: scale(1.05);
+  }
+
+  &_cancel:active{
+    transform: scale(1.05);
   }
 
 }

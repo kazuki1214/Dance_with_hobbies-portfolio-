@@ -38,10 +38,10 @@
           </div>
         <% end %>
         <div class="posts_post-sub">
-          <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
-          <h6 class="post_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %>件</h6>
+          <h6><%= image_tag "eye.jpg" %><%= post.impressions.size %></h6>
+          <h6 class="post_post-comment"><%= image_tag "comment.jpg" %><%= post.post_comments.count %>件</h6>
           <div class="post_post-favorite" id="post-favorite-button-#{@post.id}">
-            <% if favorite_posts?(end_user) %>
+            <% if current_end_user.favorite_posts?(current_end_user) %>
               <h6>いいね🤍<%= post.favorite_posts.count %></h6>
             <% elsif %>
               <h6>いいね♡<%= post.favorite_posts.count %></h6>

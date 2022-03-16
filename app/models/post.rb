@@ -8,11 +8,17 @@ class Post < ApplicationRecord
   has_many :post_tags
   has_many :tags, through: :post_tags
   has_many :post_comments, dependent: :destroy
+  has_many :favorite_posts
 
   #通知機能
   has_many :notifications, dependent: :destroy
 
   attachment :post_image
+
+  # いいね機能
+  def favorite_posts?(end_user)
+    FavoritePost.where(end_user_id: end_user.id).exists?
+  end
 
   #タグ作成機能
   def save_tags(tags)
@@ -36,8 +42,8 @@ class Post < ApplicationRecord
   end
 
   def save_histories(post)
-    current_end_user.post_histories.new(post_id: post.id)
-    current_end_user.post_histories.save
+    post.end_user.post_histories.new(post_id: post.id)
+    post.end_user.post_histories.save
   end
 
   #いいね通知機能

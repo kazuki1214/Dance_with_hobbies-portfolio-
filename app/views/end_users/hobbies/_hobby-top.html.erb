@@ -3,8 +3,10 @@
     <%= attachment_image_tag hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %>
     <h3><%= hobby.title %></h3>
     <% if end_user_signed_in? %>
-      <%= link_to new_hobby_post_path(hobby.id), class: "ml-auto" do %>
-        <button class="new-post-button">新規投稿</button>
+      <% if current_page?(hobby_posts_path) %>
+        <%= link_to new_hobby_post_path(hobby.id), class: "ml-auto" do %>
+          <button class="new-post-button">新規投稿</button>
+        <% end %>
       <% end %>
     <% end %>
   </div>

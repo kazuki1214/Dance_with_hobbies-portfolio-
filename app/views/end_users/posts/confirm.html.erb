@@ -1,40 +1,46 @@
 <div class="main">
   <%= render "layouts/navbar" %>
   <!--confirm画面-->
-  <section class="post">
-    <%= render 'hobbies/hobby', hobby: @hobby %>
-    <h2>投稿確認</h2>
-    <%= form_with(model: [:end_users, @hobby, @new_post], local: true) do |f| %>
-      <div class="post_main">
-        <div class="post_user">
-            <%= attachment_image_tag @post.end_user, :user_image, size: "200x200", fallback: "no_image.jpg" %>
-            <%=  @post.end_user.name %>
-          <div class="post_created">
-            <%= @post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
-            <%= @post.hobby.title %>
+  <section class="post-one">
+    <%= render 'end_users/hobbies/hobby-top', hobby: @hobby %>
+    <%= form_with(model: [:end_users, @hobby, @new_post], url: hobby_posts_path(@hobby), local: true) do |f| %>
+      <div class="post-one_bottom">
+        <h2 class="post-one_confirm">投稿確認</h2>
+        <div class="post-one_main">
+          <div class="post-one_user">
+              <%= attachment_image_tag @new_post.end_user, :user_image, size: "70x70", fallback: "no_image.jpg" %>
+              <%= @new_post.end_user.name %>
+            <div class="post-one_created">
+              <div class="post-one_created-time"><%= Time.now.strftime("%Y/%m/%d/ %H:%M") %></div>
+              <div class="post-one_created-hobby"><%= @new_post.hobby.title %></div>
+            </div>
+          </div>
+
+          <h4 class="post-one_title">
+            <%= @new_post.title %>
+            <%= f.hidden_field :title, value: @new_post.title %>
+          </h4>
+          <div class="post-one_image">
+            <%= attachment_image_tag @new_post, :post_image, size: "500x300" %>
+            <%= f.hidden_field :post_image, value: @new_post.post_image %>
+          </div>
+          <div class="post-one_tag-list">
+            <% @tags.each do |t| %>
+              <span class="post-one_tag">#<%= t %></span>
+              <%= f.hidden_field :name, value: t %>
+            <% end %>
+          </div>
+          <div class="post-one_body">
+            <%= @new_post.body %>
+            <%= f.hidden_field :body, value: @new_post.body %>
           </div>
         </div>
-
-        <h4 class="post_title">
-          <%= @post.title %>
-          <%= f.hidden_field :title, value: @post.title %>
-        </h4>
-        <%= attachment_image_tag @post, :post_image, class: "post_image" %>
-        <%= f.hidden_field :post_iamge, value: @post.post_image %>
-        <div class="post_list">
-          <%= @post.tags do |t| %>
-            <i class="fa-duotone fa-tag"><%= t.name %></i>
-            <%= f.hidden_field :tags, value: t %>
+        <div class="post-one_send">
+          <%= link_to hobby_posts_path(@hobby.id) do %>
+            <button class="new-post_cancel">投稿をキャンセル</button>
           <% end %>
+          <%= f.submit "投稿をする", class: "new-post_submit" %>
         </div>
-        <div class="post_body">
-          <%= @post.body %>
-          <%= f.hidden_field :body, value: @post.body %>
-        </div>
-      </div>
-      <div class="new-post_send">
-        <%= link_to "投稿をキャンセル", hobby_posts_path(@hobby.id), class: "new-post_cancel" %>
-        <%= f.submit "投稿をする", class: "ml-md-5 new-post_submit" %>
       </div>
     <% end %>
   </section>

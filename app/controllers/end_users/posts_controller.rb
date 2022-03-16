@@ -21,10 +21,10 @@ class EndUsers::PostsController < ApplicationController
 
   def confirm
     @hobby = Hobby.find(params[:hobby_id])
-    @post = Post.new(post_params)
-    @post.end_user = current_end_user
-    @post.hobby_id = @hobby.id
-    @tags = params[:post][:tags].split(',').uniq
+    @new_post = Post.new(post_params)
+    @new_post.end_user = current_end_user
+    @new_post.hobby_id = @hobby.id
+    @tags = params[:post][:name].split(',').uniq
   end
 
   def create
@@ -32,7 +32,7 @@ class EndUsers::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     @post.hobby_id = @hobby.id
-    tags = params[:post][:tags].split(',').uniq
+    tags = params[:post][:name]
     if @post.save
       @post.save_tags(tags)
       @post.save_histories(@post)

@@ -18,14 +18,14 @@
         <% end %>
         <%= link_to hobbies_path do %> <div class="nav-items"><span class="text-light">趣味一覧</span></div><% end %>
         <%= link_to categories_path do %> <div class="nav-items"><span class="text-light">カテゴリー一覧</span></div><% end %>
-        <%= link_to end_user_post_histories_path(current_end_user.post_histories) do %> <div class="nav-items"><span class="text-light">投稿履歴</span></div><% end %>
+        <%= link_to end_user_post_histories_path(current_end_user.id) do %> <div class="nav-items"><span class="text-light">投稿履歴</span></div><% end %>
         <%= link_to end_user_notifications_path(current_end_user.id) do %>
           <% if unchecked_notifications.any? %>
             <div class="nav-icon">New!</div>
           <% end %>
           <div class="nav-items"><span class="text-light">通知一覧</span></div>
         <% end %>
-        <%= link_to destroy_end_user_session_path, method: :destroy do %> <div class="nav-items"><span class="text-light">ログアウト</span></div><% end %>
+        <%= link_to destroy_end_user_session_path, method: :delete do %> <div class="nav-items"><span class="text-light">ログアウト</span></div><% end %>
       <% else %>
         <%= link_to new_end_user_registration_path do %><div class="nav-items"><span class="text-light">新規登録</span></div><% end %>
         <%= link_to new_end_user_session_path do %><div class="nav-items"><span class="text-light">ログイン</span></div><% end %>

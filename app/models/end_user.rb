@@ -22,11 +22,13 @@ class EndUser < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy #自分からの送信
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy #相手からの送信
 
+
   #お気に入り機能メソッド
   def favorite_hobbies?(end_user)
     FavoriteHobby.where(end_user_id: end_user.id).exists?
   end
 
+  # いいね機能
   def favorite_posts?(end_user)
     FavoritePost.where(end_user_id: end_user.id).exists?
   end
