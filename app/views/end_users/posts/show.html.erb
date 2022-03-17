@@ -1,68 +1,83 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-  <section class="post-one container">
-    <div class="post-one_info">
-      <h4><%= link_to hobby_posts_path(@post.hobby.id) %><div class="post-one_back"><span class="post-one_back-span">⇦</span>投稿一覧に戻る</div><% end %></h4>
+  <section class="post-one">
+    <div class="post-one_back">
+      <h4>
+        <%= link_to hobby_posts_path(@post.hobby.id) do %><span class="post-one_back-span">⇦</span>投稿一覧に戻る<% end %>
+      </h4>
     </div>
-    <%= render "end_users/hobbies/hobby-top", hobby: @hobby %>
-    <div class="post-one_main">
-      <div class="post-one_user">
-        <%= link_to user_page_path(@post.end_user.id) do %>
-          <%= attachment_image_tag @post.end_user, :user_image, size: "80x80", fallback: "no_image.jpg" %>
-          <%=  @post.end_user.name %>
-        <% end %>
-        <div class="post-one_created">
-          <%= @post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
-          <%= @post.hobby.title %>
-        </div>
-      </div>
 
-      <h4 class="post-one_title"><%= @post.title %></h4>
-      <%= attachment_image_tag @post, :post_image, class: "post-one_image" %>
-      <div class="post_list">
-        <% @post.tags.each do |t| %>
-          <i class="fa-duotone fa-tag"><%= t.name %></i>
-        <% end %>
-      </div>
-      <div class="post-one_body"><%= @post.body %></div>
-    </div>
-    <div class="post-one_sub">
-      <div class="post-one_content">
-        <h6><%= image_tag "eye.jpg" %><%= @post.impressionist_count(:filter => :session_hash) %></h6>
-        <h6 class="post-one_post-comment"><%= image_tag "comment.jpg" %><%= post.post_comments.count %>件</h6>
-        <div class="post-one_post-favorite" id="post-favorite-button-#{@post.id}">
-          <% if current_end_user.favorite_posts?(current_end_user) %>
-            <%= render "favorite_post/unpost-favorite", post: @post %>
-          <% elsif %>
-            <%= render "favorite_post/post-favorite", post: @post %>
+    <%= render "end_users/hobbies/hobby-top", hobby: @hobby %>
+    <div class="post-one_bottom">
+      <div class="post-one_post">
+        <div class="post-one_main">
+          <div class="post-one_user">
+          <%= link_to user_page_path(@post.end_user.id), class:"post_user-link" do %>
+            <%= attachment_image_tag @post.end_user, :user_image, size: "70x70", fallback: "no_image.jpg" %>
+            <%= @post.end_user.name %>
           <% end %>
-        </div>
-      </div>
-      <% @comments.each do |c| %>
-        <div class="post-one_comment">
-          <div class="post-one_comment-user">
-            <%= link_to user_page_path(c.end_user.id) do %>
-              <%= attachment_image_tag c.end_user, :user_image, size: "50x50", fallback: "no_image.jpg", format: "jpg" %>
-              <%= c.end_user.name %>
-            <% end %>
-            <div class="post-one_comment-created">
-              <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+            <div class="post-one_created">
+              <div class="post-one_created-time"><%= @post.created_at.strftime("%Y/%m/%d/ %H:%M") %></div>
+              <div class="post-one_created-hobby"><%= @post.hobby.title %></div>
             </div>
           </div>
-          <div class="post-one_comment-main">
-            <%= c.comment %>
+
+          <h4 class="post-one_title"><%= @post.title %></h4>
+          <div class="post-one_image">
+            <%= attachment_image_tag @post, :post_image, size: "500x300" %>
+          </div>
+          <div class="post-one_taglist">
+            <% @post.tags.each do |tag| %>
+              <span class="posts_tag">#<%= tag.name %></span>
+            <% end %>
+          </div>
+          <div class="post-one_body">
+            <%= @post.body %>
           </div>
         </div>
-      <% end %>
-      <%= link_to hobby_post_post_comments_path(@post.hobby.id, @post.id) do %>
-      <div class="post-one_all-comment">
-        <p>コメント一覧へ</p>
-      </div>
-      <% end %>
-    </div>
 
+        <div class="post-one_sub">
+          <div class="post-one_content">
+            <h6><%= image_tag "eye.jpg" %><%= @post.impressionist_count(:filter => :session_hash) %></h6>
+            <h6 class="post-one_comment-count"><%= image_tag "comment.jpg" %><%= @post.post_comments.count %>件</h6>
+            <% if @post.favorite_posts?(current_end_user) %>
+              <div class="post-one_favorite" id="post-favorite-button-<%= @post.id %>">
+                <%= render "end_users/favorite_posts/unpost-favorite", post: @post %>
+              </div>
+            <% elsif %>
+              <div class="post-one_favorite" id="post-favorite-button-<%= @post.id %>">
+                <%= render "end_users/favorite_posts/post-favorite", post: @post %>
+              </div>
+            <% end %>
+          </div>
+          <% @comments.each do |c| %>
+            <div class="post-one_comment">
+              <div class="post-one_comment-user">
+                <%= link_to user_page_path(c.end_user) do %>
+                  <%= attachment_image_tag c.end_user, :user_image, size: "50x50", fallback: "no_image.jpg", format: "jpg" %>
+                  <%= c.end_user.name %>
+                <% end %>
+                <div class="post-one_comment-created">
+                  <%= c.created_at.strftime("%Y/%m/%d/ %H:%M") %>
+                </div>
+              </div>
+              <div class="post-one_comment-main">
+                <%= c.comment %>
+              </div>
+            </div>
+          <% end %>
+          <div class="post-one_all-comment">
+            <%= link_to hobby_post_post_comments_path(@post.hobby.id, @post.id) do %>
+              <h5 class="m-0">コメント一覧へ</h5>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
     <% if @post.end_user == current_end_user %>
-      <%= link_to "投稿を削除する", hobby_post_path(@post.hobby.id, @post.id), class: "post_delete","data-confirm" => "投稿を削除しますか？", method: :delete %>
+      <div class="post_delete">
+        <%= link_to "投稿を削除する", hobby_post_path(@post.hobby.id, @post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
+      </div>
     <% end %>
   </section>
 </div>

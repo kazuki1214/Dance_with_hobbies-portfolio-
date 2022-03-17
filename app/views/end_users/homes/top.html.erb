@@ -22,33 +22,39 @@
 
   <div class="home_bottom">
     <div class="home_hobbies mb-3">
-      <%= link_to hobbies_path do %>
-      <div class="home_link-hobbies"><div class="home_link-act-blue"><h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>趣味一覧を見てみる</h5></div></div>
-      <% end %>
+      <div class="home_link-hobbies">
+        <%= link_to hobbies_path do %>
+          <div class="home_link-act-blue">
+            <h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>趣味一覧を見てみる</h5>
+          </div>
+        <% end %>
+        </div>
       <div class="home_hobby-search"></div>
     </div>
 
-    <%= link_to categories_path do %>
     <div class="home_categories mb-3">
-      <div class="home_link-act-blue"><h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>カテゴリーから探す</h5></div>
+      <%= link_to categories_path do %>
+        <div class="home_link-act-blue"><h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>カテゴリーから探す</h5></div>
+      <% end %>
     </div>
-    <% end %>
 
     <div class="home_ranking mb-3">
       <div class="home_ranking-title"><h5>おすすめの趣味</h5></div>
       <% @ranking_hobbies.each do |hobby| %>
-        <%= link_to hobby_path(hobby) do %>
-          <div class="home_hobby mb-3"><%= attachment_image_tag hobby, :hobby_image, size: "150x150", format: "jpg" %><%= hobby.title %></div>
-        <% end %>
+        <div class="home_hobby mb-3">
+          <%= link_to hobby_path(hobby) do %>
+            <%= attachment_image_tag hobby, :hobby_image, size: "150x150", format: "jpg" %><%= hobby.title %>
+          <% end %>
+        </div>
       <% end %>
     </div>
 
     <div class="home_ranking">
       <div class="home_ranking-title"><h5>今注目されている投稿</h5></div>
       <% @ranking_posts.each do |post| %>
-        <%= link_to hobby_path(hobby) do %>
+        <%= link_to hobby_post_path(post.hobby, post) do %>
           <div class="home_post mb-3">
-            <%= attachment_image_tag post, :post_iamge, class: "home_post-image", format: "jpg" %>
+            <%= attachment_image_tag post, :post_image,size:"100x100", class: "home_post-image", format: "jpg" %>
             <%= post.title %>
             <div class="home_post-sub">
               <%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %>

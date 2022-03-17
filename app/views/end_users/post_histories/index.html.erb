@@ -2,7 +2,7 @@
   <%= render "layouts/navbar" %>
   <section class="user-posts">
     <%= link_to "戻る", 'javascript:history.back()' %>
-    <%= render "post_histories/user-top", end_user: @end_user %>
+    <%= render "end_users/post_histories/user-top", end_user: @end_user %>
     <% @end_user.posts.each do |post| %>
       <%= link_to end_user_post_history_path(post.end_user, post) do %>
         <div class="user-posts_main">
@@ -29,8 +29,8 @@
         <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
           <h6 class="user-posts_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %>件</h6>
           <div class="user-posts_post-favorite">
-            <% if favorite_posts?(end_user) %>
-              <h6>いいね🤍<%= post.favorite_posts.count %></h6>
+            <% if post.favorite_posts?(current_end_user) %>
+              <h6>いいね♥<%= post.favorite_posts.count %></h6>
             <% elsif %>
               <h6>いいね♡<%= post.favorite_posts.count %></h6>
             <% end %>

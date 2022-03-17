@@ -1,23 +1,26 @@
 <div class="main">
     <%= render "layouts/navbar" %>
-    <section class="container user">
+    <section class="user">
         <div class="user_info">
             <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
             <% if current_end_user == @user %>
                 <h4><%= link_to "編集", information_path(@user), class: "user_edit" %></h4>
-            <% elsif  @user.following?(current_user) %>
-                <%= render "followers/unfollow",  user: @user %>
+            <% elsif current_end_user.following?(@user) %>
+                <div id="follow-button-<%= @user.id %>">
+                    <%= render "end_users/followers/unfollow",  user: @user %>
+                </div>
             <% else %>
-                <%= render "followers/follow",  user: @user %>
+                <div id="follow-button-<%= @user.id %>">
+                    <%= render "end_users/followers/follow",  user: @user %>
+                </div>
             <% end %>
         </div>
         <div class="user_title">
             <%= attachment_image_tag @user, :user_image, size:"100x100", fallback:"no_image.jpg"%>
-            <h4><%= @user.name %></h4>
+            <h4 class="user_name"><%= @user.name %></h4>
         </div>
         <div class="user_row">
             <div class="user_comment">
-                
                 <%= @user.user_comment %>
             </div>
         </div>

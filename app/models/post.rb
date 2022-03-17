@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_many :post_tags
   has_many :tags, through: :post_tags
   has_many :post_comments, dependent: :destroy
-  has_many :favorite_posts
+  has_many :favorite_posts, dependent: :destroy
 
   #通知機能
   has_many :notifications, dependent: :destroy
@@ -42,14 +42,14 @@ class Post < ApplicationRecord
   end
 
   def save_histories(post)
-    post.end_user.post_histories.new(post_id: post.id)
-    post.end_user.post_histories.save
+    post = post.end_user.post_histories.new(post_id: post.id)
+    post.save
   end
 
   #いいね通知機能
   def create_notification_like!(current_end_user)
     #既にいいねされているか検索する
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_end_user.id, end_user_id, id, 'like'])
     #いいねされていない場合のみ、通知レコード作成
     if temp.blank? #blank?はnilまたは空のオブジェクトを判定する
       notification = current_end_user.active_notifications.new(post_id: id, visited_id: end_user_id, action: 'like')

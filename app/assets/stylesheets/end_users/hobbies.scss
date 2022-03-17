@@ -2,9 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .hobbies{
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
+  width:100%;
   padding:23px;
 
   &_title{
@@ -55,9 +53,7 @@
 }
 
 .hobby-one{
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
+  width:100%;
   padding:23px;
 
   &_top{
@@ -90,14 +86,25 @@
   &_posts{
     display:flex;
     justify-content:center;
-    margin-top:30px;
+    flex-wrap:wrap;
+  }
+
+  &_post-user-link{
+    text-decoration:none;
+    color:black;
+  }
+
+  &_post-link{
+    text-decoration:none;
+    color:black;
   }
 
   // 投稿単体設定
   &_post{
     width:70%;
+    margin-top:30px;
   }
-  
+
   &_post-main{
     padding:20px 20px 0 20px;
     position:relative;
@@ -131,10 +138,14 @@
     text-align:center;
   }
 
-  &_post-list{
-    width:80%;
+  &_post-tag-list{
+    width:90%;
     display:flex;
     flex-wrap:wrap;
+  }
+
+  &_post-tag{
+    margin-right:10px;
   }
 
   &_post-sub{

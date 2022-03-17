@@ -15,7 +15,7 @@ class EndUsers::PostHistoriesController < ApplicationController
   end
 
   def destroy
-    PostHistory.find(params[:id]).destroy
+    Post.find(params[:id]).destroy
     redirect_to end_user_post_histories_path(current_end_user.id)
   end
 end

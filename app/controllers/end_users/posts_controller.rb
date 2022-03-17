@@ -7,10 +7,11 @@ class EndUsers::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:hobby_id])
-    @comments = @post.post_comments.order('created_at: desc').limit(3)
-    if @post.end_user_id != current_end_user
-      impressionist(@post, nil, unique[:session_hash.to_s])
+    @hobby = Hobby.find(params[:hobby_id])
+    @post = Post.find(params[:id])
+    @comments = @post.post_comments.order(created_at: :desc).limit(3)
+    if @post.end_user != current_end_user
+      impressionist(@post, nil, unique: [:session_hash.to_s])
     end
   end
 
@@ -24,7 +25,7 @@ class EndUsers::PostsController < ApplicationController
     @new_post = Post.new(post_params)
     @new_post.end_user = current_end_user
     @new_post.hobby_id = @hobby.id
-    @tags = params[:post][:name].split(',').uniq
+    @tags = params[:post][:name]
   end
 
   def create
@@ -32,7 +33,7 @@ class EndUsers::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     @post.hobby_id = @hobby.id
-    tags = params[:post][:name]
+    tags = params[:post][:name].split(',').uniq
     if @post.save
       @post.save_tags(tags)
       @post.save_histories(@post)
@@ -43,7 +44,7 @@ class EndUsers::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_back (fallback_loctaion :root_path)
+    redirect_to hobby_posts_path(params[:hobby_id])
   end
 
   private

@@ -7,14 +7,15 @@ class EndUser < ApplicationRecord
   attachment :user_image
 
   has_many :posts, through: :post_histories
-  has_many :favorite_posts
+  has_many :favorite_posts, dependent: :destroy
   has_many :post_comments
   has_many :post_histories
   has_many :favorite_hobbies
 
   # フォロー機能
   has_many :followers, dependent: :destroy #自分が持つフォローユーザー
-  has_many :followings, through: :followers, source: :follower　#followerモデルはfollowersモデルを参照
+  has_many :followings, through: :followers, source: :follow_user #followerモデルはfollowersモデルを参照
+
   has_many :passive_followers, class_name: 'Follower', foreign_key: 'follow_user_id', dependent: :destroy #その他のユーザーからおフォロー設定
   has_many :follow_users, through: :passive_followers, source: :end_user
 
@@ -28,24 +29,18 @@ class EndUser < ApplicationRecord
     FavoriteHobby.where(end_user_id: end_user.id).exists?
   end
 
-  # いいね機能
-  def favorite_posts?(end_user)
-    FavoritePost.where(end_user_id: end_user.id).exists?
-  end
-
   #フォロー機能メソッド
-  def following?(user)　#フォローの確認メソッド
-    followings.include?(user)
+  def following?(end_user) #フォローの確認メソッド
+    followings.include?(end_user)
   end
 
-  def follow(user) #フォロー作成メソッド
-    if self == user
-      followers.find_or_create_by!(follower: user)
-    end
+  def follow(end_user) #フォロー作成メソッド
+    return if self == end_user
+    followers.find_or_create_by!(follow_user: end_user)
   end
 
-  def unfollow(folllower_id) #フォロー削除メソッド
-    Follower.find(follower_id).destroy
+  def unfollow(follower_id) #フォロー削除メソッド
+    followers.find(follower_id).destroy!
   end
 
 end

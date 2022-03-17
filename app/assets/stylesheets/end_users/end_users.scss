@@ -3,9 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  width:100%;
   padding:23px;
 
   &_info{
@@ -16,7 +14,6 @@
 
   %_row{
     padding:25px;
-    width:90%;
     border-bottom:1px solid black;
     display:flex;
     align-items:center;
@@ -31,18 +28,15 @@
     }
   }
 
-
   &_title{
     padding:25px;
-    width:90%;
     display:flex;
     align-items:center;
     justify-content:center;
   }
 
-
-
   &_name{
+    width:70%;
     overflow-wrap:word-break;
   }
 

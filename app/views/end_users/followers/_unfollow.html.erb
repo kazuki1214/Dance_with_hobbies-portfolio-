@@ -1,3 +1,1 @@
-<div id="follow-button-#{user.id}">
-  <%= link_to "フォロー中", end_user_follower_path(user), class: "user_follow btn btn-dark", method: :delete, remote: true %>
-</div>
+<%= link_to "フォロー中", end_user_follower_path(user, current_end_user.followers.find_by(follow_user: user)), class: "user_follow btn btn-dark", method: :delete, remote: true %>

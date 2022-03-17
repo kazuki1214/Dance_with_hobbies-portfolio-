@@ -1,28 +1,31 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-  <div class="category category">
-    <div class="category-title">
-      <h1><%= hobby.title %></h1>
-      <div class="category-search"></div>
+  <div class="categories">
+    <div class="categories_title">
+      <h2>カテゴリー一覧</h2>
     </div>
 
     <% @categories.each do |category| %>
-      <div class="category_contents">
-        <div class="category_main">
-          <%= attachment_image_tag category, :category_image, size: "65x65" %>
-          <h3 class="category_name"><%= category.name %></h3>
+      <div class="categories_contents">
+        <div class="categories_main">
+          <%= attachment_image_tag category, :category_image, size:"65x65" %>
+          <h3 class="categories_name"><%= category.name %></h3>
         </div>
-        <% category.hobbies.each do |hobby| %>
-          <%= link_to hobby_path(hobby) do %>
-            <div class="category_hobby">
-              <%= attachment_image_tag hobby, :hobby_iamge, size: "50x50", fallback: "no_image.jpg" %>
-              <%= hobby.title, class: "category_hobby-name" %>
+        <div class="categories_hobby-list">
+          <% category.hobbies.each do |hobby| %>
+            <div class="categories_hobby">
+              <%= link_to hobby_path(hobby) do %>
+                <%= attachment_image_tag hobby, :hobby_image, size:"50x50", fallback: "no_image.jpg" %>
+                <div class="categories_hobby-name">
+                  <%= hobby.title %>
+                </div>
+              <% end %>
             </div>
           <% end %>
-        <% end %>
+        </div>
       </div>
     <% end %>
-    <div class="category_paginate">
+    <div class="categories_paginate">
       <%= paginate @categories %>
     </div>
   </div>

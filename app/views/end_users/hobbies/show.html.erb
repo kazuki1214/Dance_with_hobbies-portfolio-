@@ -1,6 +1,6 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-  <section class="hobby-one container">
+  <section class="hobby-one">
     <div class="hobby-one_info">
       <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
     </div>
@@ -17,11 +17,12 @@
     </div>
 
     <div class="hobby-one_posts">
+
       <% @posts.each do |post| %>
         <div class="hobby-one_post">
           <div class="hobby-one_post-main">
             <div class="hobby-one_post-user">
-            <%= link_to user_page_path(post.end_user.id) do %>
+            <%= link_to user_page_path(post.end_user.id), class: "hobby-one_post-user-link" do %>
               <%= attachment_image_tag post.end_user, :user_image, size: "70x70", fallback: "no_image.jpg" %>
               <%=  post.end_user.name %>
             <% end %>
@@ -31,24 +32,24 @@
               </div>
             </div>
 
-            <%= link_to hobby_post_path(post) do %>
+            <%= link_to hobby_post_path(post.hobby, post), class: "hobby-one_post-link" do %>
               <h4 class="hobby-one_post-title"><%= post.title %></h4>
               <div class="hobby-one_post-image">
                 <%= attachment_image_tag post, :post_image, size: "500x300" %>
               </div>
-              <div class="hobby-one_post-list">
-                <%= post.tags do |tag| %>
-                  <span><%= tag.name %></span>
+              <div class="hobby-one_post-tag-list">
+                <% post.tags.each do |tag| %>
+                  <span class="hobby-one_post-tag">#<%= tag.name %></span>
                 <% end %>
               </div>
             <% end %>
           </div>
+
           <div class="hobby-one_post-sub">
-            <h6><%= image_tag "eye.jpg" %><%= post.impressions.size %></h6>
             <h6 class="hobby-one_post-comment"><%= image_tag "comment.jpg" %><%= post.post_comments.count %>件</h6>
             <div class="hobby-one_post-favorite">
-              <% if current_end_user.favorite_posts?(current_end_user) %>
-                <h6>いいね🤍<%= post.favorite_posts.count %></h6>
+              <% if post.favorite_posts?(current_end_user) %>
+                <h6>いいね♥<%= post.favorite_posts.count %></h6>
               <% elsif %>
                 <h6>いいね♡<%= post.favorite_posts.count %></h6>
               <% end %>

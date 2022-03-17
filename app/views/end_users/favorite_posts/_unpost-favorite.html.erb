@@ -1,3 +1,3 @@
-<%= link_to  hobby_post_favorite_posts_path(post.hobby.id, post.id), method: :delete, remote: true do %>
-  <h6>いいね🤍<%= post.favorite_posts.count %></h6>
+<%= link_to hobby_post_favorite_posts_path(post.hobby, post), method: :delete, remote: true do %>
+  <h6 style="color:black;">いいね♥<%= post.favorite_posts.count %></h6>
 <% end %>
