@@ -3,12 +3,12 @@ class EndUsers::PostHistoriesController < ApplicationController
 
   def index
     @end_user = EndUser.find(params[:end_user_id])
-    @posts = @end_user.post_histories.all
+    @posts = Post.where(id: @end_user.post_histories.pluck(:post_id)).page(params[:page]).order(created_at: :desc)
   end
 
   def show
     @end_user = EndUser.find(params[:end_user_id])
-    @post = @end_user.posthistories.find(params[:id])
+    @post = Post.find(id: @end_user.post_histories.find(params[:id]).post_id)
     if @post.end_user != current_end_user
       impressionist(@post, nil, unique: [:session_hash.to_s])
     end

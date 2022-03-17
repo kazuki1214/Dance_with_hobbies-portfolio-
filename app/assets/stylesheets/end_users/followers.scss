@@ -2,26 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .follow{
+  width:100%;
+  padding:23px;
 
   &_top{
+    padding:10px;
+    border-bottom:1px solid black;
     display:flex;
     justify-content:center;
-    border-bottom:1px solid black;
-  }
-
-  &_user{
-    padding:60px;
-    border-bottom:1px solid whitesmoke;
-    display:flex;
     align-items:center;
   }
 
-  &_name{
-    overflow-wrap:word-break;
+  &_user{
+    padding:12px 20px;
+    border-bottom:1px solid black;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
   }
 
-  &_buttom{
-    margin-left:auto;
+  &_user-link{
+    display:flex;
+    align-items:center;
   }
 
 }

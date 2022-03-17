@@ -14,20 +14,16 @@ class EndUser < ApplicationRecord
 
   # フォロー機能
   has_many :followers, dependent: :destroy #自分が持つフォローユーザー
-  has_many :followings, through: :followers, source: :follow_user #followerモデルはfollowersモデルを参照
+  # followingsでフォローしているユーザーを取得
+  has_many :followings, through: :followers, source: :follow_user #follow_userモデルはfollowersモデルを参照
 
-  has_many :passive_followers, class_name: 'Follower', foreign_key: 'follow_user_id', dependent: :destroy #その他のユーザーからおフォロー設定
+  has_many :passive_followers, class_name: 'Follower', foreign_key: 'follow_user_id', dependent: :destroy #その他のユーザーからのフォロー設定
   has_many :follow_users, through: :passive_followers, source: :end_user
 
   # 通知機能
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy #自分からの送信
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy #相手からの送信
 
-
-  #お気に入り機能メソッド
-  def favorite_hobbies?(end_user)
-    FavoriteHobby.where(end_user_id: end_user.id).exists?
-  end
 
   #フォロー機能メソッド
   def following?(end_user) #フォローの確認メソッド

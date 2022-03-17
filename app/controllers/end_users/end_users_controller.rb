@@ -2,6 +2,7 @@ class EndUsers::EndUsersController < ApplicationController
 
   def show
     @user = EndUser.find(params[:id])
+    @hobbies = Hobby.where(id: @user.favorite_hobbies.pluck(:hobby_id)).all
   end
 
   def edit

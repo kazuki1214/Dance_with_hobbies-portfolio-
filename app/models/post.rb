@@ -17,7 +17,7 @@ class Post < ApplicationRecord
 
   # いいね機能
   def favorite_posts?(end_user)
-    FavoritePost.where(end_user_id: end_user.id).exists?
+    favorite_posts.where(end_user_id: end_user.id).exists?
   end
 
   #タグ作成機能

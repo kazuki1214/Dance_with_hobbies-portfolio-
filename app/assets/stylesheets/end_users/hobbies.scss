@@ -61,10 +61,14 @@
     width:100%;
     border-bottom:1px solid black;
     display:flex;
-    justify-content:center;
+    justify-content:space-around;
     align-items:center;
   }
 
+  &_title{
+    display:flex;
+    align-items:center;
+  }
 
   &_introduction{
     width:100%;

@@ -1,8 +1,8 @@
 class EndUsers::FollowersController < ApplicationController
 
   def index
-    @user = EndUser.find(params[:end_user])
-    @followers = @user.followers.all
+    @user = EndUser.find(params[:end_user_id])
+    @followers = @user.followings.all
   end
 
   def create

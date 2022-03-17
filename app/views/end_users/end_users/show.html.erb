@@ -6,13 +6,9 @@
             <% if current_end_user == @user %>
                 <h4><%= link_to "編集", information_path(@user), class: "user_edit" %></h4>
             <% elsif current_end_user.following?(@user) %>
-                <div id="follow-button-<%= @user.id %>">
-                    <%= render "end_users/followers/unfollow",  user: @user %>
-                </div>
+                <%= render "end_users/followers/unfollow",  user: @user %>
             <% else %>
-                <div id="follow-button-<%= @user.id %>">
-                    <%= render "end_users/followers/follow",  user: @user %>
-                </div>
+                <%= render "end_users/followers/follow",  user: @user %>
             <% end %>
         </div>
         <div class="user_title">
@@ -31,8 +27,15 @@
         <div class="user_row">
             <p>お気に入りの趣味:</p>
             <div class="user_favorite-hobbies">
-                <% @user.favorite_hobbies.each do |hobby| %>
-                    <%= hobby.title %>
+                <% @hobbies.each do |hobby| %>
+                    <div class="user_hobby">
+                        <%= link_to hobby_path(hobby) do %>
+                            <div class="user_hobby-name">
+                                <%= attachment_image_tag hobby, :hobby_image, size:"50x50", fallback: "no_image.jpg" %>
+                                <%= hobby.title %>
+                            </div>
+                        <% end %>
+                    </div>
                 <% end %>
             </div>
         </div>

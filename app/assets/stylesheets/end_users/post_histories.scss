@@ -3,58 +3,68 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-posts{
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
+  width:100%;
   padding:23px;
 
   &_top{
-    padding:20px;
-    width:90%;
-    border-bottom:1px solid black;
     padding:10px;
+    border-bottom:1px solid black;
     display:flex;
     justify-content:center;
   }
 
+  &_user-title{
+    display:flex;
+    align-items:center;
+  }
 
   &_index{
     display:flex;
     justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  &_post-link{
+    color:black;
+  }
+
+  &_post{
+    width:70%;
     margin-top:30px;
   }
 
-  &_main{
-    display:flex;
-    justify-content:center;
+  &_post-main{
     padding:20px 20px 0 20px;
     position:relative;
     z-index:2;
     border:1px solid black;
-    width:80%;
+    background-color:white;
   }
 
   &_post-user{
-    width:90%;
+    color:black;
     border-bottom:1px solid black;
     display:flex;
+    align-items:center;
   }
 
   &_post-created{
     margin-left:auto;
-    display:flex;
-    flex-wrap:wrap;
-    width:40%;
+  }
+
+  &_post-created-time{
+    margin-bottom:5px;
   }
 
   &_post-title{
-    width:80%;
+    width:98%;
+    padding:10px;
+    margin:0;
     overflow-wrap:break-word;
   }
 
   &_post-image{
-    width:550px;
-    height:350px;
+    text-align:center;
   }
 
   &_post-list{
@@ -65,104 +75,107 @@
 
   &_post-sub{
     position:relative;
-    bottom:50px;
+    bottom:20px;
     left:50px;
     z-index:1;
     border:1px solid black;
-    height:80px;
-    width:80%;
+    height:55px;
     display:flex;
     justify-content:space-around;
     align-items:flex-end;
+    background-color:white;
   }
 }
 
 .user-post{
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
+  width:100%;
   padding:23px;
 
-  &_back{
-    width:90%;
-    text-align:left;
+
+
+  &_bottom{
+    padding:10px;
+    display:flex;
+    justify-content:center;
   }
 
-  &_back-span{
-    font-size:30px;
-    color:black;
-  }
-
-  &_back-span:active{
-    color:red;
+  &_post{
+    width:70%;
+    margin-top:30px;
   }
 
   &_main{
-    margin-top:30px;
-    display:flex;
-    justify-content:center;
     padding:20px 20px 0 20px;
+    border:1px solid black;
     position:relative;
     z-index:2;
-    border:1px solid black;
-    width:80%;
+    background-color:white;
   }
 
   &_user{
-    width:90%;
     border-bottom:1px solid black;
     display:flex;
+    align-items:center;
   }
 
   &_created{
     margin-left:auto;
   }
 
+  &_created-time{
+    margin-bottom:5px;
+  }
+
   &_title{
-    width:80%;
+    width:98%;
+    padding:10px;
+    margin:0;
     overflow-wrap:break-word;
   }
 
   &_image{
-    width:60%;
-    height:300px;
+    text-align:center;
   }
 
-
-  &_list{
-    width:80%;
+  &_tag-list{
+    width:90%;
     display:flex;
     flex-wrap:wrap;
   }
 
+  &_tag{
+    margin-right:10px;
+  }
+
   &_body{
-    width:90%;
+    width:98%;
     overflow-wrap:break-word;
   }
 
   &_sub{
+    border:1px solid black;
     position:relative;
-    bottom:50px;
+    bottom:20px;
     left:50px;
     z-index:1;
+    background-color:white;
   }
 
   &_content{
-    width:80%;
-    height:80px;
-    border:1px solid black;
+    height:55px;
+    border-bottom:1px solid black;
     display:flex;
     justify-content:space-around;
     align-items:flex-end;
   }
 
   &_comment{
-    width:80%;
-    border:1px solid black;
+    border-bottom:1px solid black;
   }
 
   &_comment-user{
     width:90%;
+    margin:auto;
     display:inline-block;
   }
 
@@ -171,23 +184,19 @@
   }
 
   &_comment-main{
-    width:70%;
+    padding:5px;
+    width:90%;
     overflow-wrap:break-word;
-    display:flex;
-    justify-content:center;
   }
 
   &_all-comment{
-    width:50%;
-    padding-top:10px;
-    padding-bottom:10px;
-    border:1px solid black;
+    padding-top:5px;
+    padding-bottom:5px;
     text-align:center;
-    border-radius:3px;
   }
 
   &_delete{
     width:90%;
-    text-align:light;
+    text-align:right;
   }
 }

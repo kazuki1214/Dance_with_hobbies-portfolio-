@@ -86,14 +86,6 @@ body{
 }
 
 
-.user-top{
-    padding:20px;
-    width:100%;
-    display:flex;
-    justify-content:space-around;
-    border-bottom:1px solid black;
-}
-
 .main {
   display: flex;
 }
@@ -121,12 +113,17 @@ body{
   width: 100%;
   text-align: right;
   padding: 20px 10px;
+  margin-bottom: 3px;
+  overflow-wrap:word-break;
+  background-color: rgb(250, 69, 69);
   transition:width 0.2s 0s ease;
+  box-shadow: 2px 2px 4px;
   border-right: 1px solid rgba(255, 217, 0, 0.884);
   border-bottom: 1px solid rgba(255, 217, 0, 0.884);
-  box-shadow: 2px 2px 4px;
-  background-color: rgb(250, 69, 69);
-  margin-bottom: 3px;
+}
+
+.nav-items-user{
+  color:white;
 }
 
 a:hover{
@@ -175,7 +172,6 @@ a:hover{
     color:white;
   }
 }
-
 
 
 // ユーザー登録画面
@@ -236,6 +232,10 @@ a:hover{
   .nav-items {
     width: auto;
     padding: 5px;
+  }
+
+  .nav-items-user{
+    display:none;
   }
 
   .nav-items:hover {

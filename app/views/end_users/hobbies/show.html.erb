@@ -5,8 +5,21 @@
       <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
     </div>
     <div class="hobby-one_top">
-      <%= attachment_image_tag @hobby, :hobby_image, size: "120x120", fallback: "no_image.jpg", class: "hobby-one_image" %>
-      <h3><%= @hobby.title %></h3>
+      <div class="hobby-one_title">
+        <%= attachment_image_tag @hobby, :hobby_image, size: "120x120", fallback: "no_image.jpg", class: "hobby-one_image" %>
+        <h3><%= @hobby.title %></h3>
+      </div>
+      <% if end_user_signed_in? %>
+        <% if @hobby.favorite_hobbies?(current_end_user) %>
+            <div class="hobby-one_favorite" id="hobby-favorite-button-<%= @hobby.id %>">
+              <%= render "end_users/favorite_hobbies/unhobby-favorite", hobby: @hobby %>
+            </div>
+          <% else %>
+            <div class="hobby-one_favorite" id="hobby-favorite-button-<%= @hobby.id %>">
+              <%= render "end_users/favorite_hobbies/hobby-favorite", hobby: @hobby %>
+            </div>
+        <% end %>
+      <% end %>
     </div>
     <div class="hobby-one_introduction">
       <%= @hobby.introduction %>

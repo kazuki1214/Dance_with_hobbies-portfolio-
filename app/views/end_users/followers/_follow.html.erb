@@ -1,1 +1,3 @@
-<%= link_to "フォローする", end_user_followers_path(user, follow_user: user), class: "user_follow btn btn-light", method: :post, remote: true %>
+<div id="follow-button-<%= user.id %>">
+  <%= link_to "フォローする", end_user_followers_path(user, follow_user: user), class: "user-follow btn btn-light", method: :post, remote: true %>
+</div>

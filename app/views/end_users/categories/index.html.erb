@@ -15,8 +15,8 @@
           <% category.hobbies.each do |hobby| %>
             <div class="categories_hobby">
               <%= link_to hobby_path(hobby) do %>
-                <%= attachment_image_tag hobby, :hobby_image, size:"50x50", fallback: "no_image.jpg" %>
                 <div class="categories_hobby-name">
+                  <%= attachment_image_tag hobby, :hobby_image, size:"50x50", fallback: "no_image.jpg" %>
                   <%= hobby.title %>
                 </div>
               <% end %>

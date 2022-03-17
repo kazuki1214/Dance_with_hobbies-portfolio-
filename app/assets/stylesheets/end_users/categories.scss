@@ -14,35 +14,44 @@
   }
 
   &_contents{
-    padding:20px 20px 100px 20px;
-    width:90%;
+    padding:20px 20px 40px 20px;
     border-bottom:1px solid black;
   }
 
   &_main{
+    padding:3px;
+    margin-bottom:8px;
     border:1px solid black;
-    padding:20px;
     display:flex;
+    align-items:center;
+    background-color:white;
   }
 
   &_name{
     margin-left:10px;
   }
 
+  &_hobby-list{
+    display:flex;
+    flex-wrap:wrap;
+  }
+
   &_hobby{
-    width:200px;
-    padding:10px;
     border:1px solid black;
     display:flex;
     align-items:center;
-  }
-
-  &_hobby-name{
     margin-left:10px;
   }
 
+  &_hobby-name{
+    display:flex;
+    align-items:center;
+    width:200px;
+    margin:5px;
+  }
+
   &_paginate{
-    width:100%;
+    margin:10px;
     display:flex;
     justify-content:space-around;
   }
