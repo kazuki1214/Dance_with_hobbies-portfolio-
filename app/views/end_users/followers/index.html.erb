@@ -13,23 +13,23 @@
     </div>
 
     <% @followers.each do |follower| %>
-    <div class="follow_user">
-      <%= link_to user_page_path(follower) do %>
-        <div class="follow_user-link">
-          <%= attachment_image_tag follower, :user_image, size: "70x70", fallback: "no_image.jpg" %>
-          <div class="follow_name">
-            <%= follower.name %>
+      <div class="follow_user">
+        <%= link_to user_page_path(follower) do %>
+          <div class="follow_user-link">
+            <%= attachment_image_tag follower, :user_image, size: "70x70", fallback: "no_image.jpg" %>
+            <div class="follow_name">
+              <%= follower.name %>
+            </div>
           </div>
-        </div>
-      <% end %>
-      <div class="follow_buttom">
-        <% if  current_end_user.following?(follower) %>
-          <%= render "end_users/followers/unfollow",  user: follower %>
-        <% else %>
-          <%= render "end_users/followers/follow",  user: follower %>
         <% end %>
+        <div class="follow_buttom">
+          <% if  current_end_user.following?(follower) %>
+            <%= render "end_users/followers/unfollow",  user: follower %>
+          <% else %>
+            <%= render "end_users/followers/follow",  user: follower %>
+          <% end %>
+        </div>
       </div>
-    </div>
     <% end %>
 
   </section>

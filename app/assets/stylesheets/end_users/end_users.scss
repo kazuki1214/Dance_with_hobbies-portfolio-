@@ -43,4 +43,56 @@
   &_comment{
     overflow-wrap:word-break;
   }
+
+   &_favorite-hobbies{
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  &_hobby{
+    border:1px solid black;
+    display:flex;
+    align-items:center;
+    margin-left:10px;
+  }
+
+  &_hobby-name{
+    display:flex;
+    align-items:center;
+    width:200px;
+    margin:5px;
+  }
+}
+
+.user_edit{
+  width:100%;
+  padding:23px;
+  
+  &_image{
+    display:felx;
+    justify-content:center;
+    align-items:end;
+    margin-bottom:45px;
+  }
+  
+  &_name{
+    display:felx;
+    justify-content:center;
+    
+    margin-bottom:30px;
+  }
+  
+  &_email{
+    display:felx;
+    justify-content:center;
+    
+    margin-bottom:30px;
+  }
+  
+  &_comment{
+    display:felx;
+    justify-content:center;
+    
+    margin-bottom:30px;
+  }
 }

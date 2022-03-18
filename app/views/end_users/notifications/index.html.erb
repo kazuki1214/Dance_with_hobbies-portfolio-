@@ -1,16 +1,22 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-    <div class="notifications">
-        <div class="notifications_user-title">
-            <%= attachment_image_tag current_end_user, :user_image, size:"200x200", fallback: "no_image.jpg"%>
-            <%= current_end_user.name , class: "user_name" %>
+    <section class="notifications">
+        <div class="notifications_back">
+            <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
+        </div>
+
+        <div class="notifications_top">
+            <%= attachment_image_tag current_end_user, :user_image, size:"90x90", fallback: "no_image.jpg"%>
+            <h3 class="notifications_user-name">
+                <%= current_end_user.name %>
+            </h3>
         </div>
         <% @notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
 
         <% if @notifications.exists? %>
             <% @notifications.each do |notification| %>
-                <%= render "notifications/notifications" notifications: notification %>
+                <%= render "end_users/notifications/notifications", notifications: notification %>
             <% end %>
         <% end %>
-    </div>
+    </seection>
 </div>

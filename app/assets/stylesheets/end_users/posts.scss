@@ -166,26 +166,23 @@
   }
 
   &_comment{
+    padding:0 5px;
     border-bottom:1px solid black;
   }
 
   &_comment-user{
-    width:90%;
-    margin:auto;
-    display:inline-block;
-  }
-
-  &_comment-created{
-    margin-left:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid black;
   }
 
   &_comment-main{
     padding:5px;
-    width:90%;
     overflow-wrap:break-word;
   }
 
-  &_all-comment{
+  &_link-comment{
     padding-top:5px;
     padding-bottom:5px;
     text-align:center;

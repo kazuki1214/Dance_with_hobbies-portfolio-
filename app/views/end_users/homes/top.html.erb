@@ -41,9 +41,11 @@
     <div class="home_ranking mb-3">
       <div class="home_ranking-title"><h5>おすすめの趣味</h5></div>
       <% @ranking_hobbies.each do |hobby| %>
-        <div class="home_hobby mb-3">
-          <%= link_to hobby_path(hobby) do %>
-            <%= attachment_image_tag hobby, :hobby_image, size: "150x150", format: "jpg" %><%= hobby.title %>
+          <div class="home_hobby mb-3 ">
+            <%= link_to hobby_path(hobby) do %>
+              <div class="home_hobby-link">
+                  <%= attachment_image_tag hobby, :hobby_image, size: "100x100", format: "jpg" %>　<%= hobby.title %>
+              </div>
           <% end %>
         </div>
       <% end %>
@@ -52,16 +54,18 @@
     <div class="home_ranking">
       <div class="home_ranking-title"><h5>今注目されている投稿</h5></div>
       <% @ranking_posts.each do |post| %>
-        <%= link_to hobby_post_path(post.hobby, post) do %>
-          <div class="home_post mb-3">
-            <%= attachment_image_tag post, :post_image,size:"100x100", class: "home_post-image", format: "jpg" %>
-            <%= post.title %>
-            <div class="home_post-sub">
-              <%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
-              <%= post.hobby.title %>
+        <div class="home_post mb-3">
+          <%= link_to hobby_post_path(post.hobby, post) do %>
+            <div class="home_post-link">
+              <%= attachment_image_tag post, :post_image,size:"100x100", class: "home_post-image", format: "jpg" %>
+              <%= post.title %>
+              <div class="home_post-sub">
+                <%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
+                <%= post.hobby.title %>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
