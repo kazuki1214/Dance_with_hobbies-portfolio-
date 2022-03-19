@@ -1,10 +1,10 @@
 <div class="main">
   <%= render "layouts/navbar" %>
   <section class="user-edit">
-    <%= form_with model: @user, local: true do |f| %>
-      <div class="follow_back">
+    <%= form_with model:[:end_users, @user], url: end_user_path(@user), local: true do |f| %>
+      <div class="user-edit_info">
         <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
-        <h4><%= f.submit "更新", class:"ml-auto" %></h4>
+        <h4><%= f.submit "更新", class:"user-edit_submit" %></h4>
       </div>
 
       <div class="user-edit_image">
@@ -17,11 +17,6 @@
         <%= f.text_field :name, class:"user-edit_name-field" %>
       </div>
 
-      <div class="user-edit_email">
-        <%= f.label :email, "メールアドレス:", class:"user-edit_email-label" %>
-        <%= f.email_field :email, class:"user-edit_email-field" %>
-      </div>
-
       <div class="user-edit_comment">
         <%= f.label :user_comment, "紹介文:", class: "user-edit_comment-label" %>
         <%= f.text_area :user_comment, class:"user-edit_comment-field" %>
@@ -30,7 +25,7 @@
     <% end %>
 
     <div class="user-edit_delete">
-      <%= link_to "ユーザー削除", withdraw_end_user_path(@user), "data-confirm" => "本当に退会しますか？\n(ユーザーを削除しても投稿データは残ります)" %>
+      <%= link_to "ユーザー削除", withdraw_end_user_path(@user),class: "user-edit_delete-button", "data-confirm" => "本当に退会しますか？\n(ユーザーを削除しても投稿データは残ります)" %>
     </div>
   </section>
 </div>

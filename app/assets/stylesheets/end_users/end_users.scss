@@ -40,6 +40,10 @@
     overflow-wrap:word-break;
   }
 
+  &_email{
+    margin-left:10px;
+  }
+
   &_comment{
     overflow-wrap:word-break;
   }
@@ -64,35 +68,90 @@
   }
 }
 
-.user_edit{
+.user-edit{
   width:100%;
   padding:23px;
-  
+
+  &_info{
+    padding:10px;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  &_submit{
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    color:#007bff;
+    background-color: white;
+    border: none;
+  }
+
   &_image{
-    display:felx;
+    display:flex;
     justify-content:center;
-    align-items:end;
     margin-bottom:45px;
+    align-items:flex-end;
   }
-  
+
   &_name{
-    display:felx;
+    display:flex;
     justify-content:center;
-    
-    margin-bottom:30px;
+    align-items:baseline;
+    margin-bottom:50px;
   }
-  
-  &_email{
-    display:felx;
-    justify-content:center;
-    
-    margin-bottom:30px;
+
+  &_name-label{
+    width:135px;
+    text-align:right;
   }
-  
+
+  &_name-field{
+    margin-left:50px;
+    width:500px;
+    padding:5px;
+  }
+
   &_comment{
-    display:felx;
+    display:flex;
     justify-content:center;
-    
-    margin-bottom:30px;
+    align-items:baseline;
+    margin-bottom:50px;
+  }
+
+  &_comment-label{
+    width:135px;
+    text-align:right;
+  }
+
+  &_comment-field{
+    width:500px;
+    height:85px;
+    padding:5px;
+    margin-left:50px;
+  }
+
+  &_delete{
+    display:flex;
+    justify-content:center;
+  }
+
+  &_delete-button{
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    padding:6px 16px;
+    border:1px solid black;
+    border-radius:5px;
+    transition:0.3s;
+    color:black;
+  }
+
+  &_delete-button:hover{
+     background-color:#dc3545;
+     color:white;
   }
 }

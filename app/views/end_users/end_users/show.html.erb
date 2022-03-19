@@ -15,14 +15,18 @@
             <%= attachment_image_tag @user, :user_image, size:"100x100", fallback:"no_image.jpg"%>
             <h4 class="user_name"><%= @user.name %></h4>
         </div>
+        <% if @user == current_end_user %>
+            <div class="user_row">
+                <p>メールアドレス:</p>
+                <div class="user_email">
+                    <%= @user.email %>
+                </div>
+            </div>
+        <% end %>
         <div class="user_row">
             <div class="user_comment">
                 <%= @user.user_comment %>
             </div>
-        </div>
-        <div class="user_row">
-            <p>メールアドレス:</p>
-            <%= @user.email %>
         </div>
         <div class="user_row">
             <p>お気に入りの趣味:</p>

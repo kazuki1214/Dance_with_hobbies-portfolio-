@@ -12,7 +12,7 @@ class EndUsers::EndUsersController < ApplicationController
   def update
     user = current_end_user
     user.update(user_params)
-    redirect_to end_user_path(user)
+    redirect_to user_page_path(user)
   end
 
   def withdraw
@@ -24,7 +24,7 @@ class EndUsers::EndUsersController < ApplicationController
   private
 
   def user_params
-    params.require(:end_user).permit(:name, :email, :user_commet, :user_image )
+    params.require(:end_user).permit(:name, :user_comment, :user_image )
   end
 
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root "homes#top"
     get "end_users/:id/user_page" => "end_users#show", as: "user_page"
     get "end_user/:id/information" => "end_users#edit", as: "information"
-    resources :end_user, only:[:update] do
+    resources :end_users, only:[:update] do
       member do
         patch :withdraw
       end

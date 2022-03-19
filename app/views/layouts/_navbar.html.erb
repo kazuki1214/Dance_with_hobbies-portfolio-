@@ -21,10 +21,10 @@
         <%= link_to end_user_post_histories_path(current_end_user.id) do %> <div class="nav-items"><span class="text-light">投稿履歴</span></div><% end %>
         <%= link_to end_user_notifications_path(current_end_user.id) do %>
           <div class="nav-items">
-            <span class="text-light">通知一覧</span>
             <% if unchecked_notifications.any? %>
               <span class="nav-icon">New!</span>
             <% end %>
+            <span class="text-light">通知一覧</span>
           </div>
         <% end %>
         <%= link_to destroy_end_user_session_path, method: :delete do %> <div class="nav-items"><span class="text-light">ログアウト</span></div><% end %>
