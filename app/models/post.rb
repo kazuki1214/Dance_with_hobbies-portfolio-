@@ -15,6 +15,11 @@ class Post < ApplicationRecord
 
   attachment :post_image
 
+  #検査機能
+  def self.search(keyword)
+    where(["title like? OR body like? OR tags like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
+
   # いいね機能
   def favorite_posts?(end_user)
     favorite_posts.where(end_user_id: end_user.id).exists?
@@ -41,6 +46,7 @@ class Post < ApplicationRecord
 
   end
 
+  #投稿履歴機能
   def save_histories(post)
     post = post.end_user.post_histories.new(post_id: post.id)
     post.save

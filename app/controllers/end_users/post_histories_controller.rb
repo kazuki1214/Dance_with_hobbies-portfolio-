@@ -18,4 +18,8 @@ class EndUsers::PostHistoriesController < ApplicationController
     Post.find(params[:id]).destroy
     redirect_to end_user_post_histories_path(current_end_user.id)
   end
+
+  def search
+  end
+
 end

@@ -18,6 +18,7 @@ class EndUsers::EndUsersController < ApplicationController
   def withdraw
     user = current_end_user
     user.update(is_deleted: true)
+    reset_session
     redirect_to root_path
   end
 

@@ -8,4 +8,8 @@ class EndUsers::HobbiesController < ApplicationController
     @hobby = Hobby.find(params[:id])
     @posts = @hobby.posts.order(created_at: :desc).limit(3)
   end
+
+  def search
+  end
+
 end

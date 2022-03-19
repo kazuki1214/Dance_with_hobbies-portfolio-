@@ -12,11 +12,8 @@
             </h3>
         </div>
         <% @notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
-
-        <% if @notifications.exists? %>
-            <% @notifications.each do |notification| %>
-                <%= render "end_users/notifications/notifications", notifications: notification %>
-            <% end %>
+        <% @notifications.each do |notification| %>
+            <%= render "end_users/notifications/notifications", notification: notification %>
         <% end %>
-    </seection>
+    </section>
 </div>

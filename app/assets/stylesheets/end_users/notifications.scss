@@ -18,10 +18,16 @@
     padding:12px 20px;
     margin:10px;
   }
+
   &_text{
     margin-bottom:5px;
   }
+
+  &_comment{
+    color: gray;
+  }
+
   &_time{
-    align-items:left;
+    text-align:right;
   }
 }

@@ -33,4 +33,13 @@ class EndUsers::SessionsController < Devise::SessionsController
     root_path
   end
 
+  def reject_inactive_customer
+    @user = EndUser.find_by(email: params[:end_user][:email])
+    if @user
+      if @user.valid_password?(params[:end_user][:password]) && @user.is_deleted == true
+        redirect_to new_end_user_session_path
+      end
+    end
+  end
+
 end

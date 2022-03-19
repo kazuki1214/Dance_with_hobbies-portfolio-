@@ -47,6 +47,10 @@ class EndUsers::PostsController < ApplicationController
     redirect_to hobby_posts_path(params[:hobby_id])
   end
 
+  def search
+    
+  end
+
   private
 
   def post_params
