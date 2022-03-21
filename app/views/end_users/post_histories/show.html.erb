@@ -32,9 +32,9 @@
           <div class="user-post_image">
             <%= attachment_image_tag @post, :post_image, size: "500x300" %>
           </div>
-          <div class="user-post_taglist">
+          <div class="user-post_tag-list">
             <% @post.tags.each do |tag| %>
-              <span class="posts_tag">#<%= tag.name %></span>
+              <span class="user-post_tag">#<%= tag.name %></span>
             <% end %>
           </div>
           <div class="user-post_body">

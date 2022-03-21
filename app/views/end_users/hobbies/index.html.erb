@@ -3,7 +3,12 @@
   <section class="hobbies">
     <div class="hobbies_title">
       <h2>趣味一覧</h2>
-      <div class="hobbies_search"></div>
+      <%= form_with url: search_hobbies_path, method: :get, local: true do |search| %>
+        <div class="hobbies_search">
+          <%= search.text_field :keyword, class: "hobbies_serch-field", placeholder: "趣味検索" %>
+          <%= search.submit "検索", class: "hobbies_serch-submit" %>
+        </div>
+      <% end %>
     </div>
 
     <div class="hobbies_contents">

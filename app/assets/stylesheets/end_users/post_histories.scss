@@ -10,12 +10,24 @@
     padding:10px;
     border-bottom:1px solid black;
     display:flex;
-    justify-content:center;
+    align-items:center;
+    justify-content:space-around;
   }
 
-  &_user-title{
+  &_search{
     display:flex;
-    align-items:center;
+    flex-direction:column;
+  }
+
+  &_serch-field{
+    width:250px;
+    padding:1px;
+    margin-bottom:10px;
+  }
+
+  &_serch-submit{
+    width:80px;
+    margin-left:auto;
   }
 
   &_index{
@@ -67,10 +79,13 @@
     text-align:center;
   }
 
-  &_post-list{
-    width:80%;
+  &_post-tag-list{
     display:flex;
     flex-wrap:wrap;
+  }
+
+  &_post-tag{
+    margin-left:5px;
   }
 
   &_post-sub{
@@ -138,13 +153,12 @@
   }
 
   &_tag-list{
-    width:90%;
     display:flex;
     flex-wrap:wrap;
   }
 
   &_tag{
-    margin-right:10px;
+    margin-left:5px;
   }
 
   &_body{

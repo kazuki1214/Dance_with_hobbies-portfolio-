@@ -6,6 +6,13 @@ class EndUsers::PostsController < ApplicationController
     @posts = @hobby.posts.page(params[:page]).order(created_at: :desc)
   end
 
+  def search
+    @hobby = Hobby.find(params[:hobby_id])
+    @posts = @hobby.posts.search(params[:keyword]).page(params[:page]).order(created_at: :desc)
+    @keyword = params[:keyword]
+    render :index
+  end
+
   def show
     @hobby = Hobby.find(params[:hobby_id])
     @post = Post.find(params[:id])
@@ -36,7 +43,6 @@ class EndUsers::PostsController < ApplicationController
     tags = params[:post][:name].split(',').uniq
     if @post.save
       @post.save_tags(tags)
-      @post.save_histories(@post)
       redirect_to hobby_post_path(@hobby.id,@post.id)
     end
   end
@@ -45,10 +51,6 @@ class EndUsers::PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     redirect_to hobby_posts_path(params[:hobby_id])
-  end
-
-  def search
-    
   end
 
   private

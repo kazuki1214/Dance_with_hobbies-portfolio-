@@ -1,17 +1,13 @@
 <div class="hobby-top">
   <div class="hobby-title">
-    <%= attachment_image_tag hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %>
-    <h3><%= hobby.title %></h3>
-    <% if end_user_signed_in? %>
-      <% if current_page?(hobby_posts_path) %>
-        <%= link_to new_hobby_post_path(hobby.id), class: "ml-auto" do %>
-          <button class="new-post-button">新規投稿</button>
+    <h3><%= attachment_image_tag hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %><%= hobby.title %></h3>
+    <% if current_page?(hobby_posts_path) %>
+      <%= form_with url: search_hobby_posts_path(hobby), method: :get, local: true do |search| %>
+          <div class="post-search">
+            <%= search.text_field :keyword, class: "post-search-field", placeholder: "投稿検索" %>
+            <%= search.submit "検索", class: "post-search-submit" %>
+          </div>
         <% end %>
-      <% end %>
     <% end %>
   </div>
-  <% if current_page?(hobby_posts_path) %>
-    <div class="post-search">
-    </div>
-  <% end %>
 </div>

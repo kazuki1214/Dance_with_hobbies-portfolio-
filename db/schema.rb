@@ -145,13 +145,6 @@ ActiveRecord::Schema.define(version: 2022_03_09_134135) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_histories", force: :cascade do |t|
-    t.integer "end_user_id"
-    t.integer "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "post_tags", force: :cascade do |t|
     t.integer "post_id"
     t.integer "tag_id"

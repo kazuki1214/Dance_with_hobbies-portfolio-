@@ -6,6 +6,11 @@ class Hobby < ApplicationRecord
 
   attachment :hobby_image
 
+  #検索機能
+  def self.search(keyword)
+    self.where(["title like?", "%#{keyword}%"])
+  end
+  
   #お気に入り機能メソッド
   def favorite_hobbies?(end_user)
     favorite_hobbies.where(end_user_id: end_user.id).exists?

@@ -3,7 +3,13 @@ class EndUsers::PostHistoriesController < ApplicationController
 
   def index
     @end_user = EndUser.find(params[:end_user_id])
-    @posts = Post.where(id: @end_user.post_histories.pluck(:post_id)).page(params[:page]).order(created_at: :desc)
+    @posts = Post.where(id: @end_user.post_ids).page(params[:page]).order(created_at: :desc)
+  end
+
+  def search
+    @end_user = EndUser.find(params[:end_user_id])
+    @posts = Post.search_add_hobby(params[:keyword]).where(id: @end_user.post_ids).page(params[:page]).order(created_at: :desc)
+    render :index
   end
 
   def show
@@ -17,9 +23,6 @@ class EndUsers::PostHistoriesController < ApplicationController
   def destroy
     Post.find(params[:id]).destroy
     redirect_to end_user_post_histories_path(current_end_user.id)
-  end
-
-  def search
   end
 
 end

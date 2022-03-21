@@ -5,15 +5,36 @@
   width:100%;
   padding:23px;
 
-  &_top{
+  // 投稿一覧のtopの設定
+  .hobby-title{
     padding:20px;
-    width:90%;
+    width:100%;
     border-bottom:1px solid black;
-    padding:10px;
     display:flex;
-    justify-content:center;
+    justify-content:space-around;
+    align-items:center;
   }
 
+  .post-search{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .post-search-field{
+    width:250px;
+    padding:1px;
+    margin-bottom:10px;
+  }
+
+  .post-search-submit{
+    width:80px;
+    margin-left:auto;
+  }
+
+  &_info{
+    display:flex;
+    justify-content:space-between;
+  }
 
   &_index{
     display:flex;
@@ -65,9 +86,12 @@
   }
 
   &_post-list{
-    width:80%;
     display:flex;
     flex-wrap:wrap;
+  }
+
+  &_post-tag{
+    margin-left:5px;
   }
 
   &_post-sub{
@@ -134,13 +158,12 @@
   }
 
   &_tag-list{
-    width:90%;
     display:flex;
     flex-wrap:wrap;
   }
 
   &_tag{
-    margin-right:10px;
+    margin-left:5px;
   }
 
   &_body{

@@ -10,7 +10,24 @@
     border-bottom:1px solid black;
     padding:10px;
     display:flex;
-    justify-content:center;
+    justify-content:space-around;
+    align-items:center;
+  }
+
+  &_search{
+    display:flex;
+    flex-direction:column;
+  }
+
+  &_serch-field{
+    width:250px;
+    padding:1px;
+    margin-bottom:10px;
+  }
+
+  &_serch-submit{
+    width:80px;
+    margin-left:auto;
   }
 
   &_contents{
@@ -143,13 +160,12 @@
   }
 
   &_post-tag-list{
-    width:90%;
     display:flex;
     flex-wrap:wrap;
   }
 
   &_post-tag{
-    margin-right:10px;
+    margin-left:5px;
   }
 
   &_post-sub{

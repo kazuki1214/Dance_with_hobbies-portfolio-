@@ -3,11 +3,13 @@
   <section class="user-posts">
     <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
     <div class="user-posts_top">
-      <div class="user-posts_user-title"><%= attachment_image_tag @end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
-        <h4><%= @end_user.name %></h4>
-      </div>
-      <div class="user-posts_post-search">
-      </div>
+      <h4><%= attachment_image_tag @end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @end_user.name %></h4>
+      <%= form_with url: search_end_user_post_histories_path(@end_user), method: :get, local: true do |search| %>
+        <div class="user-posts_search">
+          <%= search.text_field :keyword, class: "user-posts_serch-field", placeholder: "投稿検索" %>
+          <%= search.submit "検索", class: "user-posts_serch-submit" %>
+        </div>
+      <% end %>
     </div>
 
     <div class="user-posts_page">
@@ -34,7 +36,7 @@
               <div class="user-posts_post-image">
                 <%= attachment_image_tag post, :post_image, size: "500x300" %>
               </div>
-              <div class="user-posts_post-list">
+              <div class="user-posts_post-tag-list">
                 <% post.tags.each do |tag| %>
                   <span class="user-posts_post-tag">#<%= tag.name %></span>
                 <% end %>

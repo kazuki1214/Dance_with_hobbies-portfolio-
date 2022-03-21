@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   # 中間テーブルを先に入力
   belongs_to :hobby
   belongs_to :end_user
-  has_many :post_histories, dependent: :destroy
   has_many :post_tags
   has_many :tags, through: :post_tags
   has_many :post_comments, dependent: :destroy
@@ -15,9 +14,16 @@ class Post < ApplicationRecord
 
   attachment :post_image
 
-  #検査機能
+  #検索機能
   def self.search(keyword)
-    where(["title like? OR body like? OR tags like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    self.where(["title like?", "%#{keyword}%"])
+    Tag.where(["name like?", "%#{keyword}%"]).posts
+  end
+
+  def self.search_add_hobby(keyword)
+    self.where(["title like? OR tag like? OR hobby like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    Tag.where(["name like?", "%#{keyword}%"]).posts
+    Hobby.where(["name like?", "%#{keyword}%"]).posts
   end
 
   # いいね機能
@@ -44,12 +50,6 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
 
-  end
-
-  #投稿履歴機能
-  def save_histories(post)
-    post = post.end_user.post_histories.new(post_id: post.id)
-    post.save
   end
 
   #いいね通知機能

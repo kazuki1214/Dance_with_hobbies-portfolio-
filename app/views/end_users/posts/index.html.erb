@@ -3,6 +3,13 @@
   <section class="posts">
     <div class="posts_info">
       <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
+      <% if end_user_signed_in? %>
+        <% if current_page?(hobby_posts_path) %>
+          <%= link_to new_hobby_post_path(@hobby.id) do %>
+            <h4>新規投稿</h4>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
 
     <%= render 'end_users/hobbies/hobby-top', hobby: @hobby %>

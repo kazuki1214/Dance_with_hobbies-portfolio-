@@ -6,10 +6,9 @@ class EndUser < ApplicationRecord
 
   attachment :user_image
 
-  has_many :posts, through: :post_histories
+  has_many :posts
   has_many :favorite_posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  has_many :post_histories
   has_many :favorite_hobbies
 
   # フォロー機能

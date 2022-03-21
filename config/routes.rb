@@ -10,23 +10,29 @@ Rails.application.routes.draw do
         patch :withdraw
       end
       resources :post_histories, only:[:index, :show, :destroy] do
-        get "search" => "post_histories#search", as: "search"
+        collection do
+          get "search" => "post_histories#search", as: "search"
+        end
       end
       resources :followers, only:[:index, :create, :destroy]
       resources :notifications, only:[:index]
     end
 
     resources :categories, only:[:index] do
-      get "search" => "categories#search", as: "search"
+      collection do
+        get "search" => "categories#search", as: "search"
+      end
     end
     resources :hobbies, only:[:index, :show] do
-      get "search" => "hobbies#search", as: "search"
+      collection do
+        get "search" => "hobbies#search", as: "search"
+      end
       resource :favorite_hobbies, only:[:create, :destroy]
       resources :posts, except:[:edit, :update] do
-        get "search" => "posts#search", as: "search"
-          collection do
-            post :confirm
-          end
+        collection do
+          get "search" => "posts#search", as: "search"
+          post :confirm
+        end
         resources :post_comments, only:[:index, :create, :destroy]
         resource :favorite_posts, only:[:create, :destroy]
       end
