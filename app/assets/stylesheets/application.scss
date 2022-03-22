@@ -175,6 +175,37 @@ a:hover{
   transform: scale(1.1);
 }
 
+
+  // 投稿一覧のtopの設定
+  .hobby-title{
+    padding:20px;
+    width:100%;
+    border-bottom:1px solid black;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+  }
+
+  .hobby-title a{
+    color:black;
+  }
+
+  .post-search{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .post-search-field{
+    width:250px;
+    padding:1px;
+    margin-bottom:10px;
+  }
+
+  .post-search-submit{
+    width:80px;
+    margin-left:auto;
+  }
+
 @media screen and (max-width: 768px) {
   .main {
     display: block;

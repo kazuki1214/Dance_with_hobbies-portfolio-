@@ -10,7 +10,7 @@ class Hobby < ApplicationRecord
   def self.search(keyword)
     self.where(["title like?", "%#{keyword}%"])
   end
-  
+
   #お気に入り機能メソッド
   def favorite_hobbies?(end_user)
     favorite_hobbies.where(end_user_id: end_user.id).exists?

@@ -4,8 +4,17 @@ class EndUsers::CategoriesController < ApplicationController
   end
 
   def search
-    @categories = Category.search.page(params[:page]).per(3)
+
     @keyword = params[:keyword]
+    if @keyword
+      @categories = []
+      @keyword.split(/[[:blank:]]+/).each do |keyword|
+        next if keyword == ""
+        @categories += Category.search(@keyword)
+      end
+      @categories.uniq!
+    end
+    @categories = @categories.page(params[:page]).per(3)
     render :index
   end
 

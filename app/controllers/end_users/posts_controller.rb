@@ -8,8 +8,29 @@ class EndUsers::PostsController < ApplicationController
 
   def search
     @hobby = Hobby.find(params[:hobby_id])
-    @posts = @hobby.posts.search(params[:keyword]).page(params[:page]).order(created_at: :desc)
     @keyword = params[:keyword]
+    posts = @hobby.posts.order(created_at: :desc)
+
+    if @keyword.present?
+      post_ids = []
+      @keyword.split(/[[:blank:]]+/).each do |keyword|
+        next if keyword == ""
+        # 投稿モデルの検索
+        post_ids += @hobby.posts.search(keyword).pluck(:id)
+        # タグモデルの検索
+        tag_ids = Tag.search(keyword).pluck(:id)
+        if tag_ids.present?
+          tag_ids.each do |tag_id|
+            tag_post_ids = Tag.find(tag_id).posts.pluck(:id)
+            post_ids += @hobby.posts.where(id: tag_post_ids)
+          end
+        end
+      end
+      # post_idsに全ての検索結果idを入れてflattenメソッドで二次元配列を一次元にする
+      post_ids = post_ids.flatten
+      posts = posts.where(id: post_ids).uniq
+    end
+    @posts = Kaminari.paginate_array(posts).page(params[:page])
     render :index
   end
 

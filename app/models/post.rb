@@ -16,14 +16,7 @@ class Post < ApplicationRecord
 
   #検索機能
   def self.search(keyword)
-    self.where(["title like?", "%#{keyword}%"])
-    Tag.where(["name like?", "%#{keyword}%"]).posts
-  end
-
-  def self.search_add_hobby(keyword)
-    self.where(["title like? OR tag like? OR hobby like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
-    Tag.where(["name like?", "%#{keyword}%"]).posts
-    Hobby.where(["name like?", "%#{keyword}%"]).posts
+    self.where(["title like ?", "%#{keyword}%"])
   end
 
   # いいね機能

@@ -4,16 +4,22 @@
     <div class="posts_info">
       <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
       <% if end_user_signed_in? %>
-        <% if current_page?(hobby_posts_path) %>
-          <%= link_to new_hobby_post_path(@hobby.id) do %>
-            <h4>新規投稿</h4>
-          <% end %>
+        <%= link_to new_hobby_post_path(@hobby.id) do %>
+          <h4>新規投稿</h4>
         <% end %>
       <% end %>
     </div>
-
-    <%= render 'end_users/hobbies/hobby-top', hobby: @hobby %>
-
+    <div class="hobby-top">
+      <div class="hobby-title">
+        <h3><%= link_to hobby_posts_path(@hobby) do %><%= attachment_image_tag @hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %><%= @hobby.title %><% end %></h3>
+          <%= form_with url: search_hobby_posts_path(@hobby), method: :get, local: true do |search| %>
+            <div class="post-search">
+              <%= search.text_field :keyword, class: "post-search-field", placeholder: "投稿検索" %>
+              <%= search.submit "検索", class: "post-search-submit" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
     <div class="posts_page">
       <%= paginate @posts %>
     </div>

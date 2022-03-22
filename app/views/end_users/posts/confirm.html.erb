@@ -2,7 +2,11 @@
   <%= render "layouts/navbar" %>
   <!--confirm画面-->
   <section class="post-one">
-    <%= render 'end_users/hobbies/hobby-top', hobby: @hobby %>
+    <div class="hobby-top">
+      <div class="hobby-title">
+        <h3><%= attachment_image_tag @hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %><%= @hobby.title %></h3>
+      </div>
+    </div>
     <%= form_with(model: [:end_users, @hobby, @new_post], url: hobby_posts_path(@hobby), local: true) do |f| %>
       <div class="post-one_bottom">
         <div class="post-one_post">
@@ -16,7 +20,7 @@
                 <div class="post-one_created-hobby"><%= @new_post.hobby.title %></div>
               </div>
             </div>
-  
+
             <h4 class="post-one_title">
               <%= @new_post.title %>
               <%= f.hidden_field :title, value: @new_post.title %>
