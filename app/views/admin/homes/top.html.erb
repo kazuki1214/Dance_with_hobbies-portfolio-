@@ -5,8 +5,8 @@
       <div class="admin-title_page-title">
         <h4>趣味一覧</h4>
       </div>
-      <%= link_to new_admin_hobby_path, class: "ml-auto" do %>
-        <div class="btn btn-primary p-md-2">趣味作成</div>
+      <%= link_to new_admin_hobby_path, class: "ml-auto p-md-2" do %>
+        <h5>趣味作成</h5>
       <% end %>
     </div>
     <div class="admin-table">
@@ -16,7 +16,7 @@
             <th width="10%">ID</th>
             <th width="20%">title</th>
             <th width="50%">introduction</th>
-            <th width="20%">dalete</th>
+            <th class="text-center">delete</th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
               <% end %>
             </td>
             <td class="text-break"><%= t.introduction %></td>
-            <td><%= link_to "趣味削除", admin_hobby_path(t), class:"btn btn-primary px-md-2 py-md-2", method: :delete %></td>
+            <td align="center"><%= link_to "趣味削除", admin_hobby_path(t), class:"btn btn-danger px-md-2 py-md-2", method: :delete %></td>
           </tr class="admin-table_index-tr">
           <% end %>
         </tbody>

@@ -3,12 +3,14 @@
     <section class="user">
         <div class="user_info">
             <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
-            <% if current_end_user == @user %>
-                <h4><%= link_to "編集", information_path(@user), class: "user_edit" %></h4>
-            <% elsif current_end_user.following?(@user) %>
-                <%= render "end_users/followers/unfollow",  user: @user %>
-            <% else %>
-                <%= render "end_users/followers/follow",  user: @user %>
+            <% if end_user_signed_in? %>
+                <% if current_end_user == @user %>
+                    <h4><%= link_to "編集", information_path(@user), class: "user_edit" %></h4>
+                <% elsif current_end_user.following?(@user) %>
+                    <%= render "end_users/followers/unfollow",  user: @user %>
+                <% else %>
+                    <%= render "end_users/followers/follow",  user: @user %>
+                <% end %>
             <% end %>
         </div>
         <div class="user_title">
@@ -25,7 +27,7 @@
         <% end %>
         <div class="user_row">
             <div class="user_comment">
-                <%= @user.user_comment %>
+                <%=safe_join(@user.user_comment.split("\n"),tag(:br))%>
             </div>
         </div>
         <div class="user_row">
@@ -56,10 +58,12 @@
             </div>
         <% end %>
 
-        <!--通知一覧へリンク-->
         <% if @user == current_end_user %>
             <%= link_to end_user_notifications_path(current_end_user.id) do %>
                 <div class="user_row--center">
+                    <% if unchecked_notifications.any? %>
+                        <span class="nav-icon">New!</span>
+                    <% end %>
                     <h5>通知一覧</h5>
                 </div>
             <% end %>

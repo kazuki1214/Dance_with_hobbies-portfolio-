@@ -5,6 +5,12 @@
   width:100%;
   padding:23px;
 
+  &_back{
+    padding:10px;
+    display:flex;
+    justify-content:space-between;
+  }
+
   &_top{
     padding:10px;
     border-bottom:1px solid black;

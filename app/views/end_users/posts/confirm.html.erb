@@ -36,12 +36,12 @@
                <%= f.hidden_field :name, value: @tags %>
             </div>
             <div class="post-one_body">
-              <%= @new_post.body %>
+              <%=safe_join(@new_post.body.split("\n"),tag(:br))%>
               <%= f.hidden_field :body, value: @new_post.body %>
             </div>
           </div>
           <div class="post-one_send">
-            <%= link_to hobby_posts_path(@hobby.id) do %>
+            <%= link_to new_hobby_post_path(@hobby) do %>
               <button class="new-post_cancel">投稿をキャンセル</button>
             <% end %>
             <%= f.submit "投稿をする", class: "new-post_submit" %>

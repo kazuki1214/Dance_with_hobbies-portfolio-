@@ -55,8 +55,12 @@
           <div class="posts_post-sub">
             <h6 class="posts_post-comment"><%= image_tag "comment.jpg" %><%= post.post_comments.count %>件</h6>
             <div class="posts_post-favorite">
-              <% if post.favorite_posts?(current_end_user) %>
-                <h6>いいね♥<%= post.favorite_posts.count %></h6>
+              <% if end_user_signed_in? %>
+                <% if post.favorite_posts?(current_end_user) %>
+                  <h6>いいね♥<%= post.favorite_posts.count %></h6>
+                <% else %>
+                  <h6>いいね♡<%= post.favorite_posts.count %></h6>
+                <% end %>
               <% elsif %>
                 <h6>いいね♡<%= post.favorite_posts.count %></h6>
               <% end %>

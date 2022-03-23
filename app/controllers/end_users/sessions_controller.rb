@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class EndUsers::SessionsController < Devise::SessionsController
+  before_action :reject_inactive_end_user, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -33,10 +34,11 @@ class EndUsers::SessionsController < Devise::SessionsController
     root_path
   end
 
-  def reject_inactive_customer
+  def reject_inactive_end_user
     @user = EndUser.find_by(email: params[:end_user][:email])
     if @user
       if @user.valid_password?(params[:end_user][:password]) && @user.is_deleted == true
+        flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
         redirect_to new_end_user_session_path
       end
     end

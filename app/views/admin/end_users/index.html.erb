@@ -19,8 +19,10 @@
           <tr class="admin-table_index-tr">
             <td><%= t.id %></td>
             <td>
-              <%= attachment_image_tag t, :user_image, size: "100x100", format: "jpg", fallback: "no_image.jpg" %>
-              <%= t.name %>
+              <%= link_to admin_end_user_path(t) do %>
+                <%= attachment_image_tag t, :user_image, size: "100x100", format: "jpg", fallback: "no_image.jpg" %>
+                <%= t.name %>
+              <% end %>
             </td>
             <td><%= t.email %></td>
             <% if t.is_deleted == false %>

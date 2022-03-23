@@ -42,7 +42,8 @@ class EndUsers::PostHistoriesController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:end_user_id])
-    @post = Post.find(id: @end_user.post_histories.find(params[:id]).post_id)
+    @post = @end_user.posts.find(params[:id])
+    @comments = @post.post_comments.order(created_at: :desc)
     if @post.end_user != current_end_user
       impressionist(@post, nil, unique: [:session_hash.to_s])
     end

@@ -25,7 +25,7 @@
     <% end %>
 
     <div class="user-edit_delete">
-      <%= link_to "ユーザー削除", withdraw_end_user_path(@user),class: "user-edit_delete-button", "data-confirm" => "本当に退会しますか？\n(ユーザーを削除しても投稿データは残ります)" %>
+      <%= link_to "ユーザー削除", withdraw_end_user_path(@user),class: "user-edit_delete-button", method: :patch, "data-confirm" => "本当に退会しますか？\n(ユーザーを削除しても投稿データは残ります)" %>
     </div>
   </section>
 </div>

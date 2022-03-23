@@ -1,75 +1,91 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-  <section class="container p-5">
-    <div class="row border-bottom-1 border-dark mb-3">
-      <div class="col-md-1">
-        <%= link_to "戻る", 'javascript:history.back()' %>
-      </div>
-      <div class="col-md-6 offset-md-1">
-        <p>user:</p><%= attachment_image_tag @post.end_user, :user_image, size: "300x300", fallback: "no_image.jpg" %><%= @post.end_user.name %>
-      </div>
-    </div>
-    <div class="row">
-      <%= link_to "投稿履歴一覧に戻る", admin_end_user_post_histories_path(post_histroies.end_user.id, post_histories) %>
-      <%= link_to "投稿を削除する", admin_end_user_post_history_path(@post), class: "btn btn-danger px-2 py-2 ml-auto", method: :destroy %>
-    </div>
-
-     <div class="mx-auto post">
-      <div class="row border-bottom-1 border-dark mb-2">
-        <%= attachment_image_tag @post.end_user, :user_image, size: "300x300", fallback: "no_image.jpg" %><%= @post.end_user.name %>
-        <div class="col-3 ml-auto">
-          <%= @post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
-          <%= @post.hobby.title %>
+  <section class="user-post">
+    <div class="user-post_back">
+      <h4>
+        <div class="post_back">
+          <%= link_to admin_end_user_post_histories_path(@end_user) do %>
+            <span class="post_back-span">⇦</span>投稿一覧に戻る
+          <% end %>
         </div>
-      </div>
-      <h4 class="post_title"><%= @post.title %></h4>
-      <%= attachment_image_tag @post, :post_image, class: "post_image" %>
-      <div class="row">
-        <%= @post.tags do |t| %>
-          <p class="post_tag">#<%= t.name %></p>
-        <% end %>
-      </div>
-      <div class="post_body">
-        <p>　<%= @post.body %></p>
-      </div>
+      </h4>
+    </div>
+    <div class="user-post_top">
+      <h4><%= attachment_image_tag @end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @end_user.name %></h4>
     </div>
 
-    <div class="post_connection">
-      <div class="post_sub">
-        <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
-        <h6 class="admin-post_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %></h6>
-        <h6 class="admin-post_post-favorite">いいね♡<%= post.favorite_posts.count %></h6>
-      </div>
-      <% @comments_first.each do |c| %>
-      <div class="post_comment">
-        <div class="row mb-3">
-          <%= attachment_image_tag c, :user_image, size: "200x200", format: "jpg" %><%= c.name %>
-          <div class="col-3 ml-auto">
-            <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
-          </div>
-        </div>
-        <div class="row">
-          <%= c.comment %>
-        </div>
-      </div>
-      <% end %>
-      <% if @comment_offset.any? %>
-      <details>
-        <sumary>全てのコメントを表示</sumary>
-        <% @comments_first.each do |c| %>
-        <div class="post_comment">
-          <div class="row mb-3">
-            <%= attachment_image_tag c, :user_image, size: "150x150", fallback: "no_image.jpg" %><%= c.name %>
-            <div class="col-3 ml-auto">
-              <%= c.created_at, strftime("%Y/%m/%d/ %H:%M") %>
+    <div class="user-post_bottom">
+      <div class="user-post_post">
+        <div class="user-post_main">
+          <div class="user-post_user">
+            <%= attachment_image_tag @post.end_user, :user_image, size: "70x70", fallback: "no_image.jpg" %>
+            <%= @post.end_user.name %>
+            <div class="user-post_created">
+              <div class="user-post_created-time"><%= @post.created_at.strftime("%Y/%m/%d/ %H:%M") %></div>
+              <div class="user-post_created-hobby"><%= @post.hobby.title %></div>
             </div>
           </div>
-          <div class="row">
-            <%= c.comment %>
+
+          <h4 class="user-post_title"><%= @post.title %></h4>
+          <div class="user-post_image">
+            <%= attachment_image_tag @post, :post_image, size: "500x300" %>
+          </div>
+          <div class="user-post_tag-list">
+            <% @post.tags.each do |tag| %>
+              <span class="user-post_tag">#<%= tag.name %></span>
+            <% end %>
+          </div>
+          <div class="user-post_body">
+            <%=safe_join(@post.body.split("\n"),tag(:br))%>
           </div>
         </div>
-      </details>
-      <% end %>
+
+        <div class="user-post_sub">
+          <div class="user-post_content">
+            <h6><%= image_tag "eye.jpg" %><%= @post.impressionist_count(:filter => :session_hash) %></h6>
+            <h6 class="user-post_comment-count"><%= image_tag "comment.jpg" %><%= @post.post_comments.count %>件</h6>
+            <h6>いいね♡<%= @post.favorite_posts.count %></h6>
+          </div>
+          <% @comments_first.each do |c| %>
+            <div class="user-post_comment">
+              <div class="user-post_comment-user">
+                <div>
+                  <%= attachment_image_tag c.end_user, :user_image, size: "50x50", fallback: "no_image.jpg", format: "jpg" %>
+                  <%= c.end_user.name %>
+                </div>
+                <div class="user-post_comment-created">
+                  <%= c.created_at.strftime("%Y/%m/%d/ %H:%M") %>
+                </div>
+              </div>
+              <div class="user-post_comment-main">
+                <%= c.comment %>
+              </div>
+            </div>
+          <% end %>
+          <% if @comments_offset.present? %>
+            <details>
+              <summary>全てのコメントを表示</summary>
+              <% @comments_offset.each do |c| %>
+                <div class="user-post_comment">
+                  <div class="user-post_comment-user">
+                    <%= attachment_image_tag c.end_user, :user_image, size: "50x50", fallback: "no_image.jpg", format: "jpg" %>
+                    <%= c.end_user.name %>
+                    <div class="user-post_comment-created">
+                      <%= c.created_at.strftime("%Y/%m/%d/ %H:%M") %>
+                    </div>
+                  </div>
+                  <div class="user-post_comment-main">
+                    <%= c.comment %>
+                  </div>
+                </div>
+              <% end %>
+            </details>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="user-post_delete">
+      <%= link_to "投稿を削除する", admin_end_user_post_history_path(@end_user, @post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
     </div>
   </section>
 </div>

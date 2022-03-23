@@ -1,7 +1,7 @@
 <div class="main">
   <%= render "layouts/navbar" %>
   <section class="user-posts">
-    <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
+    <h4><%= link_to "戻る", user_page_path(@end_user) %></h4>
     <div class="user-posts_top">
       <h4><%= attachment_image_tag @end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @end_user.name %></h4>
       <%= form_with url: search_end_user_post_histories_path(@end_user), method: :get, local: true do |search| %>
@@ -31,7 +31,7 @@
               </div>
             </div>
 
-            <%= link_to hobby_post_path(post.hobby, post), class:"user-posts_post-link" do %>
+            <%= link_to end_user_post_history_path(@end_user, post), class:"user-posts_post-link" do %>
               <h4 class="user-posts_post-title"><%= post.title %></h4>
               <div class="user-posts_post-image">
                 <%= attachment_image_tag post, :post_image, size: "500x300" %>
@@ -46,8 +46,12 @@
           <div class="user-posts_post-sub">
             <h6 class="user-posts_post-comment"><%= image_tag "comment.jpg" %><%= post.post_comments.count %>件</h6>
             <div class="user-posts_post-favorite">
-              <% if post.favorite_posts?(current_end_user) %>
-                <h6>いいね♥<%= post.favorite_posts.count %></h6>
+              <% if end_user_signed_in? %>
+                <% if post.favorite_posts?(current_end_user) %>
+                  <h6>いいね♥<%= post.favorite_posts.count %></h6>
+                <% else %>
+                  <h6>いいね♡<%= post.favorite_posts.count %></h6>
+                <% end %>
               <% elsif %>
                 <h6>いいね♡<%= post.favorite_posts.count %></h6>
               <% end %>

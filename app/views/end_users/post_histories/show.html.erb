@@ -3,15 +3,15 @@
   <section class="user-post">
     <div class="user-post_back">
       <h4>
-        <%= link_to end_user_post_histories_path(@end_user) %>
-          <div class="post_back"><span class="post_back-span">⇦</span>投稿一覧に戻る</div>
-        <% end %>
+        <div class="post_back">
+          <%= link_to end_user_post_histories_path(@end_user) do %>
+            <span class="post_back-span">⇦</span>投稿一覧に戻る
+          <% end %>
+        </div>
       </h4>
     </div>
-    <div class="user-top">
-      <div class="user-title"><%= attachment_image_tag @end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %>
-        <h4><%= @end_user.name %></h4>
-      </div>
+    <div class="user-post_top">
+      <h4><%= attachment_image_tag @end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @end_user.name %></h4>
     </div>
 
     <div class="user-post_bottom">
@@ -38,7 +38,7 @@
             <% end %>
           </div>
           <div class="user-post_body">
-            <%= @post.body %>
+            <%=safe_join(@post.body.split("\n"),tag(:br))%>
           </div>
         </div>
 
@@ -46,14 +46,18 @@
           <div class="user-post_content">
             <h6><%= image_tag "eye.jpg" %><%= @post.impressionist_count(:filter => :session_hash) %></h6>
             <h6 class="user-post_comment-count"><%= image_tag "comment.jpg" %><%= @post.post_comments.count %>件</h6>
-            <% if @post.favorite_posts?(current_end_user) %>
-              <div class="user-post_favorite" id="post-favorite-button-<%= @post.id %>">
-                <%= render "end_users/favorite_posts/unpost-favorite", post: @post %>
-              </div>
+            <% if end_user_signed_in? %>
+              <% if @post.favorite_posts?(current_end_user) %>
+                <div class="post-one_favorite" id="post-favorite-button-<%= @post.id %>">
+                  <%= render "end_users/favorite_posts/unpost-favorite", post: @post %>
+                </div>
+              <% elsif %>
+                <div class="post-one_favorite" id="post-favorite-button-<%= @post.id %>">
+                  <%= render "end_users/favorite_posts/post-favorite", post: @post %>
+                </div>
+              <% end %>
             <% elsif %>
-              <div class="user-post_favorite" id="post-favorite-button-<%= @post.id %>">
-                <%= render "end_users/favorite_posts/post-favorite", post: @post %>
-              </div>
+              <h6>いいね♡<%= post.favorite_posts.count %></h6>
             <% end %>
           </div>
           <% @comments.each do |c| %>
@@ -72,7 +76,7 @@
               </div>
             </div>
           <% end %>
-          <div class="user-post_all-comment">
+          <div class="user-post_link-comment">
             <%= link_to hobby_post_post_comments_path(@post.hobby.id, @post.id) do %>
               <h5 class="m-0">コメント一覧へ</h5>
             <% end %>

@@ -1,34 +1,36 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-  <section class="container p-5">
-    <div class="row">
-      <%= link_to "戻る", 'javascript:history.back()' %>
+  <section class="container p-4">
+    <div class="row p-2">
+      <h4><%= link_to "戻る", admin_end_user_path(@user) %></h4>
     </div>
 
-    <%= form_with model:[:admin @user], local: true do |f| %>
-      <div class="row mb-4">
-        <%= attachment_image_tag @user, :user_image, size:"300x300", fallback: "no_image.jpg", id:"user_img_prev" %>
+    <%= form_with model:[:admin, @user], local: true do |f| %>
+      <div class="row mb-5 justify-content-center align-items-center">
+        <%= attachment_image_tag @user, :user_image, size:"100x100", fallback: "no_image.jpg", id:"user_img_prev" %>
         <%= f.attachment_field :user_image %>
       </div>
       <div class="row mb-4">
-        <p class="col-3">name:</p>
+        <p class="col-3 text-right">name:</p>
         <%= f.text_field :name, class:"w-100 col-md-7 offset-md-1" %>
       </div>
       <div class="row mb-4">
-        <p class="col-3">email:</p>
-        <%= f.emil_field :email, class:"w-100 col-md-7 offset-md-1" %>
+        <p class="col-3 text-right">email:</p>
+        <%= f.email_field :email, class:"w-100 col-md-7 offset-md-1" %>
       </div>
       <div class="row mb-4">
-        <p class="col-3">comment:</p>
+        <p class="col-3 text-right">comment:</p>
         <%= f.text_area :user_comment, class:"w-100 col-md-7 offset-md-1 d-flex flex-wrap" %>
       </div>
       <div class="row mb-4">
-        <p class="col-3">status:</p>
-        <%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class:"text-success" %>
-        <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会", class:"text-secondary" %>
+        <p class="col-3 text-right">status:</p>
+        <div class="col-md-7 offset-md-1">
+          <%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class:"text-success mr-5" %>
+          <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会", class:"text-secondary" %>
+        </div>
       </div>
-      <div class="row">
-        <%= f.submit "更新",  class:"btn btn-primary px-2 py-2 w-100" %>
+      <div class="row justify-content-center">
+        <%= f.submit "更新",  class:"btn btn-primary px-5 py-2" %>
       </div>
     <% end %>
   </section>

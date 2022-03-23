@@ -1,43 +1,62 @@
 <div class="main">
   <%= render "layouts/navbar" %>
-  <section class="container p-5">
-
-    <div class="row border-bottom-1 border-dark">
-      <div class="col-md-6 offset-md-1">
-        <p>user:</p><%= attachment_image_tag @user, :user_image, size: "300x300", fallback: "no-image.jpeg" %><%= @user.name %>
-      </div>
-      <div class="col-md-3 offset-md-1">
-        <div class="admin-search"></div>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <%= link_to "戻る", 'javascript:history.back()' %>
-    </div>
-    <% @user.posts.each do |post| %>
-    <%= link_to admin_end_user_post_history_path(post) do %>
-    <div class="mx-auto admin-post">
-      <div class="row border-bottom-1 border-dark mb-2">
-        <%= attachment_image_tag @user, :user_image, size: "200x200", fallback: "no_image.jpg" %><%= @user.name %>
-        <div class="col-3 ml-auto">
-          <%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
-          <%= post.hobby.title %>
+  <section class="user-posts">
+    <h4><%= link_to "戻る", admin_end_user_path(@end_user) %></h4>
+    <div class="user-posts_top">
+      <h4><%= attachment_image_tag @end_user, :user_image, size: "100x100", fallback: "no_image.jpg" %><%= @end_user.name %></h4>
+      <%= form_with url: search_end_user_post_histories_path(@end_user), method: :get, local: true do |search| %>
+        <div class="user-posts_search">
+          <%= search.text_field :keyword, class: "user-posts_serch-field", placeholder: "投稿検索" %>
+          <%= search.submit "検索", class: "user-posts_serch-submit" %>
         </div>
-      </div>
-      <h4 class="admin-post_title"><%= post.title %></h4>
-      <%= attachment_image_tag post, :post_image_id, class: "admin-post_image" %>
-      <div class="row">
-        <% post.tags.each do |t| %>
-          <p class="admin-post_tag">#<%= t.name %></p>
-        <% end %>
-      </div>
+      <% end %>
     </div>
-    <% end %>
-    <div class="admin-post_sub">
-      <h6><i class="fa-regular fa-eye"><%= post.impressions.size %></i></h6>
-      <h6 class="admin-post_post-comment"><%= image_tag "comment.jpg" %><%= post.comments.count %></h6>
-      <h6 class="admin-post_post-favorite">いいね♡<%= post.favorite_posts.count %></h6>
+
+    <div class="user-posts_page">
+      <%= paginate @posts %>
     </div>
-    <% end %>
+
+    <div class="user-posts_index">
+      <% @posts.each do |post| %>
+        <div class="user-posts_post">
+          <div class="user-posts_post-main">
+            <div class="user-posts_post-user">
+              <%= attachment_image_tag post.end_user, :user_image, size: "70x70", fallback: "no_image.jpg" %>
+              <%=  post.end_user.name %>
+              <div class="user-posts_post-created">
+                <div class="user-posts_post-created-time"><%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %></div>
+                <div class="user-posts_post-created-hobby"><%= post.hobby.title %></div>
+              </div>
+            </div>
+
+            <%= link_to admin_end_user_post_history_path(@end_user, post), class:"user-posts_post-link" do %>
+              <h4 class="user-posts_post-title"><%= post.title %></h4>
+              <div class="user-posts_post-image">
+                <%= attachment_image_tag post, :post_image, size: "500x300" %>
+              </div>
+              <div class="user-posts_post-tag-list">
+                <% post.tags.each do |tag| %>
+                  <span class="user-posts_post-tag">#<%= tag.name %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="user-posts_post-sub">
+            <h6 class="user-posts_post-comment"><%= image_tag "comment.jpg" %><%= post.post_comments.count %>件</h6>
+            <div class="user-posts_post-favorite">
+              <% if end_user_signed_in? %>
+                <% if post.favorite_posts?(current_end_user) %>
+                  <h6>いいね♥<%= post.favorite_posts.count %></h6>
+                <% else %>
+                  <h6>いいね♡<%= post.favorite_posts.count %></h6>
+                <% end %>
+              <% elsif %>
+                <h6>いいね♡<%= post.favorite_posts.count %></h6>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </section>
 </div>

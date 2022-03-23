@@ -2,7 +2,12 @@
   <%= render "layouts/navbar" %>
   <section class="comments">
     <h4><div class="comments_back"><%= link_to "戻る", 'javascript:history.back()' %></div></h4>
-    <%= render 'end_users/hobbies/hobby-top', hobby: @hobby %>
+    <div class="hobby-one_top">
+      <div class="hobby-one_title">
+        <%= attachment_image_tag @hobby, :hobby_image, size: "120x120", fallback: "no_image.jpg", class: "hobby-one_image" %>
+        <h3><%= @hobby.title %></h3>
+      </div>
+    </div>
     <div class="post-one_bottom">
       <div class="comments_post">
         <div class="comments_post-main">
@@ -70,7 +75,9 @@
               <div class="comments_comment-main">
                 <%= c.comment %>
                 <div class="comments_destroy">
-                  <%= link_to "削除する", hobby_post_post_comment_path(@hobby, @post, c), class: "", method: :delete %>
+                  <% if c.end_user == current_end_user %>
+                    <%= link_to "削除する", hobby_post_post_comment_path(@hobby, @post, c), method: :delete %>
+                  <% end %>
                 </div>
               </div>
             </div>

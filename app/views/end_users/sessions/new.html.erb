@@ -3,10 +3,14 @@
     <div class="m-3 text-center">
       <%= link_to root_path do %><%= image_tag 'logo.png' %><% end %>
     </div>
-    <div class="row text-center mb-5 mx-auto">
+    <div class="row text-center mb-4 mx-auto">
       <h2>ログインして<br>
       自分の趣味を発信しよう!</h2>
     </div>
+
+    <% if flash[:danger] %>
+      <p class="text-danger text-center m-4"><%= flash[:danger] %></p>
+    <% end %>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="row mb-3">

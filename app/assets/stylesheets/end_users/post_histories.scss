@@ -106,7 +106,13 @@
   width:100%;
   padding:23px;
 
-
+  &_top{
+    padding:10px;
+    border-bottom:1px solid black;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+  }
 
   &_bottom{
     padding:10px;
@@ -153,6 +159,7 @@
   }
 
   &_tag-list{
+    margin-bottom:5px;
     display:flex;
     flex-wrap:wrap;
   }
@@ -183,27 +190,32 @@
     align-items:flex-end;
   }
 
+  &_content{
+    height:55px;
+    border-bottom:1px solid black;
+    display:flex;
+    justify-content:space-around;
+    align-items:flex-end;
+  }
+
   &_comment{
+    padding:0 5px;
     border-bottom:1px solid black;
   }
 
   &_comment-user{
-    width:90%;
-    margin:auto;
-    display:inline-block;
-  }
-
-  &_comment-created{
-    margin-left:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom: 1px solid #adb5bd;
   }
 
   &_comment-main{
     padding:5px;
-    width:90%;
     overflow-wrap:break-word;
   }
 
-  &_all-comment{
+  &_link-comment{
     padding-top:5px;
     padding-bottom:5px;
     text-align:center;

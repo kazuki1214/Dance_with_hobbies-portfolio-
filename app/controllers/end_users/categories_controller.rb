@@ -4,17 +4,18 @@ class EndUsers::CategoriesController < ApplicationController
   end
 
   def search
-
+    categories = Category.all.order(created_at: :desc)
     @keyword = params[:keyword]
-    if @keyword
-      @categories = []
+    if @keyword.present?
+      category_ids = []
       @keyword.split(/[[:blank:]]+/).each do |keyword|
         next if keyword == ""
-        @categories += Category.search(@keyword)
+        category_ids += Category.search(keyword)
       end
-      @categories.uniq!
+      category_ids = category_ids.flatten
+      categories = categories.where(id: category_ids).uniq
     end
-    @categories = @categories.page(params[:page]).per(3)
+    @categories =  Kaminari.paginate_array(categories).page(params[:page]).per(3)
     render :index
   end
 

@@ -3,7 +3,7 @@
   <section class="post-one">
     <div class="post-one_back">
       <h4>
-        <%= link_to hobby_posts_path(@post.hobby.id) do %><span class="post-one_back-span">⇦</span>投稿一覧に戻る<% end %>
+        <%= link_to hobby_posts_path(@post.hobby.id) do %><span class="post-one_back-span">⇦</span>投稿一覧へ<% end %>
       </h4>
     </div>
     <div class="hobby-top">
@@ -41,7 +41,7 @@
             <% end %>
           </div>
           <div class="post-one_body">
-            <%= @post.body %>
+            <%=safe_join(@post.body.split("\n"),tag(:br))%>
           </div>
         </div>
 
@@ -60,7 +60,7 @@
                 </div>
               <% end %>
             <% elsif %>
-              <h6>いいね♡<%= post.favorite_posts.count %></h6>
+              <h6>いいね♡<%= @post.favorite_posts.count %></h6>
             <% end %>
           </div>
           <% @comments.each do |c| %>

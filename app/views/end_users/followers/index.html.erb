@@ -2,7 +2,7 @@
   <%= render "layouts/navbar" %>
   <section class="follow">
     <div class="follow_back">
-      <h4><%= link_to "マイページに戻る", user_page_path %></h4>
+      <h4><%= link_to "ユーザーページに戻る", user_page_path(@user) %></h4>
     </div>
 
     <div class="follow_top">
@@ -23,10 +23,14 @@
           </div>
         <% end %>
         <div class="follow_buttom">
-          <% if  current_end_user.following?(follower) %>
-            <%= render "end_users/followers/unfollow",  user: follower %>
-          <% else %>
-            <%= render "end_users/followers/follow",  user: follower %>
+          <% if end_user_signed_in? %>
+            <% if follower != current_end_user %>
+              <% if  current_end_user.following?(follower) %>
+                <%= render "end_users/followers/unfollow",  user: follower %>
+              <% else %>
+                <%= render "end_users/followers/follow",  user: follower %>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       </div>
