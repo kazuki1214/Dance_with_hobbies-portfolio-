@@ -25,8 +25,10 @@
               <%= @new_post.title %>
               <%= f.hidden_field :title, value: @new_post.title %>
             </h4>
-            <div class="post-one_image">
-              <%= attachment_image_tag @new_post, :post_image, size: "500x300" %>
+            <div class="post-one_image-field">
+              <% if @new_post.post_image.present? %>
+                <%= image_tag attachment_url(@new_post, :post_image), class:"post-one_image" %>
+              <% end %>
               <div style="display:none;"><%= f.attachment_field :post_image %></div>
             </div>
             <div class="post-one_tag-list">

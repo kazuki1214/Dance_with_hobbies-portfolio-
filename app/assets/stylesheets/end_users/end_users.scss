@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_info{
@@ -69,7 +69,7 @@
 }
 
 .user-edit{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_info{
@@ -153,5 +153,15 @@
   &_delete-button:hover{
      background-color:#dc3545;
      color:white;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user{
+    width:100%;
+  }
+
+  .user-edit{
+    width:100%;
   }
 }

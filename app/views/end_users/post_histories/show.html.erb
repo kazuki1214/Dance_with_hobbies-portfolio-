@@ -29,8 +29,10 @@
           </div>
 
           <h4 class="user-post_title"><%= @post.title %></h4>
-          <div class="user-post_image">
-            <%= attachment_image_tag @post, :post_image, size: "500x300" %>
+          <div class="post-one_image-field">
+            <% if @post.post_image.present? %>
+              <%= image_tag attachment_url(@post, :post_image), class:"post-one_image" %>
+            <% end %>
           </div>
           <div class="user-post_tag-list">
             <% @post.tags.each do |tag| %>

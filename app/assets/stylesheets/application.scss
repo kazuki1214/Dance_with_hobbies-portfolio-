@@ -59,7 +59,7 @@ body{
 // サイドバー設定
 .sub {
     height: 50%;
-    width: 25%;
+    width: 20%;
 }
 
 .subnav {
@@ -230,6 +230,9 @@ a:hover{
   .nav-items {
     width: auto;
     padding: 5px;
+    height:100%;
+    display:flex;
+    align-items:center;
   }
 
   .nav-items-user{

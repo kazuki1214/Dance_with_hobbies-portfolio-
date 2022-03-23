@@ -1,4 +1,4 @@
-<div class="main">
+
   <%= render "layouts/navbar" %>
   <section class="container p-4">
     <div class="row p-2">
@@ -7,22 +7,25 @@
 
     <%= form_with model:[:admin, @user], local: true do |f| %>
       <div class="row mb-5 justify-content-center align-items-center">
-        <%= attachment_image_tag @user, :user_image, size:"100x100", fallback: "no_image.jpg", id:"user_img_prev" %>
-        <%= f.attachment_field :user_image %>
+        <%= attachment_image_tag @user, :user_image, size:"200x200", fallback: "no_image.jpg" %>
       </div>
-      <div class="row mb-4">
+      <div class="row mb-5">
         <p class="col-3 text-right">name:</p>
-        <%= f.text_field :name, class:"w-100 col-md-7 offset-md-1" %>
+        <div class="w-100 col-md-7 offset-md-1">
+          <%= @user.name %>
+        </div>
       </div>
-      <div class="row mb-4">
+      <div class="row mb-5">
         <p class="col-3 text-right">email:</p>
         <%= f.email_field :email, class:"w-100 col-md-7 offset-md-1" %>
       </div>
-      <div class="row mb-4">
+      <div class="row mb-5">
         <p class="col-3 text-right">comment:</p>
-        <%= f.text_area :user_comment, class:"w-100 col-md-7 offset-md-1 d-flex flex-wrap" %>
+        <div class="w-100 col-md-7 offset-md-1 d-flex flex-wrap">
+          <%= @user.user_comment %>
+        </div>
       </div>
-      <div class="row mb-4">
+      <div class="row mb-5">
         <p class="col-3 text-right">status:</p>
         <div class="col-md-7 offset-md-1">
           <%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class:"text-success mr-5" %>
@@ -35,20 +38,3 @@
     <% end %>
   </section>
 </div>
-
-<script>
-$(document).on("turbolinks:load", function(){
-  function readURL(input) {
-    if(input.files && input.files[0]){
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#user_img_prev').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  $("#end_user_user_image").change(function(){
-    readURL(this);
-  });
-});
-</script>

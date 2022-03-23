@@ -1,6 +1,9 @@
 ja:
   activerecord:
     attributes:
+      end_user:
+        email: メールアドレス
+        password: パスワード
       user:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
@@ -139,5 +142,5 @@ ja:
       not_found: は見つかりませんでした。
       not_locked: はロックされていません。
       not_saved:
-        one: エラーが発生したため %{resource} は保存されませんでした。
-        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+        one: エラーが発生したためユーザーは登録されませんでした。
+        other: "%{count} 件のエラーが発生したためユーザーは登録されませんでした。"

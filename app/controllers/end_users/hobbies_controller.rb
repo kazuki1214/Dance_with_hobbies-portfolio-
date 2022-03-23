@@ -1,7 +1,7 @@
 class EndUsers::HobbiesController < ApplicationController
 
   def index
-    @hobbies = Hobby.page(params[:page]).per(9)
+    @hobbies = Hobby.page(params[:page]).per(12)
   end
 
   def search

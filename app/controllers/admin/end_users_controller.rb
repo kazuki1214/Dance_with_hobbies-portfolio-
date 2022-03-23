@@ -20,7 +20,7 @@ class Admin::EndUsersController < ApplicationController
   private
 
   def user_params
-    params.require(:end_user).permit(:name, :email, :user_comment, :is_deleted)
+    params.require(:end_user).permit(:email, :is_deleted)
   end
 
 end

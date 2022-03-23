@@ -33,8 +33,10 @@
 
             <%= link_to end_user_post_history_path(@end_user, post), class:"user-posts_post-link" do %>
               <h4 class="user-posts_post-title"><%= post.title %></h4>
-              <div class="user-posts_post-image">
-                <%= attachment_image_tag post, :post_image, size: "500x300" %>
+              <div class="user-posts_post-image-field">
+                <% if post.post_image.present? %>
+                  <%= image_tag attachment_url(post, :post_image), class:"user-posts_post-image" %>
+                <% end %>
               </div>
               <div class="user-posts_post-tag-list">
                 <% post.tags.each do |tag| %>

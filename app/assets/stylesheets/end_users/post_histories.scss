@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-posts{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_top{
@@ -75,8 +75,12 @@
     overflow-wrap:break-word;
   }
 
-  &_post-image{
+  &_post-image-field{
     text-align:center;
+  }
+
+  &_post-image{
+    width:90%;
   }
 
   &_post-tag-list{
@@ -103,7 +107,7 @@
 }
 
 .user-post{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_top{
@@ -154,8 +158,12 @@
     overflow-wrap:break-word;
   }
 
-  &_image{
+  &_post-image-field{
     text-align:center;
+  }
+
+  &_post-image{
+    width:90%;
   }
 
   &_tag-list{
@@ -224,5 +232,15 @@
   &_delete{
     width:90%;
     text-align:right;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-posts{
+    width:100%;
+  }
+
+  .user-post{
+    width:100%;
   }
 }

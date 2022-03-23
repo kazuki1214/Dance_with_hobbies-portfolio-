@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .categories{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_title{
@@ -57,13 +57,13 @@
     border:1px solid black;
     display:flex;
     align-items:center;
-    margin-left:10px;
+    margin:5px;
   }
 
   &_hobby-name{
     display:flex;
     align-items:center;
-    width:200px;
+    width:190px;
     margin:5px;
   }
 
@@ -72,5 +72,10 @@
     display:flex;
     justify-content:space-around;
   }
+}
 
+@media screen and (max-width: 768px) {
+  .categories{
+    width:100%;
+  }
 }

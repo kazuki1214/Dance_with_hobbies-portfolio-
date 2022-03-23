@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
 
   def index
-    @categories = Category.page(params[:page]).per(5)
+    @categories = Category.page(params[:page])
     @new_category = Category.new
   end
 

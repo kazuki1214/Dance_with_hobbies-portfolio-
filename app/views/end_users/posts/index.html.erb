@@ -41,8 +41,10 @@
 
             <%= link_to hobby_post_path(post.hobby, post), class:"posts_post-link" do %>
               <h4 class="posts_post-title"><%= post.title %></h4>
-              <div class="posts_post-image">
-                <%= attachment_image_tag post, :post_image, size: "500x300" %>
+              <div class="posts_post-image-field">
+              <% if post.post_image.present? %>
+                <%= image_tag attachment_url(post, :post_image), class:"posts_post-image" %>
+              <% end %>
               </div>
               <div class="posts_post-list">
                 <% post.tags.each do |tag| %>

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .posts{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_info{
@@ -55,8 +55,12 @@
     overflow-wrap:break-word;
   }
 
-  &_post-image{
+  &_post-image-field{
     text-align:center;
+  }
+
+  &_post-image{
+    width:90%;
   }
 
   &_post-list{
@@ -84,7 +88,7 @@
 
 
 .post-one{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_bottom{
@@ -126,8 +130,12 @@
     overflow-wrap:break-word;
   }
 
-  &_image{
+  &_image-field{
     text-align:center;
+  }
+
+  &_image{
+    width:90%;
   }
 
   &_tag-list{
@@ -206,7 +214,7 @@
 
 
 .new-post{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_bottom{
@@ -301,5 +309,18 @@
   &_cancel:active{
     transform: scale(1.05);
   }
+}
 
+@media screen and (max-width: 768px) {
+  .posts{
+    width:100%;
+  }
+
+  .post-one{
+    width:100%;
+  }
+
+  .new-post{
+    width:100%;
+  }
 }

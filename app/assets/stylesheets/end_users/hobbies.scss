@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .hobbies{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_title{
@@ -31,7 +31,6 @@
   }
 
   &_contents{
-    width:80%;
     margin:auto;
     display:flex;
     flex-wrap:wrap;
@@ -70,7 +69,7 @@
 }
 
 .hobby-one{
-  width:100%;
+  width:80%;
   padding:23px;
 
   &_top{
@@ -88,7 +87,6 @@
   }
 
   &_introduction{
-    width:100%;
     margin:20px;
     overflow-wrap:break-word;
     text-align:center;
@@ -155,8 +153,12 @@
     overflow-wrap:break-word;
   }
 
-  &_post-image{
+  &_post-image-field{
     text-align:center;
+  }
+
+  &_post-image{
+    width:90%;
   }
 
   &_post-tag-list{
@@ -179,5 +181,15 @@
     justify-content:space-around;
     align-items:flex-end;
     background-color:white;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hobbies{
+    width:100%;
+  }
+
+  .hobby-one{
+    width:100%;
   }
 }
