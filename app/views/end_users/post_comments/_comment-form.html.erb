@@ -1,0 +1,11 @@
+<%= form_with(model: [:end_users, hobby, post, new_comment], url: hobby_post_post_comments_path(hobby,post), remote: true) do |f| %>
+  <div class="comments_form">
+    <div class="comments_form-label">
+      <%= f.label :comment, "コメント追加:" %>
+    </div>
+    <div class="comments_form-field">
+      <%= f.text_area :comment, class: "comments_text-field" %>
+      <%= f.submit "コメントする" %>
+    </div>
+  </div>
+<% end %>

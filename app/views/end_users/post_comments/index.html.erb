@@ -8,7 +8,7 @@
         <h3><%= @hobby.title %></h3>
       </div>
     </div>
-    <div class="post-one_bottom">
+    <div class="comments_bottom">
       <div class="comments_post">
         <div class="comments_post-main">
           <div class="comments_post-user">
@@ -52,36 +52,13 @@
           </div>
 
           <% if end_user_signed_in? %>
-            <%= form_with(model: [:end_users, @hobby, @post, @new_comment], url: hobby_post_post_comments_path(@hobby,@post), local: true) do |f| %>
-              <div class="comments_form">
-                <%= f.label :comment, "コメント追加:" %>
-                <%= f.text_field :comment, class: "comments_text-field" %>
-                <%= f.submit "コメントする" %>
-              </div>
-            <% end %>
+              <%= render "end_users/post_comments/comment-form", hobby: @hobby, post: @post, new_comment: @new_comment %>
           <% end %>
 
-          <% @comments.each do |c| %>
-            <div class="comments_comment">
-              <div class="comments_comment-user">
-                <%= link_to user_page_path(c.end_user.id) do %>
-                  <%= attachment_image_tag c.end_user, :user_image, size: "50x50", fallback: "no_image.jpg", format: "jpg" %>
-                  <%= c.end_user.name %>
-                <% end %>
-                <div class="comments_comment-created">
-                  <%= c.created_at.strftime("%Y/%m/%d/ %H:%M") %>
-                </div>
-              </div>
-              <div class="comments_comment-main">
-                <%= c.comment %>
-                <div class="comments_destroy">
-                  <% if c.end_user == current_end_user %>
-                    <%= link_to "削除する", hobby_post_post_comment_path(@hobby, @post, c), method: :delete %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <div id="comments-area">
+            <%= render "end_users/post_comments/index", hobby: @hobby, post: @post, comments: @comments %>
+          </div>
+
         </div>
       </div>
     </div>

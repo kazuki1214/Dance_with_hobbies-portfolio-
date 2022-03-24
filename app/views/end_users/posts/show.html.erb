@@ -17,6 +17,9 @@
           <% end %>
       </div>
     </div>
+    <div class="post-one_flash">
+      <%= flash[:notice] %>
+    </div>
     <div class="post-one_bottom">
       <div class="post-one_post">
         <div class="post-one_main">
@@ -90,8 +93,8 @@
       </div>
     </div>
     <% if @post.end_user == current_end_user %>
-      <div class="post-one_delete">
-        <%= link_to "投稿を削除する", hobby_post_path(@post.hobby.id, @post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
+      <div class="post-one_destroy">
+        <%= link_to "投稿を削除する", hobby_post_path(@post.hobby.id, @post.id), method: :delete, class:"post-one_destroy-text", "data-confirm" => "投稿を削除しますか？" %>
       </div>
     <% end %>
   </section>

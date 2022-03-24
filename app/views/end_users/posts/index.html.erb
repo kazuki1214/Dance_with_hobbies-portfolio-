@@ -20,6 +20,11 @@
           <% end %>
       </div>
     </div>
+
+    <div class="posts_flash">
+      <%= flash[:destroy] %>
+    </div>
+
     <div class="posts_page">
       <%= paginate @posts %>
     </div>

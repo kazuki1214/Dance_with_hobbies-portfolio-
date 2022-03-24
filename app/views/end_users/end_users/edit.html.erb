@@ -4,7 +4,7 @@
     <%= form_with model:[:end_users, @user], url: end_user_path(@user), local: true do |f| %>
       <div class="user-edit_info">
         <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
-        <h4><%= f.submit "更新", class:"user-edit_submit" %></h4>
+        <%= link_to "ユーザー削除", withdraw_end_user_path(@user),class: "user-edit_delete-button", method: :patch, "data-confirm" => "本当に退会しますか？\n(ユーザーを削除しても投稿データは残ります)" %>
       </div>
 
       <div class="user-edit_image">
@@ -22,11 +22,11 @@
         <%= f.text_area :user_comment, class:"user-edit_comment-field" %>
       </div>
 
-    <% end %>
+      <div class="user-edit_complete">
+        <h4><%= f.submit "更新", class:"user-edit_submit" %></h4>
+      </div>
 
-    <div class="user-edit_delete">
-      <%= link_to "ユーザー削除", withdraw_end_user_path(@user),class: "user-edit_delete-button", method: :patch, "data-confirm" => "本当に退会しますか？\n(ユーザーを削除しても投稿データは残ります)" %>
-    </div>
+    <% end %>
   </section>
 </div>
 

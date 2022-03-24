@@ -54,6 +54,9 @@ class EndUsers::PostsController < ApplicationController
     @new_post.end_user = current_end_user
     @new_post.hobby_id = @hobby.id
     @tags = params[:post][:name]
+    if @new_post.invalid?
+      render :new
+    end
   end
 
   def create
@@ -64,13 +67,17 @@ class EndUsers::PostsController < ApplicationController
     tags = params[:post][:name].split(',').uniq
     if @post.save
       @post.save_tags(tags)
+      flash[:notice] = "投稿に成功しました"
       redirect_to hobby_post_path(@hobby.id,@post.id)
+    else
+      render :new
     end
   end
 
   def destroy
     post = Post.find(params[:id])
     post.destroy
+    flash[:destroy] = "投稿を削除しました"
     redirect_to hobby_posts_path(params[:hobby_id])
   end
 

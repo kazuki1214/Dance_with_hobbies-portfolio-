@@ -10,6 +10,13 @@
     justify-content:space-between;
   }
 
+  &_flash{
+    color:red;
+    text-align:center;
+    font-size:20px;
+    margin:10px;
+  }
+
   &_index{
     display:flex;
     justify-content:center;
@@ -21,7 +28,7 @@
   }
 
   &_post{
-    width:70%;
+    width:80%;
     margin-top:30px;
   }
 
@@ -91,13 +98,20 @@
   width:80%;
   padding:23px;
 
+  &_flash{
+    color:limegreen;
+    text-align:center;
+    font-size:20px;
+    margin:10px;
+  }
+
   &_bottom{
     display:flex;
     justify-content:center;
   }
 
   &_post{
-    width:70%;
+    width:80%;
     margin-top:30px;
   }
 
@@ -193,9 +207,14 @@
     text-align:center;
   }
 
-  &_delete{
+  &_destroy{
     width:90%;
+    color:red;
     text-align:right;
+  }
+
+   &_destroy-text{
+    color:red;
   }
 
   // 確認画面設定
@@ -223,7 +242,7 @@
   }
 
   &_main{
-    width:70%;
+    width:80%;
     padding:20px;
     border:1px solid black;
     margin:10px auto 35px;
