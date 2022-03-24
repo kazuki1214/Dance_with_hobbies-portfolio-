@@ -2,7 +2,7 @@
   <%= render "layouts/navbar" %>
   <div class="categories">
     <div class="categories_title">
-      <h2>カテゴリー一覧</h2>
+      <h2 class="page-title">カテゴリー一覧</h2>
       <%= form_with url: search_categories_path, method: :get, local: true do |search| %>
         <div class="user-posts_search">
           <%= search.text_field :keyword, class: "user-posts_serch-field", placeholder: "カテゴリー検索" %>

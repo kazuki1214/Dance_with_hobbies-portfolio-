@@ -1,4 +1,6 @@
 class Admin::PostHistoriesController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @end_user = EndUser.find(params[:end_user_id])
     @posts = @end_user.posts.page(params[:page]).order(created_at: :desc)

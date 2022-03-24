@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @categories = Category.page(params[:page])
@@ -6,9 +7,13 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
-    @category.save
-    redirect_to admin_categories_path
+    @new_category = Category.new(category_params)
+    if @new_category.save
+      redirect_to admin_categories_path
+    else
+      @categories = Category.page(params[:page])
+      render :index
+    end
   end
 
   def destroy

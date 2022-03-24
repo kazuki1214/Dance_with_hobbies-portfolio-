@@ -3,9 +3,16 @@
   <section class="user-edit">
     <%= form_with model:[:end_users, @user], url: end_user_path(@user), local: true do |f| %>
       <div class="user-edit_info">
-        <h4><%= link_to "戻る", 'javascript:history.back()' %></h4>
-        <%= link_to "ユーザー削除", withdraw_end_user_path(@user),class: "user-edit_delete-button", method: :patch, "data-confirm" => "本当に退会しますか？\n(ユーザーを削除しても投稿データは残ります)" %>
+        <h4><%= link_to "戻る", user_page_path(@user) %></h4>
       </div>
+
+      <% if @user.errors.any? %>
+        <div class="user-edit_errors">
+          <% @user.errors.full_messages.each do |error| %>
+            <%= error %>
+          <% end %>
+        </div>
+      <% end %>
 
       <div class="user-edit_image">
         <%= attachment_image_tag @user, :user_image, size:"150x150", fallback:"no_image.jpg", id:"user_img_prev" %>
@@ -25,8 +32,10 @@
       <div class="user-edit_complete">
         <h4><%= f.submit "更新", class:"user-edit_submit" %></h4>
       </div>
-
     <% end %>
+    <div class="user-edit_delete">
+      <%= link_to "ユーザー削除", withdraw_end_user_path(@user),class: "user-edit_delete-button", method: :patch, "data-confirm" => "本当に退会しますか？\n(ユーザーを削除しても投稿データは残ります)" %>
+    </div>
   </section>
 </div>
 

@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="post-one_flash">
-      <%= flash[:notice] %>
+      <%= flash[:create] %>
     </div>
     <div class="post-one_bottom">
       <div class="post-one_post">
@@ -52,8 +52,8 @@
 
         <div class="post-one_sub">
           <div class="post-one_content">
-            <h6><%= image_tag "eye.jpg" %><%= @post.impressionist_count(:filter => :session_hash) %></h6>
-            <h6 class="post-one_comment-count"><%= image_tag "comment.jpg" %><%= @post.post_comments.count %>件</h6>
+            <h6><i class="fas fa-eye"></i><%= @post.impressionist_count(:filter => :session_hash) %></h6>
+            <h6 class="post-one_comment-count"><i class="far fa-comment-dots"></i><%= @post.post_comments.count %>件</h6>
             <% if end_user_signed_in? %>
               <% if @post.favorite_posts?(current_end_user) %>
                 <div class="post-one_favorite" id="post-favorite-button-<%= @post.id %>">

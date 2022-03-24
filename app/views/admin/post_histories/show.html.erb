@@ -27,8 +27,10 @@
           </div>
 
           <h4 class="user-post_title"><%= @post.title %></h4>
-          <div class="user-post_image">
-            <%= attachment_image_tag @post, :post_image, size: "500x300" %>
+          <div class="post-one_image-field">
+            <% if @post.post_image.present? %>
+              <%= image_tag attachment_url(@post, :post_image), class:"post-one_image" %>
+            <% end %>
           </div>
           <div class="user-post_tag-list">
             <% @post.tags.each do |tag| %>
@@ -42,8 +44,8 @@
 
         <div class="user-post_sub">
           <div class="user-post_content">
-            <h6><%= image_tag "eye.jpg" %><%= @post.impressionist_count(:filter => :session_hash) %></h6>
-            <h6 class="user-post_comment-count"><%= image_tag "comment.jpg" %><%= @post.post_comments.count %>件</h6>
+            <h6><i class="fas fa-eye"></i><%= @post.impressionist_count(:filter => :session_hash) %></h6>
+            <h6 class="user-post_comment-count"><i class="far fa-comment-dots"></i><%= @post.post_comments.count %>件</h6>
             <h6>いいね♡<%= @post.favorite_posts.count %></h6>
           </div>
           <% @comments_first.each do |c| %>

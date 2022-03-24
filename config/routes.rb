@@ -62,7 +62,6 @@ Rails.application.routes.draw do
       resources :post_histories, only:[:index, :show, :destroy]
     end
     resources :categories, only:[:index, :create, :destroy]
-    resources :inquiries, except:[:new, :edit, :create]
   end
 
 end

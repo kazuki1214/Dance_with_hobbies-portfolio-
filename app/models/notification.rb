@@ -7,4 +7,7 @@ class Notification < ApplicationRecord
   belongs_to :visited, class_name: 'EndUser', foreign_key: 'visited_id', optional: true
 
   enum action:{like:0, comment:1}
+
+  validates :action, presence: true
+
 end

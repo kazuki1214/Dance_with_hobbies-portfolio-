@@ -2,7 +2,7 @@
   <%= render "layouts/navbar" %>
   <section class="hobbies">
     <div class="hobbies_title">
-      <h2>趣味一覧</h2>
+      <h2 class="page-title">趣味一覧</h2>
       <%= form_with url: search_hobbies_path, method: :get, local: true do |search| %>
         <div class="hobbies_search">
           <%= search.text_field :keyword, class: "hobbies_serch-field", placeholder: "趣味検索" %>

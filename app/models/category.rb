@@ -4,6 +4,9 @@ class Category < ApplicationRecord
 
   attachment :category_image
 
+  validates :name, presence: true
+  validates :category_image, presence: true
+
   #検索機能
   def self.search(keyword)
     self.where(["name like?", "%#{keyword}%"])

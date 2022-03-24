@@ -1,4 +1,6 @@
 class Admin::EndUsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @users = EndUser.page(params[:page])
   end
@@ -13,8 +15,11 @@ class Admin::EndUsersController < ApplicationController
 
   def update
     @user = EndUser.find(params[:id])
-    @user.update(user_params)
-    redirect_to admin_end_users_path
+    if @user.update(user_params)
+      redirect_to admin_end_users_path
+    else
+      render :edit
+    end
   end
 
   private

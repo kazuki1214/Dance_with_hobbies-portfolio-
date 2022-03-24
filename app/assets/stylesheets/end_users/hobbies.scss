@@ -35,6 +35,7 @@
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
+    padding:20px;
   }
 
   &_one{
@@ -50,6 +51,7 @@
     justify-content:center;
     flex-direction:column;
     padding:5px;
+    background-color:white;
   }
 
   &_one-image{

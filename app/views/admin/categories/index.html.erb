@@ -5,6 +5,14 @@
     <div class="admin-title_page-title"><h4>カテゴリー一覧</h4></div>
   </div>
 
+  <% if @new_category.errors.any? %>
+    <div class="text-center text-danger">
+      <% @new_category.errors.full_messages.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="category_field">
     <%= form_with model: [:admin,  @new_category], local: true do |f| %>
       <div class="row pl-5 align-items-end mb-3">

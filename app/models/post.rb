@@ -14,6 +14,8 @@ class Post < ApplicationRecord
 
   attachment :post_image
 
+  validates :title, presence: true
+
   #検索機能
   def self.search(keyword)
     self.where(["title like ?", "%#{keyword}%"])

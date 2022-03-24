@@ -1,4 +1,5 @@
 class Admin::HobbiesController < ApplicationController
+  before_action :authenticate_admin!
 
   def show
     @hobby = Hobby.find(params[:id])
@@ -36,7 +37,7 @@ class Admin::HobbiesController < ApplicationController
         old_category.each do |c|
           c.destroy
         end
-        
+
       elsif params[:hobby][:category_ids]
         old_category = HobbyCategory.where(hobby_id: @hobby.id)
         old_category.each do |c|

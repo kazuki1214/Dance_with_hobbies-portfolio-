@@ -105,6 +105,11 @@
     align-items:flex-end;
   }
 
+  &_submit{
+    margin-left:5px;
+    padding:2px 5px;
+  }
+
   &_comment{
     padding:0 5px;
     border-bottom:1px solid black;

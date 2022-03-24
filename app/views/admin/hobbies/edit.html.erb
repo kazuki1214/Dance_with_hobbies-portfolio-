@@ -5,6 +5,14 @@
       <div class="admin-title_page-title"><h4>趣味編集</h4></div>
     </div>
 
+    <% if @hobby.errors.any? %>
+      <div class="text-center text-danger">
+        <% @hobby.errors.full_messages.each do |error| %>
+          <p><%= error %></p>
+        <% end %>
+      </div>
+    <% end %>
+
     <%= form_with model: [:admin, @hobby], local: true do |f| %>
     <div class="row mb-4 align-items-end">
         <%= attachment_image_tag @hobby, :hobby_image, size:"180x180",  fallback: "no-image.jpeg", id:"hobby_img_prev" %>

@@ -35,3 +35,20 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+  activerecord:
+    models:
+      category: カテゴリー
+      hobby: 趣味
+      post: 投稿
+      post_comment: コメント
+    attributes:
+      category:
+        name: 名前
+        category_image: 画像
+      hobby:
+        title: タイトル
+        hobby_image: 画像
+      post:
+        title: タイトル
+      post_commet:
+        comment: コメント

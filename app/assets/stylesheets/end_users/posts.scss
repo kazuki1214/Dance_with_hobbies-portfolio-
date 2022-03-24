@@ -241,6 +241,12 @@
     text-align:center;
   }
 
+  &_error{
+    text-align:center;
+    color:red;
+    margin:10px;
+  }
+
   &_main{
     width:80%;
     padding:20px;

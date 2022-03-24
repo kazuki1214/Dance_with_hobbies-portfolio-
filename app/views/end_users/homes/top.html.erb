@@ -21,30 +21,36 @@
   </div>
 
   <div class="home_bottom">
-    <div class="home_hobbies mb-3">
+    <div class="home_hobbies">
       <div class="home_link-hobbies">
         <%= link_to hobbies_path do %>
           <div class="home_link-act-blue">
             <h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>趣味一覧を見てみる</h5>
           </div>
         <% end %>
-        </div>
-      <div class="home_hobby-search"></div>
+      </div>
+      <%= form_with url: search_hobbies_path, method: :get, local: true, class: "home_hobby-search" do |search| %>
+        <%= search.text_field :keyword, class: "home_hobby-search-field", placeholder: "趣味検索" %><br>
+        <%= search.submit "検索", class: "home_hobby-search-submit" %>
+      <% end %>
     </div>
 
-    <div class="home_categories mb-3">
+    <div class="home_categories">
       <%= link_to categories_path do %>
         <div class="home_link-act-blue"><h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>カテゴリーから探す</h5></div>
       <% end %>
     </div>
 
-    <div class="home_ranking mb-3">
+    <div class="home_ranking">
       <div class="home_ranking-title"><h5>おすすめの趣味</h5></div>
       <% @ranking_hobbies.each do |hobby| %>
-          <div class="home_hobby mb-3 ">
+          <div class="home_hobby">
             <%= link_to hobby_path(hobby) do %>
               <div class="home_hobby-link">
-                  <%= attachment_image_tag hobby, :hobby_image, size: "100x100", format: "jpg" %>　<%= hobby.title %>
+                  <%= attachment_image_tag hobby, :hobby_image, size: "100x100", format: "jpg" %>
+                  <div class="home_hobby-link-title">
+                  <%= hobby.title %>
+                  </div>
               </div>
           <% end %>
         </div>
@@ -54,11 +60,15 @@
     <div class="home_ranking">
       <div class="home_ranking-title"><h5>今注目されている投稿</h5></div>
       <% @ranking_posts.each do |post| %>
-        <div class="home_post mb-3">
+        <div class="home_post">
           <%= link_to hobby_post_path(post.hobby, post) do %>
             <div class="home_post-link">
-              <%= attachment_image_tag post, :post_image,size:"100x100", class: "home_post-image", format: "jpg" %>
-              <%= post.title %>
+              <div class="home_post-link-body">
+                <%= attachment_image_tag post, :post_image,size:"100x100", class: "home_post-image", format: "jpg" %>
+                <div class="home_post-link-title">
+                  <%= post.title %>
+                </div>
+              </div>
               <div class="home_post-sub">
                 <%= post.created_at.strftime("%Y/%m/%d/ %H:%M") %>
                 <%= post.hobby.title %>
@@ -70,5 +80,3 @@
     </div>
   </div>
 </section>
-
-<%= render "layouts/footer" %>

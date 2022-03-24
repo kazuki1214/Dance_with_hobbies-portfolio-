@@ -10,9 +10,12 @@ class EndUsers::EndUsersController < ApplicationController
   end
 
   def update
-    user = current_end_user
-    user.update(user_params)
-    redirect_to user_page_path(user)
+    @user = current_end_user
+    if @user.update(user_params)
+      redirect_to user_page_path(@user)
+    else
+      render :edit
+    end
   end
 
   def withdraw

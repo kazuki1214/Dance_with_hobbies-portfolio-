@@ -67,7 +67,7 @@ class EndUsers::PostsController < ApplicationController
     tags = params[:post][:name].split(',').uniq
     if @post.save
       @post.save_tags(tags)
-      flash[:notice] = "投稿に成功しました"
+      flash[:create] = "投稿に成功しました"
       redirect_to hobby_post_path(@hobby.id,@post.id)
     else
       render :new

@@ -6,6 +6,9 @@ class Hobby < ApplicationRecord
 
   attachment :hobby_image
 
+  validates :title, presence: true
+  validates :hobby_image, presence: true
+
   #検索機能
   def self.search(keyword)
     self.where(["title like?", "%#{keyword}%"])

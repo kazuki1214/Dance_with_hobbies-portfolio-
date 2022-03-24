@@ -7,7 +7,6 @@
   padding:23px;
 
   &_info{
-    padding:10px;
     display:flex;
     justify-content:space-between;
   }
@@ -37,7 +36,6 @@
 
   &_name{
     width:70%;
-    overflow-wrap:word-break;
   }
 
   &_email{
@@ -46,6 +44,10 @@
 
   &_comment{
     overflow-wrap:word-break;
+  }
+
+  &_favorite{
+    min-width:20%;
   }
 
    &_favorite-hobbies{
@@ -57,14 +59,15 @@
     border:1px solid black;
     display:flex;
     align-items:center;
-    margin-left:10px;
+    margin:5px;
   }
 
   &_hobby-name{
     display:flex;
     align-items:center;
-    width:200px;
-    margin:5px;
+    width:190px;
+    padding:5px;
+    background-color:white;
   }
 }
 
@@ -73,7 +76,6 @@
   padding:23px;
 
   &_info{
-    padding:10px;
     display:flex;
     justify-content:space-between;
   }
@@ -86,6 +88,11 @@
     color:#007bff;
     background-color: white;
     border: none;
+  }
+
+  &_errors{
+    text-align:center;
+    color:red;
   }
 
   &_image{
@@ -135,6 +142,10 @@
   &_complete{
     display:flex;
     justify-content:center;
+  }
+
+  &_delete{
+    text-align:end;
   }
 
   &_delete-button{
