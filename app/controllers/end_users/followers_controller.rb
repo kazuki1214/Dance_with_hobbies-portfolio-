@@ -1,4 +1,5 @@
 class EndUsers::FollowersController < ApplicationController
+  before_action :authenticate_end_user!, except:[:index]
 
   def index
     @user = EndUser.find(params[:end_user_id])

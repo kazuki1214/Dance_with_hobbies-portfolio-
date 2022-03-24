@@ -1,4 +1,5 @@
 class EndUsers::PostHistoriesController < ApplicationController
+  before_action :authenticate_end_user!, only:[:destroy]
   impressionist :actions => [:show]
 
   def index

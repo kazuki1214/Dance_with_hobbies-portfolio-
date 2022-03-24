@@ -1,4 +1,5 @@
 class EndUsers::FavoriteHobbiesController < ApplicationController
+  before_action :authenticate_end_user!
 
   def create
     @hobby = Hobby.find(params[:hobby_id])

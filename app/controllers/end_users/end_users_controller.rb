@@ -1,5 +1,5 @@
 class EndUsers::EndUsersController < ApplicationController
-  before_action :authenticate_end_user!, only:[:edit]
+  before_action :authenticate_end_user!, except:[:show]
 
   def show
     @user = EndUser.find(params[:id])

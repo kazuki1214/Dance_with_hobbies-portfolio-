@@ -1,4 +1,5 @@
 class EndUsers::PostCommentsController < ApplicationController
+  before_action :authenticate_end_user!, except:[:index]
 
   def index
     @post = Post.find(params[:post_id])

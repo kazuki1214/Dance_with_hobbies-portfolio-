@@ -1,4 +1,5 @@
 class EndUsers::FavoritePostsController < ApplicationController
+  before_action :authenticate_end_user!
 
   def create
     @post = Post.find(params[:post_id])

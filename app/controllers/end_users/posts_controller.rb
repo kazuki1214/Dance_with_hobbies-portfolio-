@@ -1,4 +1,5 @@
 class EndUsers::PostsController < ApplicationController
+  before_action :authenticate_end_user!, except:[:index, :show, :search]
   impressionist :actions => [:show]
 
   def index
