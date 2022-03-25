@@ -8,11 +8,10 @@
       自分の趣味を発信しよう!</h2>
     </div>
 
-    <% if flash[:danger] %>
-      <p class="text-danger text-center m-4"><%= flash[:danger] %></p>
-    <% end %>
-
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <p class="text-danger text-center m-4"><%= flash[:danger] %></p>
+      <p class="text-danger text-center m-4"><%= alert %></p>
+
       <div class="row mb-3">
         <%= f.label :email, "メールアドレス:", class: "col-md-3 offset-lg-1 text-md-right" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5 offset-1" %>
