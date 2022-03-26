@@ -129,9 +129,22 @@ a:hover{
   height: 150px;
 }
 
-  .page-title{
-    font-family:monospace;
+.page-title{
+  font-family:monospace;
+}
+
+// フッター設定
+.footer{
+  min-height:70px;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+  background-color:#464a50;
+
+  &_home{
+    color:white;
   }
+}
 
 // ユーザー登録画面
 .sign-up, .sign-in{
