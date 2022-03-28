@@ -23,7 +23,17 @@
 また、同じ趣味の人との交流の場にも活用できる。
 
 ## 設計書
-<...>
+機能一覧<br>
+<https://docs.google.com/spreadsheets/d/1PGkG5qFL64ABoSlYGEs6qb279wS08HLz3LHBJZyqhKA/edit?usp=sharing><br>
+ER図<br>
+<https://drive.google.com/file/d/1T2WMpTmg_r6PmeKshOk2ysuuCN3sPKwQ/view?usp=sharing><br>
+詳細設計<br>
+<https://docs.google.com/spreadsheets/d/1aOEobruRrbwRGXvazD8dk74DaUXRb1yE33fzbinELQU/edit?usp=sharing><br>
+テーブル定義<br>
+<https://docs.google.com/spreadsheets/d/1Y4xFEBhMIuTXOeQEFbqCjKm8JMqNfpsL1Z3cHj3sgWA/edit?usp=sharing><br>
+ワイヤーフレーム<br>
+<https://drive.google.com/file/d/1UPQFDEaM0WtP9G2tDATtOtIce_QLkJtj/view?usp=sharing>
+
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1q2jew5qvRHth9sJui3ymoXOpPesJg4Fdm3lkscfAqQw/edit?usp=sharing>
