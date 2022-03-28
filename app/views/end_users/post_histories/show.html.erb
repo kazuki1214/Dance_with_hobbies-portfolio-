@@ -59,7 +59,7 @@
                 </div>
               <% end %>
             <% elsif %>
-              <h6>いいね♡<%= post.favorite_posts.count %></h6>
+              <h6>いいね♡<%= @post.favorite_posts.count %></h6>
             <% end %>
           </div>
           <% @comments.each do |c| %>
