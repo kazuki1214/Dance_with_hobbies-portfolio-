@@ -32,7 +32,7 @@
               <div style="display:none;"><%= f.attachment_field :post_image %></div>
             </div>
             <div class="post-one_tag-list">
-              <% @tags.split(",").uniq.each do |t| %>
+              <% @tags.split(/\,|\、/).uniq.each do |t| %>
                 <span class="post-one_tag">#<%= t %></span>
               <% end %>
                <%= f.hidden_field :name, value: @tags %>

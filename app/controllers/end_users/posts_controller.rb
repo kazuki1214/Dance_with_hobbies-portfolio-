@@ -65,7 +65,7 @@ class EndUsers::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     @post.hobby_id = @hobby.id
-    tags = params[:post][:name].split(',').uniq
+    tags = params[:post][:name].split(/\,|\、/).uniq
     if @post.save
       @post.save_tags(tags)
       flash[:create] = "投稿に成功しました"
