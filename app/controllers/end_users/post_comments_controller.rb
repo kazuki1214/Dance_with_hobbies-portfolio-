@@ -27,12 +27,14 @@ class EndUsers::PostCommentsController < ApplicationController
 
   def destroy
     @comment = PostComment.find_by(id: params[:id])
-    if @comment.destroy
-      @post = Post.find(params[:post_id])
-      @hobby = @post.hobby
-      @comments = @post.post_comments.all.order(created_at: :desc)
-      @new_comment = PostComment.new
-      render :create
+    if @comment.end_user == current_end_user
+      if @comment.destroy
+        @post = Post.find(params[:post_id])
+        @hobby = @post.hobby
+        @comments = @post.post_comments.all.order(created_at: :desc)
+        @new_comment = PostComment.new
+        render :create
+      end
     end
   end
 

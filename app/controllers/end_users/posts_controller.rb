@@ -77,9 +77,11 @@ class EndUsers::PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
-    flash[:destroy] = "投稿を削除しました"
-    redirect_to hobby_posts_path(params[:hobby_id])
+    if post.end_user == current_end_user
+      post.destroy
+      flash[:destroy] = "投稿を削除しました"
+      redirect_to hobby_posts_path(params[:hobby_id])
+    end
   end
 
   private
