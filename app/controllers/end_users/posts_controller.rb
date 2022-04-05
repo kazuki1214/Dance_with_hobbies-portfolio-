@@ -50,7 +50,7 @@ class EndUsers::PostsController < ApplicationController
   end
 
   def confirm
-    @hobby = Hobby.find(params[:hobby_id])
+    @hobby = Hobby.find(params[:post][:hobby_id])
     @new_post = Post.new(post_params)
     @new_post.end_user = current_end_user
     @new_post.hobby_id = @hobby.id

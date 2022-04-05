@@ -168,12 +168,136 @@
   }
 }
 
+.user-new-post{
+  width:80%;
+  padding:23px;
+
+  &_hobby-title{
+    padding:20px;
+    border-bottom:1px solid black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  &_hobby-select{
+    padding:2px;
+    margin-left:15px;
+    height:30px;
+  }
+
+  &_bottom{
+    padding:10px;
+    text-align:center;
+  }
+
+  &_error{
+    text-align:center;
+    color:red;
+    margin:10px;
+  }
+
+  &_main{
+    width:80%;
+    padding:20px;
+    border:1px solid black;
+    margin:10px auto 35px;
+    background-color:white;
+  }
+
+  &_title{
+    margin-bottom:15px;
+  }
+
+  &_title-field{
+    width:90%;
+    height:35px;
+  }
+
+  &_image{
+    margin-bottom:15px;
+  }
+
+  &_tag-field{
+    width:90%;
+  }
+
+  &_body-field{
+    width:90%;
+    height:100px;
+  }
+
+  &_label{
+    margin:10px;
+  }
+
+  &_send{
+    display:flex;
+    justify-content:space-around;
+  }
+
+  &_submit{
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color:white;
+    color:black;
+    border-radius:5px;
+    padding:3px 10px;
+    font-size:20px;
+  }
+
+  &_submit:hover{
+    background-color:#007bff;
+    color:white;
+    transition: 0.3s;
+    transform: scale(1.05);
+  }
+
+  &_submit:active{
+    transform: scale(1.05);
+  }
+
+  &_cancel{
+    text-decoration:none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    border:2px outset rgb(118, 118, 118);
+    border-image: initial;
+    background-color:white;
+    color:black;
+    border-radius:5px;
+    transition: 0.3s;
+    padding:3px 10px;
+    font-size:20px;
+  }
+
+  &_cancel:hover{
+    background-color:#ff293a;
+    color:white;
+    transition: 0.3s;
+    transform: scale(1.05);
+  }
+
+  &_cancel:active{
+    transform: scale(1.05);
+  }
+}
+
 @media screen and (max-width: 768px) {
   .user{
     width:100%;
   }
 
   .user-edit{
+    width:100%;
+  }
+
+  .user-new-post{
     width:100%;
   }
 }

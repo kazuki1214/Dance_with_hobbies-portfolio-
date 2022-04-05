@@ -19,6 +19,10 @@ class EndUsers::EndUsersController < ApplicationController
     end
   end
 
+  def new_post
+    @new_post = Post.new
+  end
+
   def withdraw
     user = current_end_user
     user.update(is_deleted: true)

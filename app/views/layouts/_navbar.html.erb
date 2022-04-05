@@ -15,9 +15,9 @@
             <%= attachment_image_tag current_end_user, :user_image, size:"50x50", fallback:"no_image.jpg", format:"jpg" %><span class="nav-items-user"><%= current_end_user.name %></span>
           </div>
         <% end %>
+        <%= link_to new_post_end_user_path(current_end_user.id) do %> <div class="nav-items"><span class="text-light">新規投稿</span></div><% end %>
         <%= link_to hobbies_path do %> <div class="nav-items"><span class="text-light">趣味一覧</span></div><% end %>
         <%= link_to categories_path do %> <div class="nav-items"><span class="text-light">カテゴリー一覧</span></div><% end %>
-        <%= link_to end_user_post_histories_path(current_end_user.id) do %> <div class="nav-items"><span class="text-light">投稿履歴</span></div><% end %>
         <%= link_to end_user_notifications_path(current_end_user.id) do %>
           <div class="nav-items">
             <% if unchecked_notifications.any? %>

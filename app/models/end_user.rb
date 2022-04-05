@@ -10,6 +10,7 @@ class EndUser < ApplicationRecord
   has_many :favorite_posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorite_hobbies
+  has_many :hobbies, through: :favorite_hobbies
 
   # フォロー機能
   has_many :followers, dependent: :destroy #自分が持つフォローユーザー

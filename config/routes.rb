@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get "end_user/:id/information" => "end_users#edit", as: "information"
     resources :end_users, only:[:update] do
       member do
+        get :new_post
         patch :withdraw
       end
       resources :post_histories, only:[:index, :show, :destroy] do

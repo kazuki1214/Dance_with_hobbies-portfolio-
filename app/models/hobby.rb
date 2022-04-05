@@ -3,6 +3,7 @@ class Hobby < ApplicationRecord
   has_many :categories, through: :hobby_categories
   has_many :posts, dependent: :destroy
   has_many :favorite_hobbies, dependent: :destroy
+  has_many :end_users, through: :favorite_hobbies
 
   attachment :hobby_image
 

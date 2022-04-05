@@ -2,10 +2,10 @@
   <%= render "layouts/navbar" %>
   <section class="new-post">
 
-    <div class="hobby-top">
-      <div class="hobby-title">
-        <h3><%= attachment_image_tag @hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %><%= @hobby.title %></h3>
-      </div>
+    <%= form_with(model: [:end_users, @hobby, @new_post], url: confirm_hobby_posts_path(@hobby), local: true, html: {onsubmit: "return false"}) do |f| %>
+    <div class="hobby-title">
+      <h3><%= attachment_image_tag @hobby, :hobby_image, size: "100x100", fallback: "no_image.jpg" %><%= @hobby.title %></h3>
+      <%= f.hidden_field :hobby_id, value: @hobby.id %>
     </div>
     <% if @new_post.errors.any? %>
       <div class="new-post_error">
@@ -14,7 +14,6 @@
         <% end %>
       </div>
     <% end %>
-    <%= form_with(model: [:end_users, @hobby, @new_post], url: confirm_hobby_posts_path(@hobby), local: true) do |f| %>
       <div class="new-post_bottom">
         <h2>新規登録</h2>
         <div class="new-post_main">
@@ -43,13 +42,12 @@
         </div>
 
         <div class="new-post_send">
-          <%= link_to hobby_posts_path(@hobby.id) do %>
-            <button class="new-post_cancel">投稿をキャンセル</button>
-          <% end %>
-          <%= f.submit "投稿を確認", class: "new-post_submit" %>
+          <%= link_to "投稿をキャンセル", hobby_posts_path(@hobby.id), type: "button", class: "new-post_cancel" %>
+          <%= f.submit "投稿を確認", class: "new-post_submit", onclick: "submit();" %>
         </div>
       </div>
     <% end %>
+
   </section>
 </div>
 

@@ -30,6 +30,12 @@
     margin-left:auto;
   }
 
+  &_page{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+  }
+
   &_index{
     display:flex;
     justify-content:center;
@@ -232,6 +238,10 @@
   &_delete{
     width:90%;
     text-align:right;
+  }
+
+  &_delete-text{
+    color:red;
   }
 }
 

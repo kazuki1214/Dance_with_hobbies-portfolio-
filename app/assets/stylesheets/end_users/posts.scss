@@ -316,6 +316,8 @@
     -webkit-appearance: none;
     appearance: none;
 
+    border:2px outset rgb(118, 118, 118);
+    border-image: initial;
     background-color:white;
     color:black;
     border-radius:5px;
