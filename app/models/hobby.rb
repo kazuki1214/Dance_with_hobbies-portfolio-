@@ -20,4 +20,9 @@ class Hobby < ApplicationRecord
     favorite_hobbies.where(end_user_id: end_user.id).exists?
   end
 
+  #ランキング機能
+  def self.ranking(count)
+    self.find(FavoriteHobby.group(:hobby_id).order('count(hobby_id) desc').limit(count).pluck(:hobby_id))
+  end
+
 end

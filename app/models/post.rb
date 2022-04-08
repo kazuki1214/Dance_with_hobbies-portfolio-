@@ -83,4 +83,9 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  #ランキング機能
+  def self.ranking(count)
+    self.find(FavoritePost.group(:post_id).order('count(post_id) desc').limit(count).pluck(:post_id))
+  end
+
 end
