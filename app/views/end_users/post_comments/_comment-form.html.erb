@@ -3,6 +3,9 @@
     <div class="comments_form-label">
       <%= f.label :comment, "コメント追加:" %>
     </div>
+    <div class="comments_form-errors" id="comments-errors">
+      <%= render "end_users/post_comments/errors", new_comment: @new_comment %>
+    </div>
     <div class="comments_form-field">
       <%= f.text_area :comment, class: "comments_text-field", placeholder: "コメントを入力してください" %>
       <%= f.submit "コメントする", class: "comments_submit" %>

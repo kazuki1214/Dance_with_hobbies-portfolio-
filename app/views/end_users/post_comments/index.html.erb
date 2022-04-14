@@ -52,11 +52,11 @@
           </div>
 
           <% if end_user_signed_in? %>
-              <%= render "end_users/post_comments/comment-form", hobby: @hobby, post: @post, new_comment: @new_comment %>
+            <%= render "end_users/post_comments/comment-form", hobby: @hobby, post: @post, new_comment: @new_comment %>
           <% end %>
 
           <div id="comments-area">
-            <%= render "end_users/post_comments/index", hobby: @hobby, post: @post, comments: @comments %>
+            <%= render "end_users/post_comments/comments", hobby: @hobby, post: @post, comments: @comments %>
           </div>
 
         </div>

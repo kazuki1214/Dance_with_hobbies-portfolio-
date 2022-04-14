@@ -1,0 +1,5 @@
+<% if new_comment.errors.any? %>
+  <% new_comment.errors.full_messages.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>

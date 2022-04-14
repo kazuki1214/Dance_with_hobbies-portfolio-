@@ -21,7 +21,7 @@ class EndUsers::PostCommentsController < ApplicationController
       render :create
     else
       @comments = @post.post_comments.all.order(created_at: :desc)
-      render :index
+      render :errors
     end
   end
 
