@@ -20,7 +20,6 @@ class EndUsers::PostCommentsController < ApplicationController
       @new_comment = PostComment.new
       render :create
     else
-      @comments = @post.post_comments.all.order(created_at: :desc)
       render :errors
     end
   end

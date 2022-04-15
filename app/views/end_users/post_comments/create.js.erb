@@ -1,2 +1,4 @@
 $("#comments-area").html("<%= j(render 'comments', hobby: @hobby, post: @post, comments: @comments) %>")
 $("textarea").val('')
+<!--エラーメッセージ非表示にする-->
+$("#comments-errors").html('')
