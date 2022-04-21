@@ -65,4 +65,12 @@ Rails.application.routes.draw do
     resources :categories, only:[:index, :create, :destroy]
   end
 
+  resources :contacts, only:[:new, :create] do
+    collection do
+      post :confirm
+      get :thanks
+      get :back
+    end
+  end
+
 end

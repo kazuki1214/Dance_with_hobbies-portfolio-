@@ -1,0 +1,27 @@
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <div class="contact">
+    <div class="contact_back">
+      <h4><%= link_to "ホームに戻る", root_path %></h4>
+    </div>
+    <%= form_with model: @contact, url: confirm_contacts_path(@contact), local: true do |f| %>
+      <div class="contact_form">
+        <div class="contact_name">
+          <%= f.label :name, "お名前" %><br>
+          <%= f.text_field :name, class: "contact_name-field" %>
+        </div>
+        <div class="contact_email">
+          <%= f.label :email, "メールアドレス" %><br>
+          <%= f.text_field :email, class: "contact_email-field" %>
+        </div>
+        <div class="contact_message">
+          <%= f.label :message, "お問い合せ内容" %><br>
+          <%= f.text_area :message, class: "contact_message-field" %>
+        </div>
+        <div class="contact_send">
+          <%= f.submit "内容を確認する", class: "contact_submit" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

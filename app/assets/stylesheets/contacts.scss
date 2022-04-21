@@ -1,0 +1,73 @@
+// Place all the styles related to the contacts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.contact{
+  width:80%;
+  padding:23px;
+
+ &_form{
+    margin-top:20px;
+    padding:20px;
+  }
+
+  &_name{
+    margin-bottom:20px;
+  }
+
+  &_name-field{
+    margin:5px;
+    width:70%;
+  }
+
+  &_email{
+    margin-bottom:20px;
+  }
+
+  &_email-field{
+    margin:5px;
+    width:70%;
+  }
+
+  &_message{
+    margin-bottom:20px;
+  }
+
+  &_message-field{
+    margin:5px;
+    width:70%;
+  }
+
+  &_send{
+    display:flex;
+    justify-content:center;
+  }
+
+  &_submit{
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color:white;
+    color:black;
+    border-radius:5px;
+    padding:3px 10px;
+    font-size:20px;
+  }
+
+  &_submit:hover{
+    background-color:#00ff53;
+    color:black;
+    transition: 0.3s;
+    transform: scale(1.05);
+  }
+
+  &_submit:active{
+    transform: scale(1.05);
+  }
+}
+
+.contact-thanks{
+  text-align:center;
+  padding:50px;
+}

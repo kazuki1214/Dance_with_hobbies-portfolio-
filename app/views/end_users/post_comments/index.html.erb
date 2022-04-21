@@ -1,7 +1,7 @@
 <div class="main">
   <%= render "layouts/navbar" %>
   <section class="comments">
-    <h4><div class="comments_back"><%= link_to "戻る", hobby_post_path(@hobby, @post) %></div></h4>
+    <h4 class="comments_back"><%= link_to "戻る", hobby_post_path(@hobby, @post) %></h4>
     <div class="hobby-one_top">
       <div class="hobby-one_title">
         <%= attachment_image_tag @hobby, :hobby_image, size: "120x120", fallback: "no_image.jpg", class: "hobby-one_image" %>

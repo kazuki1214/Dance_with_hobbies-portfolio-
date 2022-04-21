@@ -1,0 +1,4 @@
+<%= @contact.name %>様からお問合せがありました<br>
+<%= @contact.submit %><br>
+[Mail]:<%= @contact.email %><br>
+[Message]:<%=safe_join(@contact.message.split("\n"),tag(:br))%>
