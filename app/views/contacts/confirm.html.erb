@@ -1,10 +1,8 @@
 <div class="main">
   <%= render "layouts/navbar" %>
   <div class="contact">
-    <div class="contact_back">
-      <h4><%= link_to "戻る", back_contacts_path %></h4>
-    </div>
-    <%= form_with model: @contact, url: thanks_contacts_path, local: true do |f| %>
+    <h4><%= link_to "入力画面に戻る", 'javascript:history.back()' %></h4>
+    <%= form_with model: @contact, local: true do |f| %>
       <div class="contact_form">
         <div class="contact_name">
           <%= @contact.name %>
@@ -15,7 +13,7 @@
           <%= f.hidden_field :email %>
         </div>
         <div class="contact_message">
-          <%= @contact.message %>
+          <%=safe_join(@contact.message.split("\n"),tag(:br))%>
           <%= f.hidden_field :message %>
         </div>
         <div class="contact_send">

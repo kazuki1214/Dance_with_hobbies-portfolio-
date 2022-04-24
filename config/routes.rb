@@ -69,7 +69,6 @@ Rails.application.routes.draw do
     collection do
       post :confirm
       get :thanks
-      get :back
     end
   end
 
