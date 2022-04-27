@@ -6,16 +6,26 @@
     </div>
     <%= form_with model: @contact, url: confirm_contacts_path(@contact), local: true do |f| %>
       <div class="contact_form">
-        <div class="contact_name">
-          <%= f.label :name, "お名前" %><br>
+        <div class="contact_title">
+          <h3>お問合せ</h3>
+        </div>
+        <% if @contact.errors.any? %>
+          <div class="contact_error">
+            <% @contact.errors.full_messages.each do |error| %>
+              <p><%= error %></p>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="contact_field">
+          <strong><%= f.label :name, "お名前:" %></strong>
           <%= f.text_field :name, class: "contact_name-field" %>
         </div>
-        <div class="contact_email">
-          <%= f.label :email, "メールアドレス" %><br>
+        <div class="contact_field">
+          <strong><%= f.label :email, "メールアドレス:" %></strong>
           <%= f.text_field :email, class: "contact_email-field" %>
         </div>
-        <div class="contact_message">
-          <%= f.label :message, "お問い合せ内容" %><br>
+        <div class="contact_field">
+          <strong><%= f.label :message, "お問い合せ内容:" %></strong>
           <%= f.text_area :message, class: "contact_message-field" %>
         </div>
         <div class="contact_send">

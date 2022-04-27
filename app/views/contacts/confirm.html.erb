@@ -1,20 +1,32 @@
 <div class="main">
   <%= render "layouts/navbar" %>
   <div class="contact">
-    <h4><%= link_to "入力画面に戻る", 'javascript:history.back()' %></h4>
+    <h4><%= link_to "入力画面に戻る", new_contact_path %></h4>
     <%= form_with model: @contact, local: true do |f| %>
       <div class="contact_form">
-        <div class="contact_name">
-          <%= @contact.name %>
-          <%= f.hidden_field :name %>
+        <div class="contact_title">
+          <h3>お問合せ内容の確認</h3>
         </div>
-        <div class="contact_email">
-          <%= @contact.email %>
-          <%= f.hidden_field :email %>
+        <div class="contact_contents">
+          <p>お名前:</p>
+          <div class="contact_contents-name">
+            <%= @contact.name %>
+            <%= f.hidden_field :name %>
+          </div>
         </div>
-        <div class="contact_message">
-          <%=safe_join(@contact.message.split("\n"),tag(:br))%>
-          <%= f.hidden_field :message %>
+        <div class="contact_contents">
+          <p>メールアドレス:</p>
+          <div class="contact_contents-email">
+            <%= @contact.email %>
+            <%= f.hidden_field :email %>
+          </div>
+        </div>
+        <div class="contact_contents">
+          <p>お問合せ内容:</p>
+          <div class="contact_contents-message">
+            <%= safe_join(@contact.message.split("\n"),tag(:br)) %>
+            <%= f.hidden_field :message %>
+          </div>
         </div>
         <div class="contact_send">
           <%= f.submit "送信する", class: "contact_submit" %>

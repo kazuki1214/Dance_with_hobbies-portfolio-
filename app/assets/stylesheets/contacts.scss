@@ -10,36 +10,65 @@
     padding:20px;
   }
 
-  &_name{
+  &_title{
+    padding-left:30px;
+  }
+
+  &_error{
+    color:red;
+    text-align:center;
+  }
+
+  &_field{
     margin-bottom:20px;
+    display:flex;
+    justify-content:center;
+    align-items:baseline;
+  }
+
+  &_field label{
+    width:120px;
+    text-align:end;
   }
 
   &_name-field{
-    padding:2px;
-    margin:5px;
+    padding:3px;
+    margin:10px;
     width:70%;
-  }
-
-  &_email{
-    margin-bottom:20px;
   }
 
   &_email-field{
-    padding:2px;
-    margin:5px;
+    padding:3px;
+    margin:10px;
     width:70%;
-  }
-
-  &_message{
-    margin-bottom:20px;
   }
 
   &_message-field{
-    padding:2px;
-    margin:5px;
+    padding:3px;
+    margin:10px;
     width:70%;
     height:95px;
   }
+
+  &_contents{
+    margin-left:50px;
+    margin-bottom:20px;
+    display:flex;
+    align-items:baseline;
+  }
+
+  &_contents-name{
+    margin:10px;
+  }
+
+  &_contents-email{
+    margin:10px;
+  }
+
+  &_contents-message{
+    margin:10px;
+  }
+
 
   &_send{
     display:flex;
