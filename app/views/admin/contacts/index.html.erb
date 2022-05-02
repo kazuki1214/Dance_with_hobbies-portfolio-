@@ -1,0 +1,41 @@
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <section class="container p-5">
+    <div class="row mb-4 admin-title">
+      <div class="admin-title_page-title"><h4>お問合せ一覧</h4></div>
+    </div>
+    <div class="admin-table">
+      <table class="table admin-table_index-table">
+        <thead class="admin-table_index-thead">
+          <tr class="admin-table_index-tr">
+            <th>ID</th>
+            <th>name</th>
+            <th>e-mail</th>
+            <th>message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contacts.each do |t| %>
+          <tr class="admin-table_index-tr">
+            <td><%= t.id %></td>
+            <td>
+              <%= link_to edit_admin_contact_path(t) do %>
+                <%= t.name %>
+              <% end %>
+            </td>
+            <td><%= t.email %></td>
+            <% if t.is_action == false %>
+              <td class="text-secondary">未対応</td>
+            <% else %>
+              <td class="text-success">対応済み</td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row justify-content-around w-100">
+      <%= paginate @contacts %>
+    </div>
+  </section>
+</div>

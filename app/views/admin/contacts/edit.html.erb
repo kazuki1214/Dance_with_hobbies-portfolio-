@@ -1,0 +1,40 @@
+<div class="main">
+  <%= render "layouts/navbar" %>
+  <section class="container p-4">
+    <div class="row p-2">
+      <h4><%= link_to "戻る", admin_contacts_path %></h4>
+    </div>
+    <div class="row mb-4 admin-title">
+      <div class="admin-title_page-title"><h4>お問合せ内容</h4></div>
+    </div>
+
+    <%= form_with model:[:admin, @contact], local: true do |t| %>
+      <div class="row mb-5">
+        <p class="col-3 text-right">name:</p>
+        <div class="w-100 col-md-7">
+          <%= @contact.name %>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <p class="col-3 text-right">email:</p>
+        <%= @contact.email %>
+      </div>
+      <div class="row mb-5">
+        <p class="col-3 text-right">comment:</p>
+        <div class="w-100 col-md-7 overflow-auto">
+          <%= @contact.message %>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <p class="col-3 text-right">status:</p>
+        <div class="col-md-7 offset-md-1">
+          <%= t.radio_button :is_action, false %><%= t.label :is_action, "未対応", class:"text-secondary mr-5" %>
+          <%= t.radio_button :is_action, true %><%= t.label :is_action, "対応済み", class:"text-success" %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <%= t.submit "更新",  class:"btn btn-primary px-5 py-2" %>
+      </div>
+    <% end %>
+  </section>
+</div>
