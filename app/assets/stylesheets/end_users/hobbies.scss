@@ -189,9 +189,21 @@
 @media screen and (max-width: 768px) {
   .hobbies{
     width:100%;
-  }
 
-  .hobby-one{
-    width:100%;
+    &_title{
+      display:block;
+    }
+
+    &_serch-field{
+      width:100%;
+    }
+
+    &_one{
+      width:100%;
+    }
+
+    &_one-link{
+      width:100%;
+    }
   }
 }

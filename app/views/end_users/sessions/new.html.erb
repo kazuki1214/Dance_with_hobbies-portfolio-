@@ -12,14 +12,14 @@
       <p class="text-danger text-center m-4"><%= flash[:danger] %></p>
       <p class="text-danger text-center m-4"><%= alert %></p>
 
-      <div class="row mb-3">
+      <div class="row m-3">
         <%= f.label :email, "メールアドレス:", class: "col-md-3 offset-lg-1 text-md-right" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5 offset-1" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-md-5 col-10 offset-1" %>
       </div>
 
-      <div class="row mb-3">
+      <div class="row m-3">
         <%= f.label :password, "パスワード:", class: "col-md-3 offset-lg-1 text-md-right" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "col-5 offset-1" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "col-md-5 col-10 offset-1" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
@@ -40,9 +40,6 @@
       <div class="text-center">
         <p>ユーザー作成がまだの方はこちらから<br>
         登録して下さい</p>
-      </div>
-      <div class="mx-md-5 mx-2">
-        <h1>➡</h1>
       </div>
       <div>
         <%= link_to "登録画面へ", new_end_user_registration_path, class: "btn btn-primary p-2 w-100" %>

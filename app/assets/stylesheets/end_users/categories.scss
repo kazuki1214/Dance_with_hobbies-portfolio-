@@ -78,5 +78,13 @@
 @media screen and (max-width: 768px) {
   .categories{
     width:100%;
+
+    &_title{
+      display:block;
+    }
+
+    &_serch-field{
+      width:100%;
+    }
   }
 }

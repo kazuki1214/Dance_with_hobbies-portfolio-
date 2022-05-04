@@ -1,10 +1,10 @@
 <section class="home">
   <!-- home_topにback-grand-image-->
   <div class="home_image">
+    <div class="home_title">
+      <h1 class="m-0">welcome to the stage!</h1>
+    </div>
     <div class="home_top">
-      <div class="home_title">
-        <h1 class="mb-5"><strong>welcome to the stage!</strong></h1>
-      </div>
       <div class="home_introduction">
         <div class="home_logo mb-5"><%= image_tag 'logo.png' %></div>
         <h5>Dance-with-hobbiesは新しい趣味の発掘、同じ趣味を持つ人と趣味の共有ができるサイトです。<br>
@@ -25,7 +25,7 @@
       <div class="home_link-hobbies">
         <%= link_to hobbies_path do %>
           <div class="home_link-act-blue">
-            <h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>趣味一覧を見てみる</h5>
+            <h5 class="m-0"><%= image_tag 'hobby.jpg', size:"100x100" %>趣味一覧を見てみる</h5>
           </div>
         <% end %>
       </div>
@@ -37,7 +37,7 @@
 
     <div class="home_categories">
       <%= link_to categories_path do %>
-        <div class="home_link-act-blue"><h5 class="m-0"><%= image_tag 'no_image.jpg', size:"100x100" %>カテゴリーから探す</h5></div>
+        <div class="home_link-act-blue"><h5 class="m-0"><%= image_tag 'category.jpg', size:"100x100" %>カテゴリーから探す</h5></div>
       <% end %>
     </div>
 
