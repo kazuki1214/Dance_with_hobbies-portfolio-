@@ -132,3 +132,29 @@
   justify-content:center;
   align-items:center;
 }
+
+@media screen and (max-width: 768px){
+  .contact{
+  width:100%;
+
+    &_field{
+      display:block;
+    }
+
+    &_field label{
+      text-align:start;
+    }
+
+    &_name-field{
+      width:100%;
+    }
+
+    &_email-field{
+      width:100%;
+    }
+
+    &_message-field{
+      width:100%;
+    }
+  }
+}
