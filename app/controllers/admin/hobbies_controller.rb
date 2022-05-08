@@ -12,11 +12,13 @@ class Admin::HobbiesController < ApplicationController
   def create
     @hobby = Hobby.new(hobby_params)
     if @hobby.save
-      params[:hobby][:category_ids].each do |category|
-        hobby_category = HobbyCategory.new
-        hobby_category.hobby_id = @hobby.id
-        hobby_category.category_id = category
-        hobby_category.save
+      if params[:hobby][:category_ids]
+        params[:hobby][:category_ids].each do |category|
+          hobby_category = HobbyCategory.new
+          hobby_category.hobby_id = @hobby.id
+          hobby_category.category_id = category
+          hobby_category.save
+        end
       end
       redirect_to admin_hobby_path(@hobby)
     else
