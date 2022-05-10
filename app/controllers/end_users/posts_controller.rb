@@ -1,5 +1,6 @@
 class EndUsers::PostsController < ApplicationController
   before_action :authenticate_end_user!, except:[:index, :show, :search]
+  before_action :destroy_params, only:[:destroy]
   impressionist :actions => [:show]
 
   def index
@@ -88,6 +89,13 @@ class EndUsers::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:post_image, :title, :body)
+  end
+
+  def destroy_params
+    post = Post.find(params[:id])
+    if post.end_user != current_end_user
+      redirect_to hobby_post_path(post)
+    end
   end
 
 end

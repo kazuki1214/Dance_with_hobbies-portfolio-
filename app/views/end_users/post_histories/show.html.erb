@@ -88,7 +88,7 @@
     </div>
     <% if @post.end_user == current_end_user %>
       <div class="user-post_delete">
-        <%= link_to "投稿を削除する", hobby_post_path(@post.hobby.id, @post.id), method: :delete, class:"user-post_delete-text", "data-confirm" => "投稿を削除しますか？" %>
+        <%= link_to "投稿を削除する", end_user_post_history_path(@post.hobby.id, @post.id), method: :delete, class:"user-post_delete-text", "data-confirm" => "投稿を削除しますか？" %>
       </div>
     <% end %>
   </section>

@@ -1,5 +1,6 @@
 class EndUsers::PostHistoriesController < ApplicationController
   before_action :authenticate_end_user!, only:[:destroy]
+  before_action :destroy_params, only:[:destroy]
   impressionist :actions => [:show]
 
   def index
@@ -52,9 +53,17 @@ class EndUsers::PostHistoriesController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    if post.end_user == current_end_user
-      post.destory
-      redirect_to end_user_post_histories_path(current_end_user.id)
+    post.destroy
+    flash[:destroy] = "投稿を削除しました"
+    redirect_to end_user_post_histories_path(current_end_user.id)
+  end
+
+  private
+
+  def destroy_params
+    post = Post.find(params[:id])
+    if post.end_user != current_end_user
+      redirect_to end_user_post_history_path(post)
     end
   end
 

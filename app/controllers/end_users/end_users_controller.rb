@@ -1,5 +1,6 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :authenticate_end_user!, except:[:show]
+  before_action :edit_params, only:[:edit, :withdraw]
 
   def show
     @user = EndUser.find(params[:id])
@@ -34,6 +35,13 @@ class EndUsers::EndUsersController < ApplicationController
 
   def user_params
     params.require(:end_user).permit(:name, :user_comment, :user_image )
+  end
+
+  def edit_params
+    end_user = EndUser.find(params[:id])
+    if end_user != current_end_user
+      redirect_to user_page_path(end_user)
+    end
   end
 
 end
