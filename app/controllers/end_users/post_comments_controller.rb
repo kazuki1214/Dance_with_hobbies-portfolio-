@@ -1,5 +1,6 @@
 class EndUsers::PostCommentsController < ApplicationController
   before_action :authenticate_end_user!, except:[:index]
+  before_action :destroy_params, only:[:destroy]
 
   def index
     @post = Post.find(params[:post_id])
@@ -26,14 +27,12 @@ class EndUsers::PostCommentsController < ApplicationController
 
   def destroy
     @comment = PostComment.find_by(id: params[:id])
-    if @comment.end_user == current_end_user
-      if @comment.destroy
-        @post = Post.find(params[:post_id])
-        @hobby = @post.hobby
-        @comments = @post.post_comments.all.order(created_at: :desc)
-        @new_comment = PostComment.new
-        render :create
-      end
+    if @comment.destroy
+      @post = Post.find(params[:post_id])
+      @hobby = @post.hobby
+      @comments = @post.post_comments.all.order(created_at: :desc)
+      @new_comment = PostComment.new
+      render :create
     end
   end
 
@@ -41,6 +40,13 @@ class EndUsers::PostCommentsController < ApplicationController
 
   def post_comment_params
     params.require(:post_comment).permit(:comment)
+  end
+
+  def destroy_params
+    @comment = PostComment.find_by(id: params[:id])
+    if @comment.end_user != current_end_user
+      redirect_to hobby_post_post_comments_path
+    end
   end
 
 end
