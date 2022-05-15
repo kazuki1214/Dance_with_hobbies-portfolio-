@@ -341,10 +341,37 @@
 @media screen and (max-width: 768px) {
   .posts{
     width:100%;
+    padding:15px;
+
+    &_index{
+      display:block;
+    }
+
+    &_post{
+      width:95%;
+    }
+
+    &_post-sub{
+      left:20px;
+    }
+
   }
 
   .post-one{
     width:100%;
+    padding:15px;
+
+    &_bottom{
+      display:block;
+    }
+
+    &_post{
+      width:95%;
+    }
+
+    &_sub{
+      left:20px;
+    }
   }
 
   .new-post{

@@ -148,5 +148,18 @@
 @media screen and (max-width: 768px) {
   .comments{
     width:100%;
+    padding:15px;
+
+    &_bottom{
+      display:block;
+    }
+
+    &_post{
+      width:95%;
+    }
+
+    &_sub{
+      left:20px;
+    }
   }
 }
