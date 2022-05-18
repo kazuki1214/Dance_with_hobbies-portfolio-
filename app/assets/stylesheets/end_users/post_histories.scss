@@ -248,9 +248,35 @@
 @media screen and (max-width: 768px) {
   .user-posts{
     width:100%;
+    padding:15px;
+
+    &_index{
+      display:block;
+    }
+
+    &_post{
+      width:95%;
+    }
+
+    &_post-sub{
+      left:20px;
+    }
   }
 
   .user-post{
     width:100%;
+    padding:15px;
+
+    &_bottom{
+      display:block;
+    }
+
+    &_post{
+      width:95%;
+    }
+
+    &_sub{
+      left:20px;
+    }
   }
 }
