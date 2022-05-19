@@ -28,12 +28,12 @@
             <div class="user-new-post_label">
               <%= f.attachment_field :post_image %>
             </div>
-            <%= attachment_image_tag @new_post, :post_image, size: "500x300", fallback: " " ,format: "jpg", id:"post_img_prev" %>
+            <%= attachment_image_tag @new_post, :post_image, size: "500x300", fallback: " " ,format: "jpg", id:"post_img_prev", class: "new-post_img-prev" %>
           </div>
 
           <div class="user-new-post_tags">
             <h4 class="user-new-post_label"><%= f.label :name, "タグ" %></h4>
-            <%= f.text_field :name, class: "user-new-post_tag-field", placeholder: "「,」で区切ると複数タグを登録でき、重複するタグは一つにまとまります" %>
+            <%= f.text_field :name, class: "user-new-post_tag-field", placeholder: "「,」で区切ると複数タグを登録" %>
           </div>
 
           <div class="user-new-post_body">

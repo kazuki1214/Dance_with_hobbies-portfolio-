@@ -291,13 +291,30 @@
 @media screen and (max-width: 768px) {
   .user{
     width:100%;
+    padding:15px;
   }
 
   .user-edit{
     width:100%;
+    padding:15px;
   }
 
   .user-new-post{
     width:100%;
+    padding:15px;
+
+    &_hobby-title{
+      display:block;
+    }
+
+    &_main{
+      width:100%;
+      margin-bottom:35px;
+    }
+
+    &_img-prev{
+      width:100%;
+      height:100%;
+    }
   }
 }

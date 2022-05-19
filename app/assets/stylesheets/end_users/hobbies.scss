@@ -189,6 +189,7 @@
 @media screen and (max-width: 768px) {
   .hobbies{
     width:100%;
+    padding:15px;
 
     &_title{
       display:block;
@@ -201,5 +202,18 @@
 
   .hobby-one{
     width:100%;
+    padding:15px;
+
+    &_posts{
+      display:block;
+    }
+
+    &_post{
+      width:95%;
+    }
+
+    &_post-sub{
+      left:20px;
+    }
   }
 }
