@@ -286,6 +286,28 @@
   &_cancel:active{
     transform: scale(1.05);
   }
+
+  &_out{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+
+  &_out-link{
+    padding:5px;
+    margin:10px;
+    font-size:20px;
+    border-radius:50px;
+  }
+
+  &_out-link:hover{
+    transition:0.3s;
+    color:white;
+    background-color:#29dad9;
+  }
 }
 
 @media screen and (max-width: 768px) {

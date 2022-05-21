@@ -1,51 +1,57 @@
 <div class="main">
   <%= render "layouts/navbar" %>
   <section class="user-new-post">
+    <% if current_end_user.favorite_hobbies.exists? %>
+      <%= form_with(model: [:end_users, @new_post], url: confirm_hobby_posts_path(:hobby_id), local: true) do |f| %>
+        <div class="user-new-post_hobby-title">
+          <h4>投稿するお気に入りの趣味</h4>
+          <%= f.select :hobby_id, options_from_collection_for_select(current_end_user.hobbies.all, :id, :title),{}, {class: "user-new-post_hobby-select"} %>
+        </div>
+        <% if @new_post.errors.any? %>
+          <div class="user-new-post_error">
+            <% @new_post.errors.full_messages.each do |error| %>
+              <p><%= error %></p>
+            <% end %>
+          </div>
+        <% end %>
 
-    <%= form_with(model: [:end_users, @new_post], url: confirm_hobby_posts_path(:hobby_id), local: true) do |f| %>
-      <div class="user-new-post_hobby-title">
-        <h4>投稿するお気に入りの趣味</h4>
-        <%= f.select :hobby_id, options_from_collection_for_select(current_end_user.hobbies.all, :id, :title),{}, {class: "user-new-post_hobby-select"} %>
-      </div>
-      <% if @new_post.errors.any? %>
-        <div class="user-new-post_error">
-          <% @new_post.errors.full_messages.each do |error| %>
-            <p><%= error %></p>
-          <% end %>
+        <div class="user-new-post_bottom">
+          <h2>新規登録</h2>
+          <div class="user-new-post_main">
+
+            <div class="user-new-post_title">
+              <h4 class="user-new-post_label"><%= f.label :title, "題名" %></h4>
+              <%= f.text_field :title, class: "user-new-post_title-field", placeholder:"タイトルを入力" %>
+            </div>
+
+            <div class="user-new-post_image">
+              <div class="user-new-post_label">
+                <%= f.attachment_field :post_image %>
+              </div>
+              <%= attachment_image_tag @new_post, :post_image, size: "500x300", fallback: " " ,format: "jpg", id:"post_img_prev", class: "new-post_img-prev" %>
+            </div>
+
+            <div class="user-new-post_tags">
+              <h4 class="user-new-post_label"><%= f.label :name, "タグ" %></h4>
+              <%= f.text_field :name, class: "user-new-post_tag-field", placeholder: "「,」で区切ると複数タグを登録" %>
+            </div>
+
+            <div class="user-new-post_body">
+              <h4 class="user-new-post_label"><%= f.label :body, "内容" %></h4>
+              <%= f.text_area :body, class: "user-new-post_body-field", placeholder:"投稿内容を入力" %>
+            </div>
+          </div>
+
+          <div class="user-new-post_send">
+            <%= link_to "投稿をキャンセル", 'javascript:history.back()', type: "button", class: "new-post_cancel" %>
+            <%= f.submit "投稿を確認", class: "new-post_submit", onclick: "submit();" %>
+          </div>
         </div>
       <% end %>
-
-      <div class="user-new-post_bottom">
-        <h2>新規登録</h2>
-        <div class="user-new-post_main">
-
-          <div class="user-new-post_title">
-            <h4 class="user-new-post_label"><%= f.label :title, "題名" %></h4>
-            <%= f.text_field :title, class: "user-new-post_title-field", placeholder:"タイトルを入力" %>
-          </div>
-
-          <div class="user-new-post_image">
-            <div class="user-new-post_label">
-              <%= f.attachment_field :post_image %>
-            </div>
-            <%= attachment_image_tag @new_post, :post_image, size: "500x300", fallback: " " ,format: "jpg", id:"post_img_prev", class: "new-post_img-prev" %>
-          </div>
-
-          <div class="user-new-post_tags">
-            <h4 class="user-new-post_label"><%= f.label :name, "タグ" %></h4>
-            <%= f.text_field :name, class: "user-new-post_tag-field", placeholder: "「,」で区切ると複数タグを登録" %>
-          </div>
-
-          <div class="user-new-post_body">
-            <h4 class="user-new-post_label"><%= f.label :body, "内容" %></h4>
-            <%= f.text_area :body, class: "user-new-post_body-field", placeholder:"投稿内容を入力" %>
-          </div>
-        </div>
-
-        <div class="user-new-post_send">
-          <%= link_to "投稿をキャンセル", 'javascript:history.back()', type: "button", class: "new-post_cancel" %>
-          <%= f.submit "投稿を確認", class: "new-post_submit", onclick: "submit();" %>
-        </div>
+    <% else %>
+      <div class="user-new-post_out">
+        <h4>趣味をお気に入り登録することで利用できます</h4>
+        <%= link_to "お気に入りの趣味を探しに行く", hobbies_path, class: "user-new-post_out-link" %>
       </div>
     <% end %>
   </section>
