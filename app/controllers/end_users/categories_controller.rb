@@ -11,6 +11,11 @@ class EndUsers::CategoriesController < ApplicationController
       @keyword.split(/[[:blank:]]+/).each do |keyword|
         next if keyword == ""
         category_ids += Category.search(keyword)
+        hobby = Hobby.find_by(title: keyword)
+        if hobby.present?
+          hobby_categories = hobby.categories.pluck(:id)
+          category_ids += Category.where(id: hobby_categories)
+        end
       end
       category_ids = category_ids.flatten
       categories = categories.where(id: category_ids).uniq
