@@ -24,7 +24,7 @@
           <% end %>
             <div class="user-post_created">
               <div class="user-post_created-time"><%= @post.created_at.strftime("%Y/%m/%d/ %H:%M") %></div>
-              <div class="user-post_created-hobby"><%= @post.hobby.title %></div>
+              <div class="user-post_created-hobby"><%= link_to hobby_path(@post.hobby) do %><%= @post.hobby.title %><% end %></div>
             </div>
           </div>
 
