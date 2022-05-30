@@ -9,7 +9,7 @@
         <%= link_to admin_root_path do %> <div class="nav-items"><span class="text-light">趣味一覧</span></div><% end %>
         <%= link_to admin_categories_path do %> <div class="nav-items"><span class="text-light">カテゴリー一覧</span></div><% end %>
         <%= link_to admin_contacts_path do %> <div class="nav-items"><span class="text-light">お問合せ一覧</span></div><% end %>
-        <%= link_to destroy_admin_session_path, method: :delete do %> <div class="nav-items"><span class="text-light">ログアウト</span></div><% end %>
+        <%= link_to destroy_admin_session_path, method: :delete, "data-confirm" => "ログアウトしますか？" do %> <div class="nav-items"><span class="text-light">ログアウト</span></div><% end %>
       <% elsif end_user_signed_in? %>
         <%= link_to user_page_path(current_end_user) do %>
           <div class="nav-items" style="padding:9px 10px;">
@@ -27,7 +27,7 @@
             <span class="text-light">通知一覧</span>
           </div>
         <% end %>
-        <%= link_to destroy_end_user_session_path, method: :delete do %> <div class="nav-items"><span class="text-light">ログアウト</span></div><% end %>
+        <%= link_to destroy_end_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか？" do %> <div class="nav-items"><span class="text-light">ログアウト</span></div><% end %>
       <% else %>
         <%= link_to new_end_user_registration_path do %><div class="nav-items"><span class="text-light">新規登録</span></div><% end %>
         <%= link_to new_end_user_session_path do %><div class="nav-items"><span class="text-light">ログイン</span></div><% end %>
