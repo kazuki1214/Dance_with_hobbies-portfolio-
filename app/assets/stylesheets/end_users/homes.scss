@@ -162,7 +162,11 @@
     &_post{
       width:100%;
     }
-
+  }
+  @media screen and (max-width: 450px) {
+    &_sign-in{
+      margin-left:80px;
+    }
   }
 }
 

@@ -4,9 +4,9 @@
     <div class="categories_title">
       <h2 class="page-title">カテゴリー一覧</h2>
       <%= form_with url: search_categories_path, method: :get, local: true do |search| %>
-        <div class="user-posts_search">
-          <%= search.text_field :keyword, class: "user-posts_serch-field", placeholder: "カテゴリー検索" %>
-          <%= search.submit "検索", class: "user-posts_serch-submit" %>
+        <div class="categories_search">
+          <%= search.text_field :keyword, class: "categories_search-field", placeholder: "カテゴリー検索" %>
+          <%= search.submit "検索", class: "categories_search-submit" %>
         </div>
       <% end %>
     </div>
